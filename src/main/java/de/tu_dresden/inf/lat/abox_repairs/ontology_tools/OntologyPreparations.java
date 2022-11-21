@@ -55,8 +55,10 @@ public class OntologyPreparations {
 
             /** Next, we will normalize the ontology. */
             try {
+                System.out.println("Normalizing");
                 final Entailment entailment = RepairManagerBuilder.CQ_ANY.contains(repairVariant) ? Entailment.CQ : Entailment.IQ;
                 final OWLOntology normalization = new OntologyNormalizer(ontology, entailment).getNormalization(isExperiment);
+                System.out.println("Normalized");
                 return normalization;
             } catch (OWLOntologyCreationException e) {
                 throw new RuntimeException(e);

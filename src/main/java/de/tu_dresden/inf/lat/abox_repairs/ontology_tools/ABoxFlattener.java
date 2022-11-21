@@ -27,7 +27,8 @@ public class ABoxFlattener {
      * Careful: changes the content of the ontology, rather than producing a new ontology.
      */
     public void flatten(OWLOntology ontology) {
-        final FreshOWLEntityFactory.FreshOWLClassFactory freshNameProducer = FreshOWLEntityFactory.FreshOWLClassFactory.of(ontology);
+        final FreshOWLEntityFactory.FreshOWLClassFactory freshNameProducer =
+                FreshOWLEntityFactory.FreshOWLClassFactory.of(ontology);
 //        freshNameProducer.addKnownExpressions(ontology.getClassesInSignature());
 
         Set<OWLLogicalAxiom> toAdd = new HashSet<>();
@@ -50,7 +51,7 @@ public class ABoxFlattener {
 //                        name = freshNameProducer.getEntity();
 //                        knownClasses.put(expression,name);
 //                    }
-                    System.out.println("Complex assertion: " + assertion);
+                    //System.out.println("Complex assertion: " + assertion);
                     OWLClass name = freshNameProducer.getEntity(expression);
                     toAdd.add(factory.getOWLClassAssertionAxiom(name, assertion.getIndividual()));
                     //toAdd.add(factory.getOWLSubClassOfAxiom(name, expression));

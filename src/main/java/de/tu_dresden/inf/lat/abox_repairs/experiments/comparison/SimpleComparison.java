@@ -28,14 +28,17 @@ public class SimpleComparison {
         Timer timer = Timer.newTimer();
 
         timer.startTimer();
-        RepairRequest repairRequest = getRepairRequest(ontology);
         OWLDataFactory factory = ontology.getOWLOntologyManager().getOWLDataFactory();
         new ELRestrictor(factory).restrict(ontology);
         new ABoxFlattener(factory).flatten(ontology);
         ontology.removeAxioms(ontology.getAxioms(AxiomType.DECLARATION));
 
-        ontology = OntologyPreparations.prepare(ontology, false, RepairManagerBuilder.RepairVariant.IQ);
+        System.out.println("Preparing everything: "+timer.getTime()+" seconds.");
 
+
+        double t1 = timer.getTime();
+
+        RepairRequest repairRequest = getRepairRequest(ontology);
 
         RepairManager repairManager = new RepairManagerBuilder()
                 .setNeedsSaturation(true)
@@ -45,9 +48,6 @@ public class SimpleComparison {
                 .build();
 
         repairManager.initForRepairing();
-        System.out.println("Preparing everything: "+timer.getTime()+" seconds.");
-
-        double t1 = timer.getTime();
 
         ontology = repairManager.getOntology();
 

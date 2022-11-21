@@ -129,8 +129,9 @@ public class ReasonerFacade {
         }
 
         this.factory = ontology.getOWLOntologyManager().getOWLDataFactory();
-        this.freshOWLClassFactory = FreshOWLClassFactory.of(ontologyCopy.get());
+        this.freshOWLClassFactory = FreshOWLClassFactory.of(ontologyCopy.get());;
         this.freshOWLClassFactory.addAdditionalKnownEntities(expressions);
+        this.freshOWLClassFactory.addAdditionalKnownEntities(ontology.getNestedClassExpressions());
         this.freshOWLNamedIndividualFactory = FreshOWLNamedIndividualFactory.of(ontologyCopy.get());
 
         ontology.axioms(Imports.INCLUDED).forEach(axiom -> axiom.accept(addAxiomVisitor));

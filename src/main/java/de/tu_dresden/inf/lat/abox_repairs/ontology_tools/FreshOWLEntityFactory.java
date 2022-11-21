@@ -104,6 +104,7 @@ public abstract class FreshOWLEntityFactory<O extends OWLObject, E extends OWLEn
         }
 
         public static final FreshOWLClassFactory of(OWLOntology ontology) {
+            //return new FreshOWLClassFactory(ontology);
             return freshOWLClassFactories.computeIfAbsent(ontology, FreshOWLClassFactory::new);
         }
 

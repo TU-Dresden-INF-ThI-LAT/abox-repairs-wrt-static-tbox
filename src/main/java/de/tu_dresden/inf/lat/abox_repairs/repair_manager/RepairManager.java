@@ -78,7 +78,9 @@ public class RepairManager {
 //        long oldAssertions = workingCopy.aboxAxioms(Imports.INCLUDED).count();
         oldAssertions = workingCopy.getABoxAxioms(Imports.INCLUDED).size();
 
+        System.out.println("Classifying...");
         reasonerWithTBox.update();
+        System.out.println("Done classifying");
 
         System.out.println("Before saturation:");
         System.out.println(workingCopy.getIndividualsInSignature().size() + " individuals");
@@ -145,7 +147,7 @@ public class RepairManager {
            // reasonerWithTBox = ReasonerFacade.newReasonerFacadeWithTBox(ontology, additionalExpressions);
            // reasonerWithTBox.update();
 
-//            reasonerWithTBox.cleanOntology(); // <-- this should not be done if the reasoner facades is still used!
+//            reasonerWithTBox.cleanOntology(); // <-- this should not be done if the reasoner facade is still used!
             reasonerWithTBox.dispose();
 
             double timeRepairing = (double) (System.nanoTime() - startTime) / 1_000_000_000;
