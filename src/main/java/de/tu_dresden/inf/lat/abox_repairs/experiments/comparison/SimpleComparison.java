@@ -1,6 +1,8 @@
 package de.tu_dresden.inf.lat.abox_repairs.experiments.comparison;
 
 import de.tu_dresden.inf.lat.abox_repairs.experiments.RunExperiment1;
+import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.ABoxFlattener;
+import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.ELRestrictor;
 import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.OntologyPreparations;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManager;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManagerBuilder;
@@ -12,9 +14,7 @@ import de.tu_dresden.inf.lat.abox_repairs.virtual_iq_repairs.FullOntologyIQView;
 import de.tu_dresden.inf.lat.abox_repairs.virtual_iq_repairs.IQBlackbox;
 import de.tu_dresden.inf.lat.abox_repairs.virtual_iq_repairs.VirtualIQRepair;
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.OWLClassExpression;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.*;
 
 import java.io.File;
 
@@ -29,7 +29,13 @@ public class SimpleComparison {
 
         timer.startTimer();
         RepairRequest repairRequest = getRepairRequest(ontology);
+        OWLDataFactory factory = ontology.getOWLOntologyManager().getOWLDataFactory();
+        new ELRestrictor(factory).restrict(ontology);
+        new ABoxFlattener(factory).flatten(ontology);
+        ontology.removeAxioms(ontology.getAxioms(AxiomType.DECLARATION));
+
         ontology = OntologyPreparations.prepare(ontology, false, RepairManagerBuilder.RepairVariant.IQ);
+
 
         RepairManager repairManager = new RepairManagerBuilder()
                 .setNeedsSaturation(true)
