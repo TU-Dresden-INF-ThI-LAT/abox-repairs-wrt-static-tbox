@@ -3,10 +3,16 @@ package de.tu_dresden.inf.lat.abox_repairs.experiments.comparison;
 import de.tu_dresden.inf.lat.abox_repairs.reasoning.ReasonerFacade;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.CanonicalModelGenerator;
 import org.semanticweb.elk.owlapi.ElkReasonerFactory;
+import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.expression.OWLExpressionParser;
+import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxClassExpressionParser;
+import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
+import javax.imageio.event.IIOWriteProgressListener;
+import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -22,6 +28,43 @@ public class IQGenerator {
     private double probabilityConjunction=0.5;
     private int minDepth = 0;
     private int maxDepth = Integer.MAX_VALUE;
+
+    public static void main(String[] args) throws OWLOntologyCreationException, IOException, IQGenerationException {
+        OWLOntology ontology = OWLManager.createOWLOntologyManager().loadOntologyFromOntologyDocument(new File(args[0]));
+        int number = Integer.parseInt(args[1]);
+        File outputFile = new File(args[2]);
+
+        PrintWriter writer = new PrintWriter(new FileWriter(outputFile));
+
+        IQGenerator iqGenerator = new IQGenerator(ontology);
+
+        ManchesterOWLSyntaxOWLObjectRendererImpl renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
+
+        try {
+            for (int i = 0; i < number; i++) {
+                OWLClassExpression iq = iqGenerator.generateIQ();
+                writer.println(renderer.render(iq));
+            }
+        } finally {
+            writer.close();
+        }
+
+    }
+
+    public static List<OWLClassExpression> parseIQs(File file, OWLDataFactory factory) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+
+        OWLExpressionParser<OWLClassExpression> parser =
+                new ManchesterOWLSyntaxClassExpressionParser(factory, new SimpleOWLEntityChecker(factory));
+
+        List<OWLClassExpression> result = new LinkedList<>();
+
+        for(String line=reader.readLine(); line!=null; line=reader.readLine()){
+            result.add(parser.parse(line));
+        }
+
+        return result;
+    }
 
     /**
      * Careful: changes the ontology!
