@@ -19,7 +19,8 @@ public class RepairType {
     private final Set<OWLClassExpression> toRepair;
 
     // package visibility since it should only be used by the RepairTypeHandler
-    RepairType(Set<OWLClassExpression> toRepair){
+    // Patrick: I changed to public to be able to parse repair requests from files
+    public RepairType(Set<OWLClassExpression> toRepair){
         this.toRepair=toRepair;
     }
 
