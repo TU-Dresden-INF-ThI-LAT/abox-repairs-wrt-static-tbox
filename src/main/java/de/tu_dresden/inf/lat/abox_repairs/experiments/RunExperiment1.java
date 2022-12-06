@@ -1,5 +1,6 @@
 package de.tu_dresden.inf.lat.abox_repairs.experiments;
 
+import de.tu_dresden.inf.lat.abox_repairs.reasoning.ReasonerFacade;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManager;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManagerBuilder;
 import de.tu_dresden.inf.lat.abox_repairs.repair_request.RepairRequest;
@@ -136,6 +137,10 @@ public class RunExperiment1 {
         RepairRequest request = new RepairRequest();
 
         List<OWLClass> classList = ontology.classesInSignature().collect(Collectors.toList());
+
+        ReasonerFacade rf = ReasonerFacade.newReasonerFacadeWithTBox(ontology);
+
+        classList.stream().filter(c -> !rf.equivalentToOWLThing(c)).collect(Collectors.toList());
 
         Set<OWLNamedIndividual> individuals = randomIndividuals(ontology, proportionIndividuals);
 
