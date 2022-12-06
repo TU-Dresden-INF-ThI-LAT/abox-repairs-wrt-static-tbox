@@ -29,6 +29,11 @@ public final class ClassExpressionNormalizer {
         return classExpression.accept(classExpressionNormalizer);
     }
 
+
+    public boolean isTop(OWLClassExpression owlClassExpression) {
+        return reasoner.equivalentToOWLThing(owlClassExpression);
+    }
+
     final boolean isSubsumedBy(OWLClassExpression ce1, OWLClassExpression ce2) {
         reasoner.addExpressions(ce1, ce2);
         reasoner.update();
