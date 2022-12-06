@@ -19,7 +19,7 @@ public class RepairRequestNormalizer {
                     .get(individual)
                     .stream()
                     .map(normalizer::normalize)
-                            .filter(normalizer::isTop)
+                    .filter(x -> !normalizer.isTop(x))
                     .collect(Collectors.toSet()));
 
             //normalizedRepairRequest.put(individual,
