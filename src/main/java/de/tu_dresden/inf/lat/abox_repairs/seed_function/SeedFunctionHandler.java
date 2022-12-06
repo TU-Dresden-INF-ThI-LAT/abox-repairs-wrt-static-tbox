@@ -71,10 +71,8 @@ public class SeedFunctionHandler {
 
 		SeedFunction seedFunction = new SeedFunction();
 		Set<OWLNamedIndividual> setOfMappedIndividuals = hittingSetFunction.keySet();
-		
-		
+
 		for(OWLNamedIndividual individual : setOfMappedIndividuals) {
-			
 			RepairType type = typeHandler.convertToRandomRepairType(hittingSetFunction.get(individual), individual);
 			seedFunction.put(individual, type);
 		}
@@ -114,6 +112,8 @@ public class SeedFunctionHandler {
 
 		Map<OWLNamedIndividual, Set<OWLClassExpression>> hittingSetFunction = new HashMap<>(); // TODO use Multimap
 
+		System.out.println("choosing random hitting set..");
+
 		for(OWLNamedIndividual individual : repairRequest.individuals()) {
 
 			// first process atoms (include everything that is entailed)
@@ -121,11 +121,19 @@ public class SeedFunctionHandler {
 			reasonerWithTBox.types(individual) // faster to go from here, rather than from the repair type
 					//.filter(x -> !(x instanceof OWLObjectIntersectionOf))
 					.filter(x -> repairRequest.get(individual).contains(x))
+					.map( x-> {
+						if(x instanceof OWLObjectIntersectionOf) {
+							return x.asConjunctSet().stream()
+									.filter(con -> !reasonerWithTBox.equivalentToOWLThing(con))
+									.findAny().orElseThrow(() -> new IllegalArgumentException("Invalid Repair Request"));
+						} else
+							return x;
+							})
 					.collect(Collectors.toSet()));
 
 
 			// now pick selection from conjunctions
-			repairRequest.get(individual)
+			/*repairRequest.get(individual)
 					.stream()
 					.filter(x -> x instanceof OWLObjectIntersectionOf)
 					.forEach(concept -> {
@@ -149,7 +157,7 @@ public class SeedFunctionHandler {
 					
 				}
 			});
-			
+			*/
 		}
 		return hittingSetFunction;
 	}

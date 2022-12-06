@@ -17,6 +17,9 @@ import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxOntolog
 import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxParserImpl;
 import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.model.parameters.Imports;
+import org.semanticweb.owlapi.modularity.locality.LocalityClass;
+import org.semanticweb.owlapi.modularity.locality.SyntacticLocalityModuleExtractor;
 import org.semanticweb.owlapi.util.mansyntax.ManchesterOWLSyntaxParser;
 
 import javax.annotation.Nullable;
@@ -24,6 +27,8 @@ import javax.swing.*;
 import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ExperimentGenerator {
     private final OWLOntology ontology;
@@ -62,6 +67,7 @@ public class ExperimentGenerator {
         this.factory=ontology
                 .getOWLOntologyManager()
                 .getOWLDataFactory();
+
     }
 
     public void createExperimentFiles(double proportionIndividuals,
@@ -74,6 +80,27 @@ public class ExperimentGenerator {
         RepairRequest repairRequest = generateRepairRequest(proportionIndividuals,proportionClassNames);
         System.out.println("generating repair request took "+timer.getTime());
         saveRepairRequest(repairRequest,repairRequestFile);
+
+        /*
+        // speed up generation by using a module
+        System.out.println("extracting module...");
+        timer.reset();
+        timer.startTimer();
+        SyntacticLocalityModuleExtractor extractor =
+                new SyntacticLocalityModuleExtractor(LocalityClass.STAR, ontology.axioms());
+
+        Stream<OWLEntity> aboxSignature = ontology.aboxAxioms(Imports.INCLUDED).flatMap(OWLAxiom::signature);
+
+        Stream<OWLAxiom> module = extractor.extract(aboxSignature);
+        System.out.println("module extraction took "+timer.getTime());
+
+        System.out.println("ontology size: "+ontology.getAxiomCount());
+
+        ontology.remove(ontology.axioms());
+        module.forEach(ontology::add);
+
+        System.out.println("module size: "+ontology.getAxiomCount());
+*/
 
         timer.reset();
         timer.startTimer();
@@ -110,6 +137,7 @@ public class ExperimentGenerator {
 
         System.out.println("building repair manager...");
         RepairManager repairManager = new RepairManagerBuilder()
+                .trustRepairRequests(true)
                 .setNeedsSaturation(true)
                 .setVariant(RepairManagerBuilder.RepairVariant.IQ)
                 .setRepairRequest(repairRequest)

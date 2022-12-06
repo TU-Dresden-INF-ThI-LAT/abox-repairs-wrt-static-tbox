@@ -26,6 +26,7 @@ import java.util.Set;
 public class RepairManagerBuilder {
 
     private static Logger logger = LogManager.getLogger(RepairManagerBuilder.class);
+    private boolean trustRepairRequests=false;
 
     public enum RepairVariant {IQ, IQ2, CQ, CANONICAL_IQ, CANONICAL_CQ}
 
@@ -43,6 +44,11 @@ public class RepairManagerBuilder {
     private boolean saturate = true;
 
     private RepairVariant variant;
+
+    public RepairManagerBuilder trustRepairRequests(boolean value) {
+        this.trustRepairRequests=value;
+        return this;
+    }
 
     public RepairManagerBuilder setVariant(RepairVariant variant) {
         this.variant = variant;
@@ -85,12 +91,15 @@ public class RepairManagerBuilder {
 
         System.out.println("initialising reasoner facades...");
         initReasonerFacades();
+        System.out.println("done initializing");
 
-        if (!RepairRequest.checkValid(normalizedRepairRequest, reasonerWithTBox)) {
+        if (!trustRepairRequests && !RepairRequest.checkValid(normalizedRepairRequest, reasonerWithTBox)) {
             throw new IllegalArgumentException("Invalid repair request.");
         }
 
+        System.out.println("fixing saturator...");
         fixSaturator();
+        System.out.println("fixing repair generator...");
         fixRepairGenerator();
 
         return new RepairManager(ontology, workingCopy, reasonerWithoutTBox, reasonerWithTBox, repairGenerator, saturator, normalizedRepairRequest);
@@ -115,9 +124,9 @@ public class RepairManagerBuilder {
     }
 
     private void fixSaturator() {
-        CycleChecker cycleChecker = new CycleChecker(reasonerWithTBox);
-        if (cycleChecker.cyclic())
+        if (CQ_ANY.contains(variant) && new CycleChecker(reasonerWithTBox).cyclic()) {
             throw new IllegalArgumentException("Ontology is cyclic - chase cannot be computed!");
+        }
 
         if (!saturate)
             saturator = new DummySaturator();
