@@ -43,7 +43,7 @@ public class IQGenerator {
         try {
             for (int i = 0; i < number; i++) {
                 OWLClassExpression iq = iqGenerator.generateIQ();
-                writer.println(renderer.render(iq));
+                writer.println(renderer.render(iq).replaceAll("\n", ""));
             }
         } finally {
             writer.close();
