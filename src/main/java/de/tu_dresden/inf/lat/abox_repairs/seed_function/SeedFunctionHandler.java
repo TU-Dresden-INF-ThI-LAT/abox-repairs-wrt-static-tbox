@@ -119,9 +119,10 @@ public class SeedFunctionHandler {
 			// first process atoms (include everything that is entailed)
 			hittingSetFunction.put(individual,
 			reasonerWithTBox.types(individual) // faster to go from here, rather than from the repair type
-					.filter(x -> !(x instanceof OWLObjectIntersectionOf))
+					//.filter(x -> !(x instanceof OWLObjectIntersectionOf))
 					.filter(x -> repairRequest.get(individual).contains(x))
 					.collect(Collectors.toSet()));
+
 
 			// now pick selection from conjunctions
 			repairRequest.get(individual)
