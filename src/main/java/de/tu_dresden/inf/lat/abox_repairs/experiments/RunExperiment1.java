@@ -140,7 +140,7 @@ public class RunExperiment1 {
 
         ReasonerFacade rf = ReasonerFacade.newReasonerFacadeWithTBox(ontology);
 
-        classList.stream().filter(c -> !rf.equivalentToOWLThing(c)).collect(Collectors.toList());
+        classList = classList.stream().filter(c -> !rf.equivalentToOWLThing(c)).collect(Collectors.toList());
 
         Set<OWLNamedIndividual> individuals = randomIndividuals(ontology, proportionIndividuals);
 
