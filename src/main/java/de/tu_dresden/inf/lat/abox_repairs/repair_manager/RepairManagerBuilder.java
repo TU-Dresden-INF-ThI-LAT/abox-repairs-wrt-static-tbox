@@ -65,7 +65,11 @@ public class RepairManagerBuilder {
     }
 
     public RepairManager build() throws OWLOntologyCreationException {
+
+        System.out.println("Bulding...");
+
         this.workingCopy = OntologyPreparations.prepare(ontology, false, variant);
+
 
         try {
             workingCopy.getOWLOntologyManager().saveOntology(workingCopy, new FileOutputStream(new File("el-fragment.owl")));
@@ -75,7 +79,11 @@ public class RepairManagerBuilder {
             e.printStackTrace();
         }
 
+        System.out.println("Normalizing repair request...");
+
         this.normalizedRepairRequest = RepairRequestNormalizer.normalizeRepairRequest(ontology.getOWLOntologyManager(), repairRequest);
+
+        System.out.println("initialising reasoner facades...");
         initReasonerFacades();
 
         if (!RepairRequest.checkValid(normalizedRepairRequest, reasonerWithTBox)) {

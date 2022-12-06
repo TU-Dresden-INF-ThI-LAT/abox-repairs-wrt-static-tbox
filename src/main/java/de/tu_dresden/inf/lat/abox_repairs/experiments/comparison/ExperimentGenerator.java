@@ -7,6 +7,7 @@ import de.tu_dresden.inf.lat.abox_repairs.repair_request.RepairRequest;
 import de.tu_dresden.inf.lat.abox_repairs.repair_type.RepairType;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.SaturationException;
 import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunction;
+import de.tu_dresden.inf.lat.abox_repairs.tools.Timer;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.expression.OWLEntityChecker;
 import org.semanticweb.owlapi.expression.OWLExpressionParser;
@@ -67,9 +68,18 @@ public class ExperimentGenerator {
                                        double proportionClassNames,
                                        File repairRequestFile,
                                        File seedFunctionFile) throws OWLOntologyCreationException, SaturationException, IOException {
+        System.out.println("Generating repair request...");
+        Timer timer = Timer.newTimer();
+        timer.startTimer();
         RepairRequest repairRequest = generateRepairRequest(proportionIndividuals,proportionClassNames);
+        System.out.println("generating repair request took "+timer.getTime());
+        saveRepairRequest(repairRequest,repairRequestFile);
+
+        timer.reset();
+        timer.startTimer();
+        System.out.println("Generating seed function...");
         SeedFunction seedFunction = generateSeedFunction(repairRequest);
-        saveRepairRequest(repairRequest, repairRequestFile);
+        System.out.println("Generating seed function took "+timer.getTime());
         saveSeedFunction(seedFunction,seedFunctionFile);
     }
 
@@ -98,6 +108,7 @@ public class ExperimentGenerator {
 
     public SeedFunction generateSeedFunction(RepairRequest repairRequest) throws OWLOntologyCreationException, SaturationException {
 
+        System.out.println("building repair manager...");
         RepairManager repairManager = new RepairManagerBuilder()
                 .setNeedsSaturation(true)
                 .setVariant(RepairManagerBuilder.RepairVariant.IQ)
@@ -105,6 +116,7 @@ public class ExperimentGenerator {
                 .setOntology(ontology)
                 .build();
 
+        System.out.println("init for repairing...");
         repairManager.initForRepairing();
 
         return repairManager.getSeedFunction();

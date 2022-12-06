@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.eclipse.rdf4j.model.vocabulary.OWL;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
@@ -88,11 +89,8 @@ public class RepairTypeHandler {
      * to a repair type that has been premise-saturated
      *
      * @param hittingSet a repair pre-type that may not be premise-saturated yet
-     * @param random  a random object that help choose a random repair type that will be returned
      * @return a random repair type
      */
-
-
     public RepairType convertToRandomRepairType(Set<OWLClassExpression> hittingSet, OWLNamedIndividual ind) {
 
     	boolean isSaturated = false;

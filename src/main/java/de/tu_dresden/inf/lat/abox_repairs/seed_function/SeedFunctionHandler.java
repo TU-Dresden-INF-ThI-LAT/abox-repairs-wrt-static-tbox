@@ -12,10 +12,7 @@ import de.tu_dresden.inf.lat.abox_repairs.repair_request.RepairRequest;
 import de.tu_dresden.inf.lat.abox_repairs.repair_type.RepairType;
 import de.tu_dresden.inf.lat.abox_repairs.repair_type.RepairTypeHandler;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.AnonymousVariableDetector;
-import org.semanticweb.owlapi.model.OWLClassExpression;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.model.OWLObjectIntersectionOf;
-import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.*;
 
 
 public class SeedFunctionHandler {
@@ -108,33 +105,49 @@ public class SeedFunctionHandler {
 	 * Given a repair request, for each individual in the request, the method
 	 * constructs a hitting set of the top-level conjuncts of concepts that are 
 	 * asserted to the individual.
+	 *
+	 * The "randomness" comes with the conjunctions.
 	 */
 	
 	
 	private Map<OWLNamedIndividual, Set<OWLClassExpression>> computeRandomHittingSet(RepairRequest repairRequest) {
+
 		Map<OWLNamedIndividual, Set<OWLClassExpression>> hittingSetFunction = new HashMap<>(); // TODO use Multimap
-		
+
 		for(OWLNamedIndividual individual : repairRequest.individuals()) {
-			
-			for(OWLClassExpression concept : repairRequest.get(individual)) {
+
+			// first process atoms (include everything that is entailed)
+			hittingSetFunction.put(individual,
+			reasonerWithTBox.types(individual) // faster to go from here, rather than from the repair type
+					.filter(x -> !(x instanceof OWLObjectIntersectionOf))
+					.filter(x -> repairRequest.get(individual).contains(x))
+					.collect(Collectors.toSet()));
+
+			// now pick selection from conjunctions
+			repairRequest.get(individual)
+					.stream()
+					.filter(x -> x instanceof OWLObjectIntersectionOf)
+					.forEach(concept -> {
+
+			//for(OWLClassExpression concept : repairRequest.get(individual)) {
 				
 				if(reasonerWithTBox.instanceOf(individual, concept) ) {
 					
-					if(concept instanceof OWLObjectIntersectionOf) {
+				//	if(concept instanceof OWLObjectIntersectionOf) {
 						OWLClassExpression atom = concept.asConjunctSet().stream()
 								.filter(con -> !reasonerWithTBox.equivalentToOWLThing(con))
 								.findAny().orElseThrow(() -> new IllegalArgumentException("Invalid Repair Request"));
 								
 						concept = atom;
 						
-					}
-					if(!hittingSetFunction.containsKey(individual))
-						hittingSetFunction.put(individual, new HashSet<>());
+				//	}
+				//	if(!hittingSetFunction.containsKey(individual))
+				//		hittingSetFunction.put(individual, new HashSet<>());
 
 					hittingSetFunction.get(individual).add(concept);
 					
 				}
-			}
+			});
 			
 		}
 		return hittingSetFunction;
