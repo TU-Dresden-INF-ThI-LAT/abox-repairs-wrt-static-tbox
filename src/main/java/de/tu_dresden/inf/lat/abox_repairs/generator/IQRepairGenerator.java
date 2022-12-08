@@ -55,7 +55,7 @@ public class IQRepairGenerator extends RepairGenerator {
 			for(OWLObjectPropertyAssertionAxiom roleAssertion : setOfRoleAssertions) {
 				
 				OWLIndividual originalObject = roleAssertion.getObject();
-				RepairType type = objectToRepairType.get(individual);
+				RepairType type = objectToRepairType.getOrDefault(individual, RepairType.empty());
 				
 				Set<OWLClassExpression> successorSet = computeSuccessorSet(
 						type,(OWLObjectProperty) roleAssertion.getProperty(),originalObject);

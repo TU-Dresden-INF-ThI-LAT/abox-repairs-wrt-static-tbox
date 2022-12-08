@@ -177,10 +177,10 @@ abstract public class RepairGenerator {
                 OWLIndividual originalInd = classAssertion.getIndividual();
 
                 for (OWLIndividual copyInd : objectToCopies.get(originalInd)) {
-                    assert !setOfCollectedIndividuals.contains(copyInd) || objectToRepairType.containsKey(copyInd);
-                    assert !setOfCollectedIndividuals.contains(copyInd) || objectToRepairType.get(copyInd).getClassExpressions()!=null;
+                    //assert !setOfCollectedIndividuals.contains(copyInd) || objectToRepairType.containsKey(copyInd);
+                    //assert !setOfCollectedIndividuals.contains(copyInd) || objectToRepairType.get(copyInd).getClassExpressions()!=null;
 
-                    if (setOfCollectedIndividuals.contains(copyInd) && !objectToRepairType.get(copyInd).getClassExpressions()
+                    if (setOfCollectedIndividuals.contains(copyInd) && !objectToRepairType.getOrDefault(copyInd, RepairType.empty()).getClassExpressions()
                             .contains(classAssertion.getClassExpression())) {
                         OWLClassAssertionAxiom newAxiom = factory
                                 .getOWLClassAssertionAxiom(classAssertion.getClassExpression(), copyInd);
@@ -197,7 +197,7 @@ abstract public class RepairGenerator {
                 for (OWLIndividual copySubject : objectToCopies.get(originalSubject)) {
                     for (OWLIndividual copyObject : objectToCopies.get(originalObject)) {
                         if(setOfCollectedIndividuals.contains(copySubject) && setOfCollectedIndividuals.contains(copyObject)) {
-                            RepairType type1 = objectToRepairType.get(copySubject);
+                            RepairType type1 = objectToRepairType.getOrDefault(copySubject, RepairType.empty());
                             Set<OWLClassExpression> successorSet = computeSuccessorSet(
                                     type1, role, originalObject);
                             RepairType type2 = objectToRepairType.get(copyObject);

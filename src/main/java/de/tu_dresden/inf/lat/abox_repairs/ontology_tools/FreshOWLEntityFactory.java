@@ -92,7 +92,7 @@ public abstract class FreshOWLEntityFactory<O extends OWLObject, E extends OWLEn
 
     public static final class FreshOWLClassFactory extends FreshOWLEntityFactory<OWLClassExpression, OWLClass> {
 
-        private static final String FRESH_CLASS_PREFIX = "Fresh_Class_";
+        private static final String FRESH_CLASS_PREFIX = "http://lat.inf.tu-dresden.de/normalization/Fresh_Class_";
         private static final Map<OWLOntology, FreshOWLClassFactory> freshOWLClassFactories = new HashMap<>();
 
         private FreshOWLClassFactory(OWLDataFactory factory, Set<OWLClass> knownClasses) {
@@ -145,7 +145,7 @@ public abstract class FreshOWLEntityFactory<O extends OWLObject, E extends OWLEn
 
     public static final class FreshOWLNamedIndividualFactory extends FreshOWLEntityFactory<OWLIndividual, OWLNamedIndividual> {
 
-        private static final String FRESH_INDIVIDUAL_PREFIX = "Fresh_Individual_";
+        private static final String FRESH_INDIVIDUAL_PREFIX = "http://lat.inf.tu-dresden.de/normalization/Fresh_Individual_";
         private static final Map<OWLOntology, FreshOWLNamedIndividualFactory> freshOWLNamedIndividualFactories = new HashMap<>();
 
         private FreshOWLNamedIndividualFactory(OWLDataFactory factory, Set<OWLNamedIndividual> knownNamedIndividuals) {

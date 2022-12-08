@@ -8,6 +8,7 @@ import de.tu_dresden.inf.lat.abox_repairs.saturation.SaturationException;
 import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunction;
 import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunctionParser;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.formats.ManchesterSyntaxDocumentFormat;
 import org.semanticweb.owlapi.model.*;
 
 import java.io.File;
@@ -18,7 +19,7 @@ public class ComputeRepair {
     public static void main(String[] args) throws OWLOntologyCreationException, SeedFunctionParser.ParsingException, IOException, SaturationException, OWLOntologyStorageException {
         if(args.length!=4) {
             System.out.println("Usage:");
-            System.out.println(ComputeRepair.class+" ONTOLOGY SEED_FUNCTION_FILE [iq|cq] OUTPUT_FILE");
+            System.out.println(ComputeRepair.class.getCanonicalName()+" ONTOLOGY SEED_FUNCTION_FILE [iq|cq] OUTPUT_FILE");
             System.exit(1);
         }
 
@@ -56,6 +57,6 @@ public class ComputeRepair {
 
         ontology = repairManager.initAndPerformRepair();
 
-        manager.saveOntology(ontology, new FileOutputStream(outputFile));
+        manager.saveOntology(ontology , new ManchesterSyntaxDocumentFormat(), new FileOutputStream(outputFile));
     }
 }

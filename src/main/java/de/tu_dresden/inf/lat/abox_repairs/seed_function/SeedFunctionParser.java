@@ -1,11 +1,14 @@
 package de.tu_dresden.inf.lat.abox_repairs.seed_function;
 
+import de.tu_dresden.inf.lat.abox_repairs.tools.FullIRIShortFormProvider;
 import de.tu_dresden.inf.lat.abox_repairs.tools.SimpleOWLEntityChecker;
 import de.tu_dresden.inf.lat.abox_repairs.repair_type.RepairType;
+import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.expression.OWLExpressionParser;
 import org.semanticweb.owlapi.expression.ShortFormEntityChecker;
 import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxClassExpressionParser;
 import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxParserImpl;
+import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
@@ -22,6 +25,17 @@ public class SeedFunctionParser {
 
     private final OWLDataFactory factory;
     private final OWLOntology ontology;
+
+    public static void main(String[] args) {
+        IRI iri = IRI.create("hallo");
+        System.out.println(iri);
+        OWLDataFactory fa = OWLManager.getOWLDataFactory();
+        OWLClass cl = fa.getOWLClass(iri);
+        System.out.println(cl);
+        ManchesterOWLSyntaxOWLObjectRendererImpl renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
+        renderer.setShortFormProvider(new FullIRIShortFormProvider());
+        System.out.println(renderer.render(cl));
+    }
 
     public SeedFunctionParser(OWLDataFactory factory, OWLOntology ontology) {
         this.factory=factory;
