@@ -72,11 +72,13 @@ public class SeedFunctionHandler {
 		SeedFunction seedFunction = new SeedFunction();
 		Set<OWLNamedIndividual> setOfMappedIndividuals = hittingSetFunction.keySet();
 
+		System.out.println("Converting to random repair types");
 		for(OWLNamedIndividual individual : setOfMappedIndividuals) {
 			RepairType type = typeHandler.convertToRandomRepairType(hittingSetFunction.get(individual), individual);
 			seedFunction.put(individual, type);
 		}
-		
+		System.out.println("done converting repair types");
+
 		/*
 		 *  In the beginning, the iteration is needed in order to map individuals that are not contained in the repair request.
 		 *  And to map those individuals, we need an additional feature to distinguish whether the individuals in the saturated
@@ -159,6 +161,8 @@ public class SeedFunctionHandler {
 			});
 			*/
 		}
+		System.out.println("Done choosing hitting set");
+
 		return hittingSetFunction;
 	}
 }

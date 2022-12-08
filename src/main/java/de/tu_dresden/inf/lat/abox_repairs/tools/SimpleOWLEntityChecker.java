@@ -1,4 +1,4 @@
-package de.tu_dresden.inf.lat.abox_repairs.experiments.comparison;
+package de.tu_dresden.inf.lat.abox_repairs.tools;
 
 import org.semanticweb.owlapi.expression.OWLEntityChecker;
 import org.semanticweb.owlapi.model.*;
@@ -16,6 +16,7 @@ public class SimpleOWLEntityChecker implements OWLEntityChecker {
     @Nullable
     @Override
     public OWLClass getOWLClass(String s) {
+        System.out.println("checking: "+s);
         if(s==null)
             return null;
         else

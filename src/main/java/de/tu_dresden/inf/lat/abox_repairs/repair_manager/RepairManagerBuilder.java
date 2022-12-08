@@ -11,6 +11,7 @@ import de.tu_dresden.inf.lat.abox_repairs.saturation.CanonicalModelGenerator;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.ChaseGenerator;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.DummySaturator;
 import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.CycleChecker;
+import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.semanticweb.owlapi.model.*;
@@ -41,6 +42,7 @@ public class RepairManagerBuilder {
     private RepairGenerator repairGenerator;
     private ABoxSaturator saturator;
     private RepairRequest repairRequest, normalizedRepairRequest;
+    private SeedFunction seedFunction=null;
     private boolean saturate = true;
 
     private RepairVariant variant;
@@ -70,6 +72,11 @@ public class RepairManagerBuilder {
         return this;
     }
 
+    public RepairManagerBuilder setSeedFunction(SeedFunction seedFunction) {
+        this.seedFunction=seedFunction;
+        return this;
+    }
+
     public RepairManager build() throws OWLOntologyCreationException {
 
         System.out.println("Bulding...");
@@ -87,13 +94,14 @@ public class RepairManagerBuilder {
 
         System.out.println("Normalizing repair request...");
 
-        this.normalizedRepairRequest = RepairRequestNormalizer.normalizeRepairRequest(ontology.getOWLOntologyManager(), repairRequest);
+        if(repairRequest!=null)
+            this.normalizedRepairRequest = RepairRequestNormalizer.normalizeRepairRequest(ontology.getOWLOntologyManager(), repairRequest);
 
         System.out.println("initialising reasoner facades...");
         initReasonerFacades();
         System.out.println("done initializing");
 
-        if (!trustRepairRequests && !RepairRequest.checkValid(normalizedRepairRequest, reasonerWithTBox)) {
+        if (!trustRepairRequests && repairRequest!=null && !RepairRequest.checkValid(normalizedRepairRequest, reasonerWithTBox)) {
             throw new IllegalArgumentException("Invalid repair request.");
         }
 
@@ -102,16 +110,23 @@ public class RepairManagerBuilder {
         System.out.println("fixing repair generator...");
         fixRepairGenerator();
 
-        return new RepairManager(ontology, workingCopy, reasonerWithoutTBox, reasonerWithTBox, repairGenerator, saturator, normalizedRepairRequest);
+        if(seedFunction==null)
+            return new RepairManager(ontology, workingCopy, reasonerWithoutTBox, reasonerWithTBox, repairGenerator, saturator, normalizedRepairRequest);
+        else
+            return new RepairManager(ontology, workingCopy, reasonerWithoutTBox, reasonerWithTBox, repairGenerator, saturator, seedFunction);
+
     }
 
     private void initReasonerFacades() throws OWLOntologyCreationException {
         long start = System.nanoTime();
 
-        if (ontology == null || repairRequest==null)
+        if (ontology == null || (repairRequest==null && seedFunction==null))
             throw new IllegalArgumentException("Ontology and repair request have to be set first!");
 
-        Set<OWLClassExpression> additionalExpressions = normalizedRepairRequest.getNestedClassExpressions();
+        Set<OWLClassExpression> additionalExpressions =
+                repairRequest==null
+                        ? seedFunction.getNestedClassExpression()
+                        : normalizedRepairRequest.getNestedClassExpressions();
 
         logger.info("Init reasoner facade without TBox");
         additionalExpressions.addAll(workingCopy.getNestedClassExpressions());

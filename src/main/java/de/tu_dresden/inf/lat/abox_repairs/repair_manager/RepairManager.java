@@ -10,6 +10,7 @@ import de.tu_dresden.inf.lat.abox_repairs.saturation.AnonymousVariableDetector;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.SaturationException;
 import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunction;
 import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunctionHandler;
+import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunctionParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.semanticweb.owlapi.model.*;
@@ -56,6 +57,23 @@ public class RepairManager {
         this.repairGenerator=generator;
         this.saturator=saturator;
         this.repairRequest=repairRequest;
+        this.seedFunction=null;
+    }
+
+    RepairManager(OWLOntology ontology,
+                  OWLOntology workingCopy,
+                  ReasonerFacade reasonerWithoutTBox,
+                  ReasonerFacade reasonerWithTBox,
+                  RepairGenerator generator,
+                  ABoxSaturator saturator,
+                  SeedFunction seedFunction) {
+        this.ontology=ontology;
+        this.workingCopy = workingCopy;
+        this.reasonerWithoutTBox=reasonerWithoutTBox;
+        this.reasonerWithTBox=reasonerWithTBox;
+        this.repairGenerator=generator;
+        this.saturator=saturator;
+        this.seedFunction=seedFunction;
     }
 
 
@@ -97,8 +115,9 @@ public class RepairManager {
 
         reasonerWithTBox.update(); // update again to add concepts to fresh variables
 
-        generateRandomSeedFunction();
-
+        if(seedFunction==null) {
+            generateRandomSeedFunction();
+        }
     }
 
     public OWLOntology initAndPerformRepair(//OWLOntology inputOntology,
@@ -114,11 +133,11 @@ public class RepairManager {
 
     public OWLOntology performRepair() throws OWLOntologyCreationException, SaturationException {
 
-        if (isCompliant(repairRequest,reasonerWithTBox)) {
+        if (repairRequest!=null && isCompliant(repairRequest,reasonerWithTBox)) {
             System.out.println("\nThe ontology is compliant!");
             return workingCopy;
         } else {
-            System.out.println("\nThe ontology is not compliant!");
+            System.out.println("\nThe ontology is not compliant / no repair request is given!");
 
             
            /* if(!CANONICAL_ANY.contains(repairVariant)) {
@@ -184,10 +203,12 @@ public class RepairManager {
                     ReasonerFacade.newReasonerFacadeWithTBox(workingCopy, reasonerWithTBox.getSupportedClassExpressions());
 
 
-            if (isCompliant(repairRequest, forRepair)) {
-                System.out.println("The ontology is now compliant");
-            } else {
-                System.out.println("The ontology is still not compliant");
+            if(repairRequest!=null) {
+                if (isCompliant(repairRequest, forRepair)) {
+                    System.out.println("The ontology is now compliant");
+                } else {
+                    System.out.println("The ontology is still not compliant");
+                }
             }
         }
 

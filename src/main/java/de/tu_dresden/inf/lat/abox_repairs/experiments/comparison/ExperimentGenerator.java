@@ -7,6 +7,7 @@ import de.tu_dresden.inf.lat.abox_repairs.repair_request.RepairRequest;
 import de.tu_dresden.inf.lat.abox_repairs.repair_type.RepairType;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.SaturationException;
 import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunction;
+import de.tu_dresden.inf.lat.abox_repairs.tools.FullIRIShortFormProvider;
 import de.tu_dresden.inf.lat.abox_repairs.tools.Timer;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.expression.OWLEntityChecker;
@@ -20,6 +21,8 @@ import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
 import org.semanticweb.owlapi.modularity.locality.LocalityClass;
 import org.semanticweb.owlapi.modularity.locality.SyntacticLocalityModuleExtractor;
+import org.semanticweb.owlapi.util.ShortFormProvider;
+import org.semanticweb.owlapi.util.SimpleShortFormProvider;
 import org.semanticweb.owlapi.util.mansyntax.ManchesterOWLSyntaxParser;
 
 import javax.annotation.Nullable;
@@ -153,12 +156,13 @@ public class ExperimentGenerator {
     public void saveSeedFunction(SeedFunction seedFunction, File file) throws IOException {
         PrintWriter writer = new PrintWriter(new FileWriter(file));
         ManchesterOWLSyntaxOWLObjectRendererImpl renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
+        renderer.setShortFormProvider(new FullIRIShortFormProvider());
         try {
             seedFunction.individuals().forEach(ind -> {
                         if (!seedFunction.emptyRepairType(ind)) {
                             writer.println(ind + ":");
                             seedFunction.get(ind).getClassExpressions().forEach(ce -> {
-                                writer.println("\t " + renderer.render(ce));
+                                writer.println("\t " + renderer.render(ce).replaceAll("\\s", " "));
                             });
                             writer.println();
                         }
@@ -169,56 +173,5 @@ public class ExperimentGenerator {
         }
     }
 
-    public SeedFunction parseSeedFunction(File file) throws IOException, ParsingException {
-        BufferedReader reader = new BufferedReader(new FileReader(file));
 
-        OWLExpressionParser<OWLClassExpression> parser =
-                new ManchesterOWLSyntaxClassExpressionParser(factory, new SimpleOWLEntityChecker(factory));
-
-        SeedFunction seedFunction = new SeedFunction();
-        OWLNamedIndividual currentIndividual = null;
-        Set<OWLClassExpression> classExpressions = null;
-        int lineNr = 0;
-
-
-        boolean finished = false;
-
-        try {
-            for (String line = reader.readLine();
-                 !finished;
-                 line = reader.readLine(), lineNr++) {
-
-                boolean finalize = false;
-
-                if(line==null) {
-                    if(currentIndividual==null)
-                        throw new ParsingException("No individual specified!");
-                    seedFunction.put(currentIndividual, new RepairType(classExpressions));
-                }
-                else if(line.startsWith("#")  // allow comments
-                        || line.trim().isEmpty() ) {
-                    // nothing
-                } else if(!line.startsWith("\t")) {
-                    seedFunction.put(currentIndividual, new RepairType(classExpressions));
-                    currentIndividual = factory.getOWLNamedIndividual(IRI.create(line.trim()));
-                    classExpressions = new HashSet<>();
-                } else {
-                    if(currentIndividual==null){
-                        throw new ParsingException("Incorrect file format (line "+lineNr+")");
-                    } else {
-                        classExpressions.add(parser.parse(line.trim()));
-                    }
-                }
-            }
-        } finally {
-            reader.close();
-        }
-        return seedFunction;
-    }
-
-    private static class ParsingException extends Exception {
-        public ParsingException(String s) {
-            super(s);
-        }
-    }
 }

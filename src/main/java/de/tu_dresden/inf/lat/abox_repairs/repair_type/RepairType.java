@@ -25,7 +25,10 @@ public class RepairType {
     }
 
     public Set<OWLClassExpression> getClassExpressions(){
-        return Collections.unmodifiableSet(toRepair);
+        /*if(toRepair==null)
+            return Collections.emptySet();
+        else*/
+            return Collections.unmodifiableSet(toRepair);
     }
 
     public final boolean isEmpty() {

@@ -7,6 +7,7 @@ import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class SeedFunction extends HashMap<OWLNamedIndividual, RepairType> {
 
@@ -27,4 +28,11 @@ public class SeedFunction extends HashMap<OWLNamedIndividual, RepairType> {
         return !super.containsKey(ind) || get(ind).isEmpty();
     }
 
+    public Set<OWLClassExpression> getNestedClassExpression() {
+        return values().stream().flatMap(rt ->
+                rt.getClassExpressions()
+                        .stream()
+                        .flatMap(OWLClassExpression::nestedClassExpressions))
+                .collect(Collectors.toSet());
+    }
 }
