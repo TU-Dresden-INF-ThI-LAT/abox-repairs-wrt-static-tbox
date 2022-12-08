@@ -29,6 +29,13 @@ public class IQGenerator {
     private int maxDepth = Integer.MAX_VALUE;
 
     public static void main(String[] args) throws OWLOntologyCreationException, IOException, IQGenerationException {
+
+        if(args.length!=3) {
+            System.out.println("Usage: ");
+            System.out.println(IQGenerator.class.getCanonicalName()+" ONTOLOGY NUMBER OUTPUT");
+            System.exit(1);
+        }
+
         OWLOntology ontology = OWLManager.createOWLOntologyManager().loadOntologyFromOntologyDocument(new File(args[0]));
         int number = Integer.parseInt(args[1]);
         File outputFile = new File(args[2]);

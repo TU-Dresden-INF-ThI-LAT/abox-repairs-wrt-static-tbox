@@ -1,9 +1,8 @@
 package de.tu_dresden.inf.lat.abox_repairs.experiments.comparison;
 
-import de.tu_dresden.inf.lat.abox_repairs.experiments.RunExperiment1;
+import de.tu_dresden.inf.lat.abox_repairs.experiments.cade21.RunExperiment1;
 import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.ABoxFlattener;
 import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.ELRestrictor;
-import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.OntologyPreparations;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManager;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManagerBuilder;
 import de.tu_dresden.inf.lat.abox_repairs.repair_request.RepairRequest;
@@ -18,7 +17,7 @@ import org.semanticweb.owlapi.model.*;
 
 import java.io.File;
 
-public class SimpleComparison {
+public class ComparisonAllInOne {
     public static void main(String[] args) throws OWLOntologyCreationException, SaturationException, IQGenerationException {
 
         System.out.println("File name: \""+args[0]+"\"");

@@ -1,24 +1,27 @@
-package de.tu_dresden.inf.lat.abox_repairs.experiments;
+package de.tu_dresden.inf.lat.abox_repairs.experiments.cade21;
 
+import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.OntologyPreparations;
+import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManager;
+import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManagerBuilder;
 import de.tu_dresden.inf.lat.abox_repairs.repair_request.RepairRequest;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.AnonymousVariableDetector;
-import de.tu_dresden.inf.lat.abox_repairs.tools.Timer;
-import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.OntologyPreparations;
-import de.tu_dresden.inf.lat.abox_repairs.reasoning.ReasonerFacade;
-import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManagerBuilder;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.SaturationException;
+import de.tu_dresden.inf.lat.abox_repairs.tools.Timer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.semanticweb.elk.owlapi.ElkReasonerFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 import java.io.File;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
- * Difference to RunExperiment2: we only use complex concepts
+ * Generates a repair request by randomly selecting an entailed concept assertion.
  */
-public class RunExperiment0 {
+public class RunExperiment2 {
 
     private static Logger logger = LogManager.getLogger(RunExperiment2.class);
 
@@ -52,7 +55,7 @@ public class RunExperiment0 {
                 System.exit(1);
         }
 
-        RunExperiment0 experiment = new RunExperiment0();
+        RunExperiment2 experiment = new RunExperiment2();
 
         if(args.length>3){
             long seed = Long.parseLong(args[3]);
@@ -90,7 +93,7 @@ public class RunExperiment0 {
     private final Random random;
     private long seed;
 
-    private RunExperiment0(){
+    private RunExperiment2(){
         random = new Random();
         seed = random.nextLong();
         random.setSeed(seed);
@@ -123,32 +126,49 @@ public class RunExperiment0 {
         RepairRequest repairRequest = generateRepairRequest(ontology);
         timer.pause();
         logger.info("Generating repair request took "+timer.getTime()+" seconds.");
-
+        RepairManager repairManager =
+                new RepairManagerBuilder()
+                        .setOntology(ontology)
+                        .setRepairRequest(repairRequest)
+                        .setVariant(repairVariant)
+                        .setNeedsSaturation(saturationRequired)
+                        .build();
+        repairManager.initAndPerformRepair();
     }
 
     private RepairRequest generateRepairRequest(
             OWLOntology ontology) {
 
-        ReasonerFacade facade = ReasonerFacade.newReasonerFacadeWithTBox(ontology);
+        OWLReasoner reasoner = new ElkReasonerFactory().createReasoner(ontology);
 
         List<OWLNamedIndividual> individuals = anonymousVariableDetector.getNamedIndividuals(ontology);
 
         individuals.sort(Comparator.comparing(a -> a.getIRI().toString()));
 
-        OWLNamedIndividual individual = individuals.get(random.nextInt(individuals.size()));
+        while(!individuals.isEmpty()) {
+            OWLNamedIndividual individual = individuals.get(random.nextInt(individuals.size()));
+
+            individuals.remove(individual);
 
 
-        List<OWLClassExpression> classes = new ArrayList<>(facade.instanceOfExcludingOWLThing(individual));
+            List<OWLClass> classes = reasoner.types(individual, false).collect(Collectors.toList());
+            classes.sort(Comparator.comparing(a -> a.getIRI().toString()));
 
-        classes.sort(Comparator.comparing(a -> a.toString()));
+            while(!classes.isEmpty()) {
+                OWLClass clazz = classes.get(random.nextInt(classes.size()));
+                classes.remove(clazz);
+                if(!reasoner.getTopClassNode().contains(clazz)){
+                RepairRequest result = new RepairRequest();
+                result.put(individual, Collections.singleton(clazz));
+                System.out.println("Repair: " + clazz + "(" + individual + ")");
+                return result;
+                }
+            }
+        }
 
-        OWLClassExpression clazz = classes.get(random.nextInt(classes.size()));
-        classes.remove(clazz);
-        long sigSize = clazz.signature().filter(c -> !c.isTopEntity()).count();
-        RepairRequest result = new RepairRequest();
-        result.put(individual, Collections.singleton(clazz));
-        System.out.println("Repair: " + clazz + "(" + individual + ")");
-        facade.cleanOntology();
-        return result;
+        System.out.println("No non-tautological entailments of concept assertions!");
+        System.exit(0);
+
+        return null;
     }
 }

@@ -26,16 +26,6 @@ public class SeedFunctionParser {
     private final OWLDataFactory factory;
     private final OWLOntology ontology;
 
-    public static void main(String[] args) {
-        IRI iri = IRI.create("hallo");
-        System.out.println(iri);
-        OWLDataFactory fa = OWLManager.getOWLDataFactory();
-        OWLClass cl = fa.getOWLClass(iri);
-        System.out.println(cl);
-        ManchesterOWLSyntaxOWLObjectRendererImpl renderer = new ManchesterOWLSyntaxOWLObjectRendererImpl();
-        renderer.setShortFormProvider(new FullIRIShortFormProvider());
-        System.out.println(renderer.render(cl));
-    }
 
     public SeedFunctionParser(OWLDataFactory factory, OWLOntology ontology) {
         this.factory=factory;

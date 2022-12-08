@@ -1,46 +1,38 @@
-package de.tu_dresden.inf.lat.abox_repairs.experiments;
+package de.tu_dresden.inf.lat.abox_repairs.experiments.cade21;
 
-import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.OntologyPreparations;
 import de.tu_dresden.inf.lat.abox_repairs.repair_request.RepairRequest;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.AnonymousVariableDetector;
-import de.tu_dresden.inf.lat.abox_repairs.saturation.SaturationException;
-import de.tu_dresden.inf.lat.abox_repairs.tools.Timer;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManager;
-import de.tu_dresden.inf.lat.abox_repairs.reasoning.ReasonerFacade;
+import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.OntologyPreparations;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManagerBuilder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import de.tu_dresden.inf.lat.abox_repairs.saturation.SaturationException;
+import org.semanticweb.elk.owlapi.ElkReasonerFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 import java.io.File;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
- * Difference to RunExperiment2: we only use complex concepts
+ * Runs experiment where a given proportion of individuals gets assigned the same concept name.
  */
-public class RunExperiment2b {
+public class RunExperiment4 {
 
-    private static Logger logger = LogManager.getLogger(RunExperiment2.class);
 
     public static void main(String[] args) throws OWLOntologyCreationException, SaturationException {
-        if(args.length<3) {
+        if(args.length<5) {
             System.out.println("Usage: ");
-            System.out.println("java -cp ... "+RunExperiment1.class.getCanonicalName()+ " ONTOLOGY_FILE SATURATED|NOT_SATURATED IQ|CQ|CANONICAL_IQ|CANONICAL_CQ [SEED]");
+            System.out.println("java -cp ... "+RunExperiment1.class.getCanonicalName()+ " ONTOLOGY_FILE SATURATED|NOT_SATURATED IQ|CQ PROPORTION NUMBER [SEED]");
             System.out.println();
-            System.out.println("Generates a repair of ONTOLOGY_FILE with a randomly generated repair request that");
-            System.out.println("randomly selects an entailed concept assertion. You may optionally provide");
-            System.out.println("a seed value for the random number generator used.");
-            System.out.println("SATURATED should be used if the ontology is already saturated in the appropriate way");
-            System.out.println("otherwise, specify NOT_SATURATED");
             System.out.println();
             System.out.println("Example: ");
-            System.out.println("java -cp ... "+RunExperiment1.class.getCanonicalName()+" ore_ont_3453.owl NOT_SATURATED IQ ");
+            System.out.println("java -cp ... "+RunExperiment1.class.getCanonicalName()+" ore_ont_3453.owl NOT_SATURATED IQ 0.1 ");
             System.exit(0);
         }
 
         String ontologyFileName = args[0];
-        RepairManagerBuilder.RepairVariant repairVariant = pickVariant(args[2]);
 
 
         boolean saturationRequired = false;
@@ -53,19 +45,26 @@ public class RunExperiment2b {
                 System.exit(1);
         }
 
-        RunExperiment2b experiment = new RunExperiment2b();
+        RepairManagerBuilder.RepairVariant repairVariant = pickVariant(args[2]);
 
-        if(args.length>3){
-            long seed = Long.parseLong(args[3]);
+        double proportion = Double.parseDouble(args[3]);
+
+        int number = Integer.parseInt(args[4]);
+
+        RunExperiment4 experiment = new RunExperiment4();
+
+        if(args.length>5){
+            long seed = Long.parseLong(args[5]);
             experiment.setSeed(seed);
         }
         try {
-            experiment.startExperiment(ontologyFileName, repairVariant, saturationRequired);
+            experiment.startExperiment(ontologyFileName, repairVariant, saturationRequired, proportion,number);
         } catch(Exception e) {
             e.printStackTrace();
         }
         System.out.println("Used seed: "+experiment.getSeed());
     }
+
 
     private final static RepairManagerBuilder.RepairVariant pickVariant(String string) {
         switch (string) {
@@ -75,10 +74,6 @@ public class RunExperiment2b {
                 return RepairManagerBuilder.RepairVariant.IQ2;
             case "CQ":
                 return RepairManagerBuilder.RepairVariant.CQ;
-            case "CANONICAL_IQ":
-                return RepairManagerBuilder.RepairVariant.CANONICAL_IQ;
-            case "CANONICAL_CQ":
-                return RepairManagerBuilder.RepairVariant.CANONICAL_CQ;
             default:
                 System.out.println("Unexpected repair variant: " + string);
                 System.out.println("Call without parameters to get help information");
@@ -91,7 +86,9 @@ public class RunExperiment2b {
     private final Random random;
     private long seed;
 
-    private RunExperiment2b(){
+    private AnonymousVariableDetector anonymousVariableDetector;
+
+    private RunExperiment4(){
         random = new Random();
         seed = random.nextLong();
         random.setSeed(seed);
@@ -106,24 +103,19 @@ public class RunExperiment2b {
         random.setSeed(seed);
     }
 
-    private AnonymousVariableDetector anonymousVariableDetector;
-
-    private void startExperiment(String ontologyFileName, RepairManagerBuilder.RepairVariant repairVariant, boolean saturationRequired)
+    private void startExperiment(String ontologyFileName, RepairManagerBuilder.RepairVariant repairVariant, boolean saturationRequired, double proportion, int number)
             throws OWLOntologyCreationException, SaturationException {
 
         OWLOntology ontology =
                 OWLManager.createOWLOntologyManager()
                         .loadOntologyFromOntologyDocument(new File(ontologyFileName));
 
-        anonymousVariableDetector= AnonymousVariableDetector.newInstance(!saturationRequired,repairVariant);
+        anonymousVariableDetector = AnonymousVariableDetector.newInstance(!saturationRequired,repairVariant);
 
-        ontology = OntologyPreparations.prepare(ontology, true, repairVariant);
+        OntologyPreparations.prepare(ontology, true, repairVariant);
 
-        de.tu_dresden.inf.lat.abox_repairs.tools.Timer timer = Timer.newTimer();
-        timer.continueTimer();
-        RepairRequest repairRequest = generateRepairRequest(ontology);
-        timer.pause();
-        logger.info("Generating repair request took "+timer.getTime()+" seconds.");
+        RepairRequest repairRequest = generateRepairRequest(ontology,proportion, number);
+
         RepairManager repairManager =
                 new RepairManagerBuilder()
                         .setOntology(ontology)
@@ -135,12 +127,40 @@ public class RunExperiment2b {
     }
 
     private RepairRequest generateRepairRequest(
-            OWLOntology ontology) {
+            OWLOntology ontology, double proportion, int number) {
 
-        ReasonerFacade facade = ReasonerFacade.newReasonerFacadeWithTBox(ontology);
+        OWLReasoner reasoner = new ElkReasonerFactory().createReasoner(ontology);
+
+        Set<OWLClassExpression> classes = new HashSet<>();
+
+        for(int i=0; i<number; i++)
+            classes.add(pickClass(ontology));
 
         List<OWLNamedIndividual> individuals = anonymousVariableDetector.getNamedIndividuals(ontology);
 
+        individuals.sort(Comparator.comparing(a -> a.getIRI().toString()));
+
+        Collections.shuffle(individuals, random);
+
+        RepairRequest request = new RepairRequest();
+
+        for(int i =0; i<=proportion*individuals.size(); i++){
+
+            request.put(individuals.get(i), classes);
+
+        }
+
+        return request;
+    }
+
+    /**
+     * Find some class satisfied by some individual name.
+     */
+    private OWLClass pickClass(OWLOntology ontology){
+
+        OWLReasoner reasoner = new ElkReasonerFactory().createReasoner(ontology);
+
+        List<OWLNamedIndividual> individuals = ontology.individualsInSignature().collect(Collectors.toList());
         individuals.sort(Comparator.comparing(a -> a.getIRI().toString()));
 
         while(!individuals.isEmpty()) {
@@ -149,25 +169,19 @@ public class RunExperiment2b {
             individuals.remove(individual);
 
 
-            List<OWLClassExpression> classes = new ArrayList<>(facade.instanceOfExcludingOWLThing(individual));
-
-            classes.sort(Comparator.comparing(a -> a.toString()));
+            List<OWLClass> classes = reasoner.types(individual, false).collect(Collectors.toList());
+            classes.sort(Comparator.comparing(a -> a.getIRI().toString()));
 
             while(!classes.isEmpty()) {
-                OWLClassExpression clazz = classes.get(random.nextInt(classes.size()));
+                OWLClass clazz = classes.get(random.nextInt(classes.size()));
                 classes.remove(clazz);
-                long sigSize = clazz.signature().filter(c -> !c.isTopEntity()).count();
-                if(sigSize>1 && !facade.equivalentToOWLThing(clazz)){
-                    RepairRequest result = new RepairRequest();
-                    result.put(individual, Collections.singleton(clazz));
-                    System.out.println("Repair: " + clazz + "(" + individual + ")");
-                    facade.cleanOntology();
-                    return result;
+                if(!reasoner.getTopClassNode().contains(clazz)){
+                    return clazz;
                 }
             }
         }
 
-        System.out.println("No non-tautological entailments of complex concept assertions!");
+        System.out.println("No non-tautological entailments of concept assertions!");
         System.exit(0);
 
         return null;

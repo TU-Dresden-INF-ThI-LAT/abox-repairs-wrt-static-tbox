@@ -1,4 +1,4 @@
-package de.tu_dresden.inf.lat.abox_repairs.experiments;
+package de.tu_dresden.inf.lat.abox_repairs.experiments.cade21;
 
 import de.tu_dresden.inf.lat.abox_repairs.reasoning.ReasonerFacade;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManager;
