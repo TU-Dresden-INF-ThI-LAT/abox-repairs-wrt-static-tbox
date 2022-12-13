@@ -7,6 +7,7 @@ import de.tu_dresden.inf.lat.abox_repairs.tools.SimpleOWLEntityChecker;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.expression.OWLExpressionParser;
 import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxClassExpressionParser;
+import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxParserImpl;
 import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
@@ -58,16 +59,19 @@ public class IQGenerator {
 
     }
 
-    public static List<OWLClassExpression> parseIQs(File file, OWLDataFactory factory) throws IOException {
+    public static List<OWLClassExpression> parseIQs(File file, OWLDataFactory factory, OWLOntology ontology) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(file));
 
-        OWLExpressionParser<OWLClassExpression> parser =
-                new ManchesterOWLSyntaxClassExpressionParser(factory, new SimpleOWLEntityChecker(factory));
+        ManchesterOWLSyntaxParserImpl parser =
+                new ManchesterOWLSyntaxParserImpl(new OntologyConfigurator(), factory);
+        parser.setDefaultOntology(ontology);
+
+
 
         List<OWLClassExpression> result = new LinkedList<>();
 
         for(String line=reader.readLine(); line!=null; line=reader.readLine()){
-            result.add(parser.parse(line));
+            result.add(parser.parseClassExpression(line));
         }
 
         return result;

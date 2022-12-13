@@ -37,12 +37,14 @@ public class IQPerformances {
         OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
         System.out.println("Loading file");
         Timer loadTimer = Timer.newTimer();
+        loadTimer.startTimer();
         OWLOntology repair = manager.loadOntologyFromOntologyDocument(ontologyFile);
         double loadingTime = loadTimer.getTime();
 
-        List<OWLClassExpression> iqs = IQGenerator.parseIQs(iqFile, manager.getOWLDataFactory());
+        List<OWLClassExpression> iqs = IQGenerator.parseIQs(iqFile, manager.getOWLDataFactory(), repair);
 
         Timer queryTimer = Timer.newTimer();
+        queryTimer.startTimer();
         IQBlackbox iqView = new FullOntologyIQView(repair);
         iqs.forEach(iqView::query);
         double queryingTime = queryTimer.getTime();
@@ -58,14 +60,16 @@ public class IQPerformances {
         OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
         System.out.println("Loading file");
         Timer loadTimer = Timer.newTimer();
+        loadTimer.startTimer();
         OWLOntology ontology = manager.loadOntologyFromOntologyDocument(ontologyFile);
         double loadingTime = loadTimer.getTime();
 
         SeedFunction seedFunction = new SeedFunctionParser(manager.getOWLDataFactory(), ontology).parseSeedFunction(seedFunctionFile);
 
-        List<OWLClassExpression> iqs = IQGenerator.parseIQs(iqFile, manager.getOWLDataFactory());
+        List<OWLClassExpression> iqs = IQGenerator.parseIQs(iqFile, manager.getOWLDataFactory(), ontology);
 
         Timer queryTimer = Timer.newTimer();
+        queryTimer.startTimer();
         IQBlackbox iqView = new VirtualIQRepair(ontology,seedFunction);
         iqs.forEach(iqView::query);
         double queryingTime = queryTimer.getTime();
