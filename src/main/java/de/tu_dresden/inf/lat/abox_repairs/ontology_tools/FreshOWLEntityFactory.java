@@ -47,7 +47,7 @@ public abstract class FreshOWLEntityFactory<O extends OWLObject, E extends OWLEn
 
     protected abstract E newEntity(IRI iri);
 
-    private E newFreshEntity() {
+    public E newFreshEntity() {
         E freshEntity;
         do {
             freshEntity = newEntity(IRI.create(prefix + freshEntityCounter++));
