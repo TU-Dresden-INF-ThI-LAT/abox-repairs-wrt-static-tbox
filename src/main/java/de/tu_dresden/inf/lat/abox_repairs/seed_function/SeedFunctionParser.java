@@ -60,8 +60,6 @@ public class SeedFunctionParser {
 
                 boolean finalize = false;
 
-                System.out.println("Parsing: "+line);
-
                 if(line==null) {
                     if(currentIndividual==null)
                         throw new ParsingException("No individual specified!");
