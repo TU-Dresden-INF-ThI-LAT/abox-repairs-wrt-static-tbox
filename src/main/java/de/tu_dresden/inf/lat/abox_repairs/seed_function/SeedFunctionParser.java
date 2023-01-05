@@ -74,7 +74,9 @@ public class SeedFunctionParser {
                 } else if(!line.startsWith("\t")) {
                     if(currentIndividual!=null)
                         seedFunction.put(currentIndividual, new RepairType(classExpressions));
-                    currentIndividual = factory.getOWLNamedIndividual(IRI.create(line.trim()));
+                    String iri = line.trim();
+                    iri = iri.substring(1, iri.length()-2);
+                    currentIndividual = factory.getOWLNamedIndividual(iri);
                     classExpressions = new HashSet<>();
                 } else {
                     if(currentIndividual==null){

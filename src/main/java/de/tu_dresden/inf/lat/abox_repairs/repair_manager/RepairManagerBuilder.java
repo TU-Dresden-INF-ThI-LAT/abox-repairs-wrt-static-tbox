@@ -29,6 +29,13 @@ public class RepairManagerBuilder {
     private static Logger logger = LogManager.getLogger(RepairManagerBuilder.class);
     private boolean trustRepairRequests=false;
 
+    /**
+     * TODO
+     *
+     * What is the difference between IQ and IQ2?
+     * Apparently for the CADE paper, we used IQ for the optimized iq repairs.
+     * What is the purpose of the other one?
+     */
     public enum RepairVariant {IQ, IQ2, CQ, CANONICAL_IQ, CANONICAL_CQ}
 
     //private final RepairVariant variant;

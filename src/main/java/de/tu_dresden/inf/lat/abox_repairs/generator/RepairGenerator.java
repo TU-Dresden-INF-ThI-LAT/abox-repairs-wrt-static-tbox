@@ -92,7 +92,7 @@ abstract public class RepairGenerator {
             Set<OWLIndividual> initSet = new HashSet<OWLIndividual>();
             initSet.add(originalIndividual);
             objectToCopies.put(originalIndividual, initSet);
-            // TODO is this really correct? shouldn't those individuals be also have a type assigned, or be
+            // TODO is this really correct? shouldn't those individuals also have a type assigned, or be
             // TODO in setOfCollectedIndividuals?
 
             individualCounter.put(originalIndividual, 0);
@@ -140,7 +140,6 @@ abstract public class RepairGenerator {
 				logger.debug(seedFunction.get(ind).getClassExpressions());
 				logger.debug("");
 			}
-
 		}*/
 
         long startTimeMatrix = System.nanoTime();
@@ -179,6 +178,7 @@ abstract public class RepairGenerator {
                 for (OWLIndividual copyInd : objectToCopies.get(originalInd)) {
                     //assert !setOfCollectedIndividuals.contains(copyInd) || objectToRepairType.containsKey(copyInd);
                     //assert !setOfCollectedIndividuals.contains(copyInd) || objectToRepairType.get(copyInd).getClassExpressions()!=null;
+
 
                     if (setOfCollectedIndividuals.contains(copyInd) && !objectToRepairType.getOrDefault(copyInd, RepairType.empty()).getClassExpressions()
                             .contains(classAssertion.getClassExpression())) {

@@ -70,7 +70,6 @@ public class IQRepairGenerator extends RepairGenerator {
 					}
 				}
 			}
-			
 		}
 	}
 }
