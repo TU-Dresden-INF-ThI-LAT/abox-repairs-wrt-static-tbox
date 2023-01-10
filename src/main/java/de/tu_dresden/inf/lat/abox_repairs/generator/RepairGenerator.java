@@ -200,7 +200,7 @@ abstract public class RepairGenerator {
                             RepairType type1 = objectToRepairType.getOrDefault(copySubject, RepairType.empty());
                             Set<OWLClassExpression> successorSet = computeSuccessorSet(
                                     type1, role, originalObject);
-                            RepairType type2 = objectToRepairType.get(copyObject);
+                            RepairType type2 = objectToRepairType.getOrDefault(copyObject, RepairType.empty());
                             if (reasonerWithoutTBox.isCovered(successorSet, type2.getClassExpressions())) {
                                 OWLObjectPropertyAssertionAxiom newAxiom = factory
                                         .getOWLObjectPropertyAssertionAxiom(role, copySubject, copyObject);

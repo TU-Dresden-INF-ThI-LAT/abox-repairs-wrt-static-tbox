@@ -18,6 +18,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class TestIQGeneration {
+
+
     @Test
     public void testIQGeneration() throws OWLOntologyCreationException, IQGenerationException {
         OWLOntology ontology = OWLManager.createOWLOntologyManager()
