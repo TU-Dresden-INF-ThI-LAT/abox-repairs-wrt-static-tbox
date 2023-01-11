@@ -65,7 +65,7 @@ public class ConvertAnonymousVariables {
                     replacements.put(an, indFactory.newFreshEntity());
                 ind2 = replacements.get(an);
             } else
-                ind2 = prpAss.getSubject().asOWLNamedIndividual();
+                ind2 = prpAss.getObject().asOWLNamedIndividual();
 
             if(someAnonymous){
                 ontology.add(factory.getOWLObjectPropertyAssertionAxiom(
