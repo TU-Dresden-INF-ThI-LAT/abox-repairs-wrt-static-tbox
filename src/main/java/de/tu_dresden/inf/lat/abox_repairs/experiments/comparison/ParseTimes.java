@@ -53,9 +53,9 @@ public class ParseTimes {
             File outputPrecomputed = new File(path,seedFilename+".output-precomputed");
             File outputVirtual = new File(path,seedFilename+".output-virtual");
 
-            Result resultPrecomputed =
-                    repair.exists() ? getTime(outputPrecomputed)
-                                    : NO_REPAIR;
+            Result resultPrecomputed = getTime(outputPrecomputed);
+//                    repair.exists() ? getTime(outputPrecomputed)
+//                                    : NO_REPAIR;
             Result resultVirtual = getTime(outputVirtual);
 
             if(!resultPrecomputed.isSuccessful()) {
@@ -74,14 +74,14 @@ public class ParseTimes {
             }
             else if(resultPrecomputed.isSuccessful()) {
                 writer.println(resultPrecomputed + " " + resultVirtual+ " "+seedFilename);
-                if(repair.exists()){
+                //if(repair.exists()){
                     File repairOutput = new File(path, seedFilename+".repair-output");
                     Optional<Double> repairTime = getRepairTime(repairOutput);
                     if(repairTime.isPresent()) {
                         double completeTime = repairTime.get() + ((SUCCESS) resultPrecomputed).time;
                         writer2.println(completeTime + " " + resultVirtual + " " + seedFilename);
                     }
-                }
+                //}
             }
         }
 
@@ -103,8 +103,10 @@ public class ParseTimes {
                     .filter(s -> s.startsWith("real"))
                     .map(s -> parseTime(s.split("\\s+")[1]))
                     .findFirst();
-        } else
+        } else {
+            System.out.println("No time for: "+repairOutput);
             return Optional.empty();
+        }
     }
 
     private static double parseTime(String string) {
@@ -126,8 +128,13 @@ public class ParseTimes {
                 String string = optString.get();
                 if(string.startsWith("TIMES: "))
                     return new SUCCESS(Double.parseDouble(string.split(" ")[2])); // format: "TIMES: parsing querying"
-                else // string contains Exceptionq
+                else if(string.contains("java.io.FileNotFoundException"))
+                    return NO_REPAIR;
+                else {
+                    System.out.println(string);
+                    // string contains "Exception"
                     return EXCEPTION;
+                }
             }
 
             // Format: "TIMES: parsingTime queryTime"
