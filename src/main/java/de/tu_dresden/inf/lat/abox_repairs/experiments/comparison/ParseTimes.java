@@ -34,6 +34,26 @@ public class ParseTimes {
         public boolean isSuccessful(){ return true; }
     }
 
+    private static class BinaryEventCounter {
+        int positive = 0, max=0;
+        public void addPositive() {
+            positive+=1; max+=1;
+        }
+        public void addNegative() {
+            max+=1;
+        }
+        public void add(boolean value) {
+            if(value)
+                addPositive();
+            else
+                addNegative();
+        }
+        @Override
+        public String toString(){
+            return positive+"/"+max+" ("+ 100 * (double) positive / max + "%)";
+        }
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
 
         String path = args[0];
@@ -45,6 +65,9 @@ public class ParseTimes {
 
         PrintWriter writer = new PrintWriter(new File("query-times.data"));
         PrintWriter writer2 = new PrintWriter(new File("query-times-incl-repair-computation.data"));
+
+        BinaryEventCounter virtualFasterWithoutRepairComputation = new BinaryEventCounter();
+        BinaryEventCounter virtualFasterInclRepairComputation = new BinaryEventCounter();
 
         for(String seedFilename: new File(path).list(ParseTimes::seedFunctionFile)){
             total++;
@@ -74,12 +97,18 @@ public class ParseTimes {
             }
             else if(resultPrecomputed.isSuccessful()) {
                 writer.println(resultPrecomputed + " " + resultVirtual+ " "+seedFilename);
+                virtualFasterWithoutRepairComputation.add(
+                        ((SUCCESS)resultPrecomputed).time > ((SUCCESS)resultVirtual).time
+                );
                 //if(repair.exists()){
                     File repairOutput = new File(path, seedFilename+".repair-output");
                     Optional<Double> repairTime = getRepairTime(repairOutput);
                     if(repairTime.isPresent()) {
                         double completeTime = repairTime.get() + ((SUCCESS) resultPrecomputed).time;
                         writer2.println(completeTime + " " + resultVirtual + " " + seedFilename);
+                        virtualFasterInclRepairComputation.add(
+                                completeTime > ((SUCCESS)resultVirtual).time
+                        );
                     }
                 //}
             }
@@ -93,6 +122,9 @@ public class ParseTimes {
 
         System.out.println("Precomputed: "+failuresPrecomputed);
         System.out.println("Virtual: "+failuresVirtual);
+
+        System.out.println(virtualFasterWithoutRepairComputation+" times the virtual repair was faster if we do not count repair computation.");
+        System.out.println(virtualFasterInclRepairComputation+" times the virtual repair was faster if we include repair computation.");
     }
 
     private static Optional<Double> getRepairTime(File repairOutput) throws FileNotFoundException {
