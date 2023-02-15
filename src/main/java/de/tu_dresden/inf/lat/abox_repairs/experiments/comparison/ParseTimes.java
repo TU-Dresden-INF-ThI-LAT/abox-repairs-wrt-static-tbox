@@ -92,14 +92,16 @@ public class ParseTimes {
             if(!resultVirtual.isSuccessful()) {
                 virtualFailed++;
                 System.out.println("virtual failed!");
-                failuresVirtual.putIfAbsent(resultVirtual,0);
+                failuresVirtual.putIfAbsent(resultVirtual, 0);
                 failuresVirtual.put(resultVirtual, failuresVirtual.get(resultVirtual)+1);
             }
             else if(resultPrecomputed.isSuccessful()) {
                 writer.println(resultPrecomputed + " " + resultVirtual+ " "+seedFilename);
-                virtualFasterWithoutRepairComputation.add(
-                        ((SUCCESS)resultPrecomputed).time > ((SUCCESS)resultVirtual).time
-                );
+                if(((SUCCESS)resultPrecomputed).time > 30) {
+                    virtualFasterWithoutRepairComputation.add(
+                            ((SUCCESS) resultPrecomputed).time > ((SUCCESS) resultVirtual).time
+                    );
+                }
                 //if(repair.exists()){
                     File repairOutput = new File(path, seedFilename+".repair-output");
                     Optional<Double> repairTime = getRepairTime(repairOutput);
