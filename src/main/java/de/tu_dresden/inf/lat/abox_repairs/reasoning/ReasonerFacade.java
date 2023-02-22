@@ -28,7 +28,7 @@ import org.semanticweb.owlapi.util.OWLAPIStreamUtils;
  *
  * @author Patrick Koopmann
  */
-public class ReasonerFacade {
+public class ReasonerFacade implements IReasonerFacade {
 
     private static Logger logger = LogManager.getLogger(ReasonerFacade.class);
 
@@ -226,6 +226,7 @@ public class ReasonerFacade {
         return freshOWLClassFactory.getObjects();
     }
 
+    @Override
     public boolean instanceOf(OWLIndividual ind, OWLClassExpression exp) {
         verifyKnows(ind);
         verifyKnows(exp);
@@ -239,6 +240,7 @@ public class ReasonerFacade {
         return result;
     }
 
+    @Override
     public boolean subsumedBy(OWLClassExpression subsumee, OWLClassExpression subsumer) {
         verifyKnows(subsumee);
         verifyKnows(subsumer);

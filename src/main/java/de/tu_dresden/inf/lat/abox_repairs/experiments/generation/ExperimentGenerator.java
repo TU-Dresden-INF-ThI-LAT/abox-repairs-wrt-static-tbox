@@ -1,6 +1,5 @@
-package de.tu_dresden.inf.lat.abox_repairs.experiments.comparison;
+package de.tu_dresden.inf.lat.abox_repairs.experiments.generation;
 
-import de.tu_dresden.inf.lat.abox_repairs.experiments.cade21.RunExperiment1;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManager;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManagerBuilder;
 import de.tu_dresden.inf.lat.abox_repairs.repair_request.RepairRequest;
@@ -8,44 +7,20 @@ import de.tu_dresden.inf.lat.abox_repairs.saturation.SaturationException;
 import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunction;
 import de.tu_dresden.inf.lat.abox_repairs.tools.FullIRIShortFormProvider;
 import de.tu_dresden.inf.lat.abox_repairs.tools.Timer;
-import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
-import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-public class ExperimentGenerator {
-    private final OWLOntology ontology;
-    private final OWLDataFactory factory;
+public abstract class ExperimentGenerator {
 
-    public static void main(String[] args) throws OWLOntologyCreationException, SaturationException, IOException {
-        if(args.length!=5) {
-            System.out.println("Usage:");
-            System.out.println(ExperimentGenerator.class.getCanonicalName()
-                    + " ONTOLOGY PROPORTION_INDIVIDUALS PROPORTION_CLASS_NAMES REPAIR_REQUEST_FILE SEED_FUNCTION_FILE");
-            System.exit(1);
-        }
-
-        String ontFilename = args[0];
-        double proportionIndividuals = Double.parseDouble(args[1]);
-        double proportionClassNames = Double.parseDouble(args[2]);
-        String repairRequestFile = args[3];
-        String seedFunctionFile = args[4];
-
-
-        OWLOntology ontology = OWLManager.createOWLOntologyManager()
-                .loadOntologyFromOntologyDocument(new File(ontFilename));
-
-        ExperimentGenerator generator = new ExperimentGenerator(ontology);
-
-        generator.createExperimentFiles(
-                proportionIndividuals,
-                proportionClassNames,
-                new File(repairRequestFile),
-                new File(seedFunctionFile));
-        System.out.println("done");
-    }
-
+    protected final OWLOntology ontology;
+    protected final OWLDataFactory factory;
     public ExperimentGenerator(OWLOntology ontology){
         this.ontology=ontology;
         this.factory=ontology
@@ -54,15 +29,8 @@ public class ExperimentGenerator {
 
     }
 
-    public void createExperimentFiles(double proportionIndividuals,
-                                       double proportionClassNames,
-                                       File repairRequestFile,
-                                       File seedFunctionFile) throws OWLOntologyCreationException, SaturationException, IOException {
-        System.out.println("Generating repair request...");
-        Timer timer = Timer.newTimer();
-        timer.startTimer();
-        RepairRequest repairRequest = generateRepairRequest(proportionIndividuals,proportionClassNames);
-        System.out.println("generating repair request took "+timer.getTime());
+    public void createExperimentFiles(RepairRequest repairRequest, File repairRequestFile, File seedFunctionFile)
+            throws IOException, OWLOntologyCreationException, SaturationException {
         saveRepairRequest(repairRequest,repairRequestFile);
 
         /*
@@ -86,18 +54,12 @@ public class ExperimentGenerator {
         System.out.println("module size: "+ontology.getAxiomCount());
 */
 
-        timer.reset();
+        Timer timer = Timer.newTimer();
         timer.startTimer();
         System.out.println("Generating seed function...");
         SeedFunction seedFunction = generateSeedFunction(repairRequest);
         System.out.println("Generating seed function took "+timer.getTime());
         saveSeedFunction(seedFunction,seedFunctionFile);
-    }
-
-    public RepairRequest generateRepairRequest(double proportionIndividuals, double proportionClassNames){
-        RunExperiment1 runExperiment1 = new RunExperiment1();
-        runExperiment1.initAnonymousVariableDetector(false, RepairManagerBuilder.RepairVariant.IQ);
-        return runExperiment1.generateRepairRequest(ontology,0.1,0.1);
     }
 
     public void saveRepairRequest(RepairRequest repairRequest, File file) throws IOException {

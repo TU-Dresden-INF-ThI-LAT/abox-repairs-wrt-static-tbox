@@ -1,9 +1,7 @@
 package de.tu_dresden.inf.lat.abox_repairs;
 
-import de.tu_dresden.inf.lat.abox_repairs.experiments.comparison.ExperimentGenerator;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManager;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManagerBuilder;
-import de.tu_dresden.inf.lat.abox_repairs.repair_type.RepairType;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.SaturationException;
 import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunction;
 import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunctionParser;

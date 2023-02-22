@@ -1,6 +1,8 @@
 package de.tu_dresden.inf.lat.abox_repairs.ontology_tools;
 
+import de.tu_dresden.inf.lat.abox_repairs.reasoning.IReasonerFacade;
 import de.tu_dresden.inf.lat.abox_repairs.reasoning.ReasonerFacade;
+import de.tu_dresden.inf.lat.abox_repairs.reasoning.SimpleReasonerFacade;
 import org.semanticweb.owlapi.model.*;
 
 import java.util.HashSet;
@@ -10,11 +12,11 @@ import java.util.Set;
 public final class ClassExpressionNormalizer {
 
     private final OWLDataFactory dataFactory;
-    private final ReasonerFacade reasoner;
+    private final IReasonerFacade reasoner;
 
     public ClassExpressionNormalizer(OWLOntologyManager ontologyManager) throws OWLOntologyCreationException {
         this.dataFactory = ontologyManager.getOWLDataFactory();
-        this.reasoner = ReasonerFacade.newReasonerFacadeWithTBox(ontologyManager.createOntology());
+        this.reasoner = new SimpleReasonerFacade();//ReasonerFacade.newReasonerFacadeWithTBox(ontologyManager.createOntology());
     }
 
     public OWLClassExpression normalize(OWLClassExpression classExpression) throws IllegalArgumentException {
@@ -30,8 +32,8 @@ public final class ClassExpressionNormalizer {
     }
 
     final boolean isSubsumedBy(OWLClassExpression ce1, OWLClassExpression ce2) {
-        reasoner.addExpressions(ce1, ce2);
-        reasoner.update();
+        //reasoner.addExpressions(ce1, ce2);
+        //reasoner.update();
         return reasoner.subsumedBy(ce1, ce2);
     }
 
