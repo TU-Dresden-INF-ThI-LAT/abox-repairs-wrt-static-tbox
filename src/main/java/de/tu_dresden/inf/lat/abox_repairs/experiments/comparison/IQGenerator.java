@@ -66,8 +66,6 @@ public class IQGenerator {
                 new ManchesterOWLSyntaxParserImpl(new OntologyConfigurator(), factory);
         parser.setDefaultOntology(ontology);
 
-
-
         List<OWLClassExpression> result = new LinkedList<>();
 
         for(String line=reader.readLine(); line!=null; line=reader.readLine()){
