@@ -43,14 +43,23 @@ public class ComplexRepairRequestGenerator {
 
         List<OWLClass> classList = ontology.classesInSignature().collect(Collectors.toList());
 
-        Set<OWLNamedIndividual> individuals = randomIndividuals(ontology, proportionIndividuals);
+        int individualsToSelect = (int)proportionIndividuals*individuals.size();
+        List<OWLNamedIndividual> individuals = new ArrayList<>(ontology.getIndividualsInSignature());
 
-        for(OWLNamedIndividual individual: individuals) {
+        while(individualsToSelect>0 && !individuals.isEmpty()) {
+            int position = random.nextInt(individuals.size());
+            OWLNamedIndividual individual = individuals.get(position);
+            individuals.remove(position);
             Set<OWLClassExpression> expressions = new HashSet<>();
-            for(int i=0; i< conceptsPerIndividual; i++){
-                expressions.add(iqGenerator.generateIQ());
+            try {
+                for (int i = 0; i < conceptsPerIndividual; i++) {
+                    expressions.add(iqGenerator.generateIQ());
+                }
+                request.put(individual, expressions);
+                individualsToSelect--;
+            } catch(IQGenerationException exception) {
+                System.out.println("skipped individual "+individuals+" since only owl:Thing implied");
             }
-            request.put(individual, expressions);
         }
 
         return request;

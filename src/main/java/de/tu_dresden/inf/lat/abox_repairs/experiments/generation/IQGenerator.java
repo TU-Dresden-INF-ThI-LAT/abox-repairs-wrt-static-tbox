@@ -141,14 +141,14 @@ public class IQGenerator {
 
             List<OWLClass> names = ontology.classAssertionAxioms(ind)
                     .map(x -> x.getClassExpression())
-                    .filter(x -> x instanceof OWLClass)
+                    .filter(x -> x instanceof OWLClass && !x.isOWLThing())
                     .map(x -> (OWLClass) x)
                     .collect(Collectors.toList());
 
 //            System.out.println("names: "+names);
 
             if(names.isEmpty())
-                return Optional.of(dataFactory.getOWLThing());
+                return Optional.empty();
             else {
                 currentSize.value++;
                 result = takeRandom(names);
@@ -171,8 +171,12 @@ public class IQGenerator {
                     result = dataFactory.getOWLObjectSomeValuesFrom(
                             ra.getProperty(),
                             filler.get());
-                    done = true;
+                } else {
+                    result = dataFactory.getOWLObjectSomeValuesFrom(
+                                ra.getProperty(),
+                                dataFactory.getOWLThing());
                 }
+                done = true;
             }
 
             if(!done && successors.isEmpty()) {
