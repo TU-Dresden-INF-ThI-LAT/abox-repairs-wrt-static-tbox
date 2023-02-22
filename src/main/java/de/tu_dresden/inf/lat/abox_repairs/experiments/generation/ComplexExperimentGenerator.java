@@ -15,7 +15,7 @@ public class ComplexExperimentGenerator extends ExperimentGenerator {
     public static void main(String[] args) throws OWLOntologyCreationException, SaturationException, IOException, IQGenerationException {
         if(args.length!=6) {
             System.out.println("Usage:");
-            System.out.println(FlatExperimentGenerator.class.getCanonicalName()
+            System.out.println(ComplexExperimentGenerator.class.getCanonicalName()
                     + " ONTOLOGY PROPORTION_INDIVIDUALS REQUESTS_PER_INDIVIDUAL MAX_CONCEPT_SIZE REPAIR_REQUEST_FILE SEED_FUNCTION_FILE");
             System.exit(1);
         }
