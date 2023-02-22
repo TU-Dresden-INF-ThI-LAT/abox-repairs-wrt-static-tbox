@@ -1,6 +1,5 @@
-import com.google.common.annotations.VisibleForTesting;
-import de.tu_dresden.inf.lat.abox_repairs.experiments.comparison.IQGenerationException;
-import de.tu_dresden.inf.lat.abox_repairs.experiments.comparison.IQGenerator;
+import de.tu_dresden.inf.lat.abox_repairs.experiments.generation.IQGenerationException;
+import de.tu_dresden.inf.lat.abox_repairs.experiments.generation.IQGenerator;
 import de.tu_dresden.inf.lat.abox_repairs.virtual_iq_repairs.FullOntologyIQView;
 import de.tu_dresden.inf.lat.abox_repairs.virtual_iq_repairs.IQBlackbox;
 import org.junit.Test;
@@ -11,7 +10,6 @@ import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 import java.util.Collection;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertFalse;

@@ -1,4 +1,4 @@
-package de.tu_dresden.inf.lat.abox_repairs.experiments.comparison;
+package de.tu_dresden.inf.lat.abox_repairs.experiments.generation;
 
 public class IQGenerationException extends Exception {
     public IQGenerationException(String message) {

@@ -1,18 +1,17 @@
 package de.tu_dresden.inf.lat.abox_repairs.experiments.comparison;
 
+import de.tu_dresden.inf.lat.abox_repairs.experiments.generation.IQGenerator;
 import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunction;
 import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunctionParser;
 import de.tu_dresden.inf.lat.abox_repairs.tools.Timer;
 import de.tu_dresden.inf.lat.abox_repairs.virtual_iq_repairs.FullOntologyIQView;
 import de.tu_dresden.inf.lat.abox_repairs.virtual_iq_repairs.IQBlackbox;
 import de.tu_dresden.inf.lat.abox_repairs.virtual_iq_repairs.VirtualIQRepair;
-import org.semanticweb.elk.owlapi.ElkReasonerFactory;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
 import java.io.File;
 import java.io.IOException;

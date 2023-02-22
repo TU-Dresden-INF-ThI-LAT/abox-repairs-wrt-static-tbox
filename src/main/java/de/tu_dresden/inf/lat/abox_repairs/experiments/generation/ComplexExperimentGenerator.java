@@ -1,22 +1,14 @@
 package de.tu_dresden.inf.lat.abox_repairs.experiments.generation;
 
-import de.tu_dresden.inf.lat.abox_repairs.experiments.cade21.RunExperiment1;
-import de.tu_dresden.inf.lat.abox_repairs.experiments.comparison.IQGenerationException;
-import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManagerBuilder;
 import de.tu_dresden.inf.lat.abox_repairs.repair_request.RepairRequest;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.SaturationException;
-import de.tu_dresden.inf.lat.abox_repairs.seed_function.SeedFunction;
 import de.tu_dresden.inf.lat.abox_repairs.tools.Timer;
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
-import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class ComplexExperimentGenerator extends ExperimentGenerator {
 

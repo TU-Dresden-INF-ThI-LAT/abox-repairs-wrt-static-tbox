@@ -1,8 +1,5 @@
 package de.tu_dresden.inf.lat.abox_repairs.experiments.generation;
 
-import de.tu_dresden.inf.lat.abox_repairs.experiments.comparison.IQGenerationException;
-import de.tu_dresden.inf.lat.abox_repairs.experiments.comparison.IQGenerator;
-import de.tu_dresden.inf.lat.abox_repairs.reasoning.ReasonerFacade;
 import de.tu_dresden.inf.lat.abox_repairs.repair_request.RepairRequest;
 import org.semanticweb.owlapi.model.*;
 

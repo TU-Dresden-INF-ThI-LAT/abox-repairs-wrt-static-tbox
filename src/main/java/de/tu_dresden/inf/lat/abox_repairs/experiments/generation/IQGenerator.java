@@ -1,12 +1,9 @@
-package de.tu_dresden.inf.lat.abox_repairs.experiments.comparison;
+package de.tu_dresden.inf.lat.abox_repairs.experiments.generation;
 
 import de.tu_dresden.inf.lat.abox_repairs.reasoning.ReasonerFacade;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.CanonicalModelGenerator;
 import de.tu_dresden.inf.lat.abox_repairs.tools.FullIRIShortFormProvider;
-import de.tu_dresden.inf.lat.abox_repairs.tools.SimpleOWLEntityChecker;
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.expression.OWLExpressionParser;
-import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxClassExpressionParser;
 import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxParserImpl;
 import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 import org.semanticweb.owlapi.model.*;
@@ -117,11 +114,11 @@ public class IQGenerator {
                 .findAny()
                 .isPresent();
 
-        System.out.println("ind: "+ind);
-        System.out.println("has successors: "+hasSuccessors);
+//        System.out.println("ind: "+ind);
+//        System.out.println("has successors: "+hasSuccessors);
 
         if(!hasSuccessors && currentDepth<minDepth) {
-            System.out.println("cannot continue this path");
+//            System.out.println("cannot continue this path");
             return Optional.empty();
         }
 
@@ -129,7 +126,7 @@ public class IQGenerator {
                 (currentDepth < minDepth
                         || (currentDepth < maxDepth && random.nextDouble() < probabilityExists ));
 
-        System.out.println("Choose exists: "+chooseExists);
+//        System.out.println("Choose exists: "+chooseExists);
 
         OWLClassExpression result = null; //
 
@@ -141,7 +138,7 @@ public class IQGenerator {
                     .map(x -> (OWLClass) x)
                     .collect(Collectors.toList());
 
-            System.out.println("names: "+names);
+//            System.out.println("names: "+names);
 
             if(names.isEmpty())
                 return Optional.of(dataFactory.getOWLThing());
@@ -169,7 +166,7 @@ public class IQGenerator {
             }
 
             if(!done && successors.isEmpty()) {
-                System.out.println("no successor of "+ind+" was successful!");
+//                System.out.println("no successor of "+ind+" was successful!");
                 return Optional.empty();
             }
             assert result!=null;
@@ -178,8 +175,8 @@ public class IQGenerator {
 
 
         if(random.nextDouble()<probabilityConjunction){
-            System.out.println("adding a conjunct!");
-            System.out.println("Until here: "+result);
+//            System.out.println("adding a conjunct!");
+//            System.out.println("Until here: "+result);
             OWLClassExpression conjunct = generateIQ(ind,currentDepth).get(); // we can assume this to be successful if we got that far
             return Optional.of(
                     dataFactory.getOWLObjectIntersectionOf(result,conjunct));

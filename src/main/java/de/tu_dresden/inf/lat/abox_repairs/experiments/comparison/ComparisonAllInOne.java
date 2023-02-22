@@ -1,6 +1,8 @@
 package de.tu_dresden.inf.lat.abox_repairs.experiments.comparison;
 
 import de.tu_dresden.inf.lat.abox_repairs.experiments.cade21.RunExperiment1;
+import de.tu_dresden.inf.lat.abox_repairs.experiments.generation.IQGenerationException;
+import de.tu_dresden.inf.lat.abox_repairs.experiments.generation.IQGenerator;
 import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.ABoxFlattener;
 import de.tu_dresden.inf.lat.abox_repairs.ontology_tools.ELRestrictor;
 import de.tu_dresden.inf.lat.abox_repairs.repair_manager.RepairManager;
