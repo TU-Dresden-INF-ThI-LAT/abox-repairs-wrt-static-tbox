@@ -116,7 +116,7 @@ public class IQGenerator {
                 .findAny()
                 .isPresent();
 
-        System.out.println(currentSize);
+//        System.out.println(currentSize);
 
 //        System.out.println("ind: "+ind);
 //        System.out.println("has successors: "+hasSuccessors);
