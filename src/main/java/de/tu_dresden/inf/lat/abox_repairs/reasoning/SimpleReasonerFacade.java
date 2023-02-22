@@ -21,6 +21,7 @@ public class SimpleReasonerFacade implements IReasonerFacade
 
         reasoner = new ElkReasonerFactory().createReasoner(emptyOntology);
         factory = manager.getOWLDataFactory();
+        reasoner.flush();
     }
 
     @Override

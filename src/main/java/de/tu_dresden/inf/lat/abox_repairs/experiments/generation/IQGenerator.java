@@ -26,6 +26,8 @@ public class IQGenerator {
     private int minDepth = 0;
     private int maxDepth = Integer.MAX_VALUE;
 
+    private int maxSize = Integer.MAX_VALUE;
+
     public static void main(String[] args) throws OWLOntologyCreationException, IOException, IQGenerationException {
 
         if(args.length!=3) {
@@ -80,7 +82,7 @@ public class IQGenerator {
     }
 
     /**
-     * Careful: changes the ontology!
+     * Careful: saturates the ontology!
      */
     public IQGenerator(OWLOntology ontology, Random random) {
         this.ontology=ontology;
@@ -100,7 +102,7 @@ public class IQGenerator {
 
         while(!inds.isEmpty()){
             OWLNamedIndividual root = takeRandom(inds);
-            Optional<OWLClassExpression> opt = generateIQ(root,0);
+            Optional<OWLClassExpression> opt = generateIQ(root,0,new ValueHolder<>(0));
             if(opt.isPresent())
                 return opt.get();
         }
@@ -109,13 +111,18 @@ public class IQGenerator {
 
     }
 
-    private Optional<OWLClassExpression> generateIQ(OWLIndividual ind, int currentDepth) {
+    private Optional<OWLClassExpression> generateIQ(OWLIndividual ind, int currentDepth, ValueHolder<Integer> currentSize) {
         boolean hasSuccessors = ontology.objectPropertyAssertionAxioms(ind)
                 .findAny()
                 .isPresent();
 
+        System.out.println(currentSize);
+
 //        System.out.println("ind: "+ind);
 //        System.out.println("has successors: "+hasSuccessors);
+
+        if(currentSize.value>=maxSize)
+            return Optional.empty();
 
         if(!hasSuccessors && currentDepth<minDepth) {
 //            System.out.println("cannot continue this path");
@@ -142,8 +149,10 @@ public class IQGenerator {
 
             if(names.isEmpty())
                 return Optional.of(dataFactory.getOWLThing());
-            else
+            else {
+                currentSize.value++;
                 result = takeRandom(names);
+            }
 
             assert result!=null;
         } else {
@@ -156,7 +165,8 @@ public class IQGenerator {
 
             while(!done && !successors.isEmpty()) {
                 OWLObjectPropertyAssertionAxiom ra = takeRandom(successors);
-                Optional<OWLClassExpression> filler = generateIQ(ra.getObject(), currentDepth+1);
+                currentSize.value+=2;
+                Optional<OWLClassExpression> filler = generateIQ(ra.getObject(), currentDepth+1, currentSize);
                 if(filler.isPresent()){
                     result = dataFactory.getOWLObjectSomeValuesFrom(
                             ra.getProperty(),
@@ -177,9 +187,13 @@ public class IQGenerator {
         if(random.nextDouble()<probabilityConjunction){
 //            System.out.println("adding a conjunct!");
 //            System.out.println("Until here: "+result);
-            OWLClassExpression conjunct = generateIQ(ind,currentDepth).get(); // we can assume this to be successful if we got that far
-            return Optional.of(
-                    dataFactory.getOWLObjectIntersectionOf(result,conjunct));
+            currentSize.value++;
+            Optional<OWLClassExpression> conjunct = generateIQ(ind,currentDepth, currentSize); // we can assume this to be successful if we got that far
+            if(conjunct.isPresent())
+                return Optional.of(
+                    dataFactory.getOWLObjectIntersectionOf(result,conjunct.get()));
+            else
+                return Optional.of(result);
         } else
             return Optional.of(result);
     }
@@ -207,6 +221,11 @@ public class IQGenerator {
         this.probabilityConjunction = probabilityConjunction;
     }
 
+
+    public void setMaxSize(int maxSize) {
+        this.maxSize=maxSize;
+    }
+
     public int getMinDepth() {
         return minDepth;
     }
@@ -224,4 +243,15 @@ public class IQGenerator {
     }
 
 
+    private final static class ValueHolder<X> {
+        public ValueHolder(X value) {
+            this.value=value;
+        }
+        
+        public X value;
+
+        public String toString() {
+            return "(" + value + ")";
+        }
+    }
 }

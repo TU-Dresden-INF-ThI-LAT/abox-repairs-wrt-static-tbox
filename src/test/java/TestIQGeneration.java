@@ -45,4 +45,35 @@ public class TestIQGeneration {
             System.out.println();
         }
     }
+
+
+    @Test
+    public void testIQGenerationMaxSize() throws OWLOntologyCreationException, IQGenerationException {
+        OWLOntology ontology = OWLManager.createOWLOntologyManager()
+                .loadOntologyFromOntologyDocument(
+                        this.getClass()
+                                .getResourceAsStream("AnotherExample.owl"));
+
+        IQBlackbox iqBlackbox = new FullOntologyIQView(ontology);
+
+        ontology.axioms().forEach(System.out::println);
+
+        for(int i=0; i<10; i++){
+            IQGenerator iqGenerator = new IQGenerator(ontology);
+            iqGenerator.setMaxSize(5);
+            OWLClassExpression iq = iqGenerator.generateIQ();
+
+            System.out.println();
+            System.out.println("QUERY: "+iq);
+
+            Collection<OWLNamedIndividual> answers = iqBlackbox.query(iq);
+
+
+            System.out.println("ANSWERS: "+String.join(", ",answers.stream().map(x -> x.toString()).collect(Collectors.toList())));
+
+            assertFalse(answers.isEmpty());
+            System.out.println();
+        }
+    }
+
 }
