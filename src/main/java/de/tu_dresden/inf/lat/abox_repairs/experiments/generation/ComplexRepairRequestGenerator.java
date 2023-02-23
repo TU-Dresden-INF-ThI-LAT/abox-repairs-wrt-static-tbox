@@ -43,7 +43,7 @@ public class ComplexRepairRequestGenerator {
 
         List<OWLClass> classList = ontology.classesInSignature().collect(Collectors.toList());
 
-        int individualsToSelect = (int)proportionIndividuals*individuals.size();
+        int individualsToSelect = (int)(proportionIndividuals*individuals.size());
         List<OWLNamedIndividual> individuals = new ArrayList<>(ontology.getIndividualsInSignature());
 
         while(individualsToSelect>0 && !individuals.isEmpty()) {
