@@ -14,13 +14,12 @@ public class SimpleReasonerFacade implements IReasonerFacade
     private final OWLDataFactory factory;
 
     public SimpleReasonerFacade() throws OWLOntologyCreationException {
+        this(OWLManager.createOWLOntologyManager().createOntology());
+    }
 
-        OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-
-        OWLOntology emptyOntology = manager.createOntology();
-
-        reasoner = new ElkReasonerFactory().createReasoner(emptyOntology);
-        factory = manager.getOWLDataFactory();
+    public SimpleReasonerFacade(OWLOntology ontology) throws OWLOntologyCreationException {
+        reasoner = new ElkReasonerFactory().createReasoner(ontology);
+        factory = ontology.getOWLOntologyManager().getOWLDataFactory();
         reasoner.flush();
     }
 

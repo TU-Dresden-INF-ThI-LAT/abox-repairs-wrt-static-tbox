@@ -1,7 +1,10 @@
 package de.tu_dresden.inf.lat.abox_repairs.experiments.generation;
 
+import de.tu_dresden.inf.lat.abox_repairs.reasoning.IReasonerFacade;
+import de.tu_dresden.inf.lat.abox_repairs.reasoning.SimpleReasonerFacade;
 import de.tu_dresden.inf.lat.abox_repairs.repair_request.RepairRequest;
 import org.semanticweb.owlapi.model.*;
+import org.semanticweb.owlapi.model.parameters.Imports;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -38,10 +41,25 @@ public class ComplexRepairRequestGenerator {
      * @return
      */
     public RepairRequest generateRepairRequest(double proportionIndividuals, int conceptsPerIndividual)
-            throws IQGenerationException {
+            throws IQGenerationException, OWLOntologyCreationException {
+        return generateRepairRequest(proportionIndividuals, conceptsPerIndividual, -1);
+    }
+
+    /**
+     * @param proportionIndividuals how many of the individuals get a repair request assigned
+     * @param conceptsPerIndividual how many concepts per individual to we want in the repair request
+     * @param maxNumberOfConcepts how many different concepts should occur in the repair request
+     * @return
+     */
+    public RepairRequest generateRepairRequest(double proportionIndividuals, int conceptsPerIndividual, int maxNumberOfConcepts) throws OWLOntologyCreationException {
+
+
+        IReasonerFacade reasoner = new SimpleReasonerFacade(ontology);
+        OWLDataFactory factory = ontology.getOWLOntologyManager().getOWLDataFactory();
+
         RepairRequest request = new RepairRequest();
 
-        List<OWLClass> classList = ontology.classesInSignature().collect(Collectors.toList());
+        List<OWLClassExpression> conceptsUsed = new ArrayList<>();
 
         int individualsToSelect = (int)(proportionIndividuals*individuals.size());
         List<OWLNamedIndividual> individuals = new ArrayList<>(ontology.getIndividualsInSignature());
@@ -53,7 +71,16 @@ public class ComplexRepairRequestGenerator {
             Set<OWLClassExpression> expressions = new HashSet<>();
             try {
                 for (int i = 0; i < conceptsPerIndividual; i++) {
-                    expressions.add(iqGenerator.generateIQ());
+                    Optional<OWLClassExpression> expression;
+                    if(maxNumberOfConcepts>0 && conceptsUsed.size()>=maxNumberOfConcepts) {
+                        expression = pickRandomInstance(individual, conceptsUsed, reasoner);
+                    } else {
+                         expression = iqGenerator.generateIQ(individual);
+                    }
+                    if (expression.isPresent() && !reasoner.subsumedBy(factory.getOWLThing(), expression.get())) {
+                        expressions.add(expression.get());
+                        conceptsUsed.add(expression.get());
+                    }
                 }
                 request.put(individual, expressions);
                 individualsToSelect--;
@@ -63,6 +90,18 @@ public class ComplexRepairRequestGenerator {
         }
 
         return request;
+    }
+
+    private Optional<OWLClassExpression> pickRandomInstance(OWLNamedIndividual individual, List<OWLClassExpression> expressions, IReasonerFacade reasoner) {
+        List<OWLClassExpression> classExpressionsLeft = new ArrayList(expressions);
+        while(!classExpressionsLeft.isEmpty()){
+            int position = random.nextInt(classExpressionsLeft.size());
+            OWLClassExpression next = classExpressionsLeft.get(position);
+            classExpressionsLeft.remove(position);
+            if(reasoner.instanceOf(individual, next))
+                return Optional.of(next);
+        }
+        return Optional.empty();
     }
 
 

@@ -111,6 +111,10 @@ public class IQGenerator {
 
     }
 
+    public Optional<OWLClassExpression> generateIQ(OWLNamedIndividual individual) throws IQGenerationException {
+        return generateIQ(individual, 0, new ValueHolder<>(0));
+    }
+
     private Optional<OWLClassExpression> generateIQ(OWLIndividual ind, int currentDepth, ValueHolder<Integer> currentSize) {
         boolean hasSuccessors = ontology.objectPropertyAssertionAxioms(ind)
                 .findAny()
