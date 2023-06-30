@@ -63,7 +63,7 @@ public class SeedFunctionParser {
              //   new SimpleOWLEntityChecker(factory));
         manchesterParser.setDefaultOntology(ontology);
 
-        ontology.classesInSignature().forEach(System.out::println);
+       // ontology.classesInSignature().forEach(System.out::println);
 
 
 
@@ -104,9 +104,9 @@ public class SeedFunctionParser {
                     if(currentIndividual==null){
                         throw new ParsingException("Incorrect file format (line "+lineNr+")");
                     } else {
-                        System.out.println(line);
-                        line = cleanLine(line);
-                        System.out.println(line);
+               //         System.out.println(line);
+               //         line = cleanLine(line);
+               //         System.out.println(line);
                         //classExpressions.add(parser.parse(line.trim()));
                         classExpressions.add(manchesterParser.parseClassExpression(line));
                     }
