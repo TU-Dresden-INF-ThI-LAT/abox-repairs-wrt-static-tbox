@@ -125,7 +125,7 @@ public class SeedFunctionParser {
 
     private static Pattern spaces = Pattern.compile("\\s+");
 
-    public static String cleanLine(String line)  {
+    private static String cleanLine(String line)  {
         line = line.trim();
 
         // very dirty workaround to deal with a bug in the manchester parser I don't know how to solve

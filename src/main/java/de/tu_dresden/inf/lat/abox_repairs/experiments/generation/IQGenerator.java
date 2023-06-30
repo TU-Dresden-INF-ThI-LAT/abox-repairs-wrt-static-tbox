@@ -3,15 +3,20 @@ package de.tu_dresden.inf.lat.abox_repairs.experiments.generation;
 import de.tu_dresden.inf.lat.abox_repairs.reasoning.ReasonerFacade;
 import de.tu_dresden.inf.lat.abox_repairs.saturation.CanonicalModelGenerator;
 import de.tu_dresden.inf.lat.abox_repairs.tools.FullIRIShortFormProvider;
+import org.semanticweb.owlapi.expression.*;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxParserImpl;
 import org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterOWLSyntaxOWLObjectRendererImpl;
 import org.semanticweb.owlapi.model.*;
 import org.semanticweb.owlapi.model.parameters.Imports;
+import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
+import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
+import org.semanticweb.owlapi.util.DefaultPrefixManager;
 
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.regex.Pattern;
 
 /**
  * Generating IQs that, for a given ontology, give at least one answer
@@ -65,14 +70,49 @@ public class IQGenerator {
                 new ManchesterOWLSyntaxParserImpl(new OntologyConfigurator(), factory);
         parser.setDefaultOntology(ontology);
 
+	// added 30/06.2023
+	parser.setOWLEntityChecker(new ShortFormEntityChecker(
+                new BidirectionalShortFormProviderAdapter(new DefaultPrefixManager())){
+            @Override
+            public OWLClass getOWLClass(String string) {
+                OWLClass result = super.getOWLClass(string);
+                if(result==null)
+                    result = factory.getOWLClass(IRI.create(string));
+                return result;
+            }
+
+        });
+
+
         List<OWLClassExpression> result = new LinkedList<>();
 
         for(String line=reader.readLine(); line!=null; line=reader.readLine()){
+	    line = cleanLine(line);
             result.add(parser.parseClassExpression(line));
         }
 
         return result;
     }
+
+    // added 30/06/2023
+    private static Pattern problematicPattern = Pattern.compile("<[^>]*<([^>]*)>>");
+    private static Pattern getProblematicPattern2 = Pattern.compile("and \\(([^ ]+ some [^ ]+)\\)");
+
+    private static Pattern spaces = Pattern.compile("\\s+");
+
+    private static String cleanLine(String line)  {
+        line = line.trim();
+
+        // very dirty workaround to deal with a bug in the manchester parser I don't know how to solve
+
+        line = problematicPattern.matcher(line).replaceAll("<$1>");
+        line = spaces.matcher(line).replaceAll(" ");
+        line = getProblematicPattern2.matcher(line).replaceAll("and $1");
+
+
+        return line;
+    }
+
 
     /**
      * Careful: changes the ontology!
