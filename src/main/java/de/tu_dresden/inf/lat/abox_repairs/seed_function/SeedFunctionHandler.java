@@ -79,6 +79,7 @@ public class SeedFunctionHandler {
 		}
 		System.out.println("done converting repair types");
 
+
 		/*
 		 *  In the beginning, the iteration is needed in order to map individuals that are not contained in the repair request.
 		 *  And to map those individuals, we need an additional feature to distinguish whether the individuals in the saturated
@@ -91,7 +92,9 @@ public class SeedFunctionHandler {
 															.filter(ind -> !setOfMappedIndividuals.contains(ind) &&
 																			detector.isNamed(ind))
 															.collect(Collectors.toSet());
-		
+
+		System.out.println("remaining individuals: "+setOfRemainingIndividuals.size());
+
 		for(OWLNamedIndividual individual : setOfRemainingIndividuals) {
 			RepairType type = typeHandler.newMinimisedRepairType(new HashSet<>());
 			seedFunction.put(individual, type);
@@ -132,7 +135,6 @@ public class SeedFunctionHandler {
 							return x;
 							})
 					.collect(Collectors.toSet()));
-
 
 			// now pick selection from conjunctions
 			/*repairRequest.get(individual)
