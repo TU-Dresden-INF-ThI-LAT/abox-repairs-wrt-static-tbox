@@ -104,8 +104,9 @@ public class SeedFunctionParser {
                     if(currentIndividual==null){
                         throw new ParsingException("Incorrect file format (line "+lineNr+")");
                     } else {
+                        line = line.trim();
                //         System.out.println(line);
-               //         line = cleanLine(line);
+                        line = cleanLine(line);
                //         System.out.println(line);
                         //classExpressions.add(parser.parse(line.trim()));
                         classExpressions.add(manchesterParser.parseClassExpression(line));
