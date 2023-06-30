@@ -14,12 +14,10 @@ import org.semanticweb.owlapi.util.BidirectionalShortFormProvider;
 import org.semanticweb.owlapi.util.BidirectionalShortFormProviderAdapter;
 import org.semanticweb.owlapi.util.DefaultPrefixManager;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class SeedFunctionParser {
 
@@ -35,15 +33,39 @@ public class SeedFunctionParser {
     public SeedFunction parseSeedFunction(File file) throws IOException, ParsingException {
         BufferedReader reader = new BufferedReader(new FileReader(file));
 
+        return parseSeedFunction(reader);
+    }
+
+    public SeedFunction parseSeedFunction(InputStream input) throws IOException, ParsingException {
+        return parseSeedFunction(new BufferedReader(new InputStreamReader(input)));
+    }
+
+    private SeedFunction parseSeedFunction(BufferedReader reader) throws IOException, ParsingException {
+
         //OWLExpressionParser<OWLClassExpression> parser =
         //        new ManchesterOWLSyntaxClassExpressionParser(factory, new SimpleOWLEntityChecker(factory));
 
         ManchesterOWLSyntaxParserImpl manchesterParser =
                 new ManchesterOWLSyntaxParserImpl(new OntologyConfigurator(), factory);
         manchesterParser.setOWLEntityChecker(new ShortFormEntityChecker(
-                new BidirectionalShortFormProviderAdapter(new DefaultPrefixManager())));
+                new BidirectionalShortFormProviderAdapter(new DefaultPrefixManager())){
+            @Override
+            public OWLClass getOWLClass(String string) {
+                OWLClass result = super.getOWLClass(string);
+                if(result==null)
+                    result = factory.getOWLClass(IRI.create(string));
+                return result;
+            }
+
+        });
+
+
              //   new SimpleOWLEntityChecker(factory));
         manchesterParser.setDefaultOntology(ontology);
+
+        ontology.classesInSignature().forEach(System.out::println);
+
+
 
         SeedFunction seedFunction = new SeedFunction();
         OWLNamedIndividual currentIndividual = null;
@@ -82,8 +104,11 @@ public class SeedFunctionParser {
                     if(currentIndividual==null){
                         throw new ParsingException("Incorrect file format (line "+lineNr+")");
                     } else {
+                        System.out.println(line);
+                        line = cleanLine(line);
+                        System.out.println(line);
                         //classExpressions.add(parser.parse(line.trim()));
-                        classExpressions.add(manchesterParser.parseClassExpression(line.trim()));
+                        classExpressions.add(manchesterParser.parseClassExpression(line));
                     }
                 }
             }
@@ -91,6 +116,16 @@ public class SeedFunctionParser {
             reader.close();
         }
         return seedFunction;
+    }
+
+    private static Pattern problematicPattern = Pattern.compile("<[^>]*<([^>]*)>>");
+
+    private static String cleanLine(String line)  {
+        //line = line.trim();
+
+        line = problematicPattern.matcher(line).replaceAll("<$1>");
+
+        return line;
     }
 
     public static class ParsingException extends Exception {

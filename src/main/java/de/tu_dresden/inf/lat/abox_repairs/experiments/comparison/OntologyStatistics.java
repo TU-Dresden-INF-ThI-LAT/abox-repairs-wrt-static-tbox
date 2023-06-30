@@ -22,7 +22,7 @@ public class OntologyStatistics {
     private static String statistics(List<Integer> values) {
         values.sort(Comparator.comparing(x -> x));
         System.out.println("min max med avg");
-        return values.get(0)+" "+values.get(values.size()-1)+values.get(values.size()/2)+" "+avg(values);
+        return values.get(0)+" "+values.get(values.size()-1)+" "+values.get(values.size()/2)+" "+avg(values);
     }
     private static double avg(List<Integer> values) {
         double sum = 0.0;
@@ -37,9 +37,9 @@ public class OntologyStatistics {
 
     public static void addValues(String line) {
         String[] columns = line.split(" ");
-        assert(columns.length==3);
-        ontology.add(Integer.parseInt(columns[0]));
-        abox.add(Integer.parseInt(columns[1]));
-        tbox.add(Integer.parseInt(columns[2]));
+        assert(columns.length==4);
+        ontology.add(Integer.parseInt(columns[1]));
+        abox.add(Integer.parseInt(columns[2]));
+        tbox.add(Integer.parseInt(columns[3]));
     }
 }
