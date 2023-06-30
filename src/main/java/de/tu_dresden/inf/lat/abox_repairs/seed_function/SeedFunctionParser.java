@@ -104,10 +104,11 @@ public class SeedFunctionParser {
                     if(currentIndividual==null){
                         throw new ParsingException("Incorrect file format (line "+lineNr+")");
                     } else {
-                        line = line.trim();
-               //         System.out.println(line);
+                       // line = "<http://purl.obolibrary.org/obo/BFO_0000052> some (<http://purl.obolibrary.org/obo/BFO_0000004> and (<http://purl.obolibrary.org/obo/BFO_0000053> some owl:Thing))";
+                       // line = line.trim();
+                       // System.out.println(line);
                         line = cleanLine(line);
-               //         System.out.println(line);
+                       // System.out.println(line);
                         //classExpressions.add(parser.parse(line.trim()));
                         classExpressions.add(manchesterParser.parseClassExpression(line));
                     }
@@ -120,11 +121,19 @@ public class SeedFunctionParser {
     }
 
     private static Pattern problematicPattern = Pattern.compile("<[^>]*<([^>]*)>>");
+    private static Pattern getProblematicPattern2 = Pattern.compile("and \\(([^ ]+ some [^ ]+)\\)");
+
+    private static Pattern spaces = Pattern.compile("\\s+");
 
     private static String cleanLine(String line)  {
-        //line = line.trim();
+        line = line.trim();
+
+        // very dirty workaround to deal with a bug in the manchester parser I don't know how to solve
 
         line = problematicPattern.matcher(line).replaceAll("<$1>");
+        line = spaces.matcher(line).replaceAll(" ");
+        line = getProblematicPattern2.matcher(line).replaceAll("and $1");
+
 
         return line;
     }
