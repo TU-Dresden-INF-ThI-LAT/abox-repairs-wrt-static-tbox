@@ -86,6 +86,13 @@ public class IQGenerator {
                     result = factory.getOWLClass(IRI.create(string));
                 return result;
             }
+        @Override
+        public OWLObjectProperty getOWLObjectProperty(String string) {
+            OWLObjectProperty result = super.getOWLObjectProperty(string);
+            if(result==null)
+                result = factory.getOWLObjectProperty(IRI.create(string));
+            return result;
+        }
 
         });
 
