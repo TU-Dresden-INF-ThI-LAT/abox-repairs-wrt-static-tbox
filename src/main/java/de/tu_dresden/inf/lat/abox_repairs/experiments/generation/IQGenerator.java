@@ -93,13 +93,13 @@ public class IQGenerator {
         List<OWLClassExpression> result = new LinkedList<>();
 
         for(String line=reader.readLine(); line!=null; line=reader.readLine()){
-           // System.out.println(line);
+            //   System.out.println(line);
             try {
                 line = cleanLine(line);
             } catch (ParseException e) {
                 throw new IOException(e);
             }
-           // System.out.println(line);
+            // System.out.println(line);
             result.add(parser.parseClassExpression(line));
         }
 

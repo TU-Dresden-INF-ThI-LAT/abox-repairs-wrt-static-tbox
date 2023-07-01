@@ -1,0 +1,2358 @@
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: : <http://owl.cs.man.ac.uk/elapproximated/3f8d137c-e357-4c32-b070-86ccde0a4895_TFS.owl.owl.xml>
+
+
+
+Ontology: <http://owl.cs.man.ac.uk/elapproximated/3f8d137c-e357-4c32-b070-86ccde0a4895_TFS.owl.owl.xml>
+
+
+ObjectProperty: <http://grapson.com/concept#ctryCode>
+
+    
+ObjectProperty: <http://grapson.com/expression#URI>
+
+    
+ObjectProperty: <http://grapson.com/expression#baseForm>
+
+    
+ObjectProperty: <http://grapson.com/expression#headPosition>
+
+    
+ObjectProperty: <http://grapson.com/expression#langCode>
+
+    
+ObjectProperty: <http://grapson.com/expression#romanisation>
+
+    
+ObjectProperty: <http://grapson.com/expression#text>
+
+    
+ObjectProperty: <http://grapson.com/meta#conceptDataProperty>
+
+    
+ObjectProperty: <http://grapson.com/meta#conceptObjectProperty>
+
+    
+ObjectProperty: <http://grapson.com/meta#descriptionOf>
+
+    
+ObjectProperty: <http://grapson.com/meta#expressionDataProperty>
+
+    
+ObjectProperty: <http://grapson.com/meta#expressionObjectProperty>
+
+    
+ObjectProperty: <http://grapson.com/meta#formObjectProperty>
+
+    
+ObjectProperty: <http://grapson.com/meta#hasDescription>
+
+    
+ObjectProperty: <http://grapson.com/meta#hasDomain>
+
+    
+ObjectProperty: <http://grapson.com/meta#hasSource>
+
+    
+ObjectProperty: <http://grapson.com/meta#meaningObjectProperty>
+
+    
+ObjectProperty: <http://grapson.com/meta#objectDataProperty>
+
+    
+ObjectProperty: <http://grapson.com/meta#objectObjectProperty>
+
+    
+ObjectProperty: <http://grapson.com/meta#see>
+
+    
+ObjectProperty: <http://grapson.com/meta#signObjectProperty>
+
+    
+ObjectProperty: <http://grapson.com/meta#sourceOf>
+
+    
+ObjectProperty: <http://grapson.com/meta#termDataProperty>
+
+    
+ObjectProperty: <http://grapson.com/meta#termObjectProperty>
+
+    
+ObjectProperty: <http://grapson.com/semantics#hasTime>
+
+    
+ObjectProperty: <http://grapson.com/semantics#relatedWith>
+
+    
+ObjectProperty: <http://grapson.com/sign#descriptionOf>
+
+    
+ObjectProperty: <http://grapson.com/sign#equals>
+
+    
+ObjectProperty: <http://grapson.com/sign#formOf>
+
+    
+ObjectProperty: <http://grapson.com/sign#hasDescription>
+
+    
+ObjectProperty: <http://grapson.com/sign#hasForm>
+
+    
+ObjectProperty: <http://grapson.com/sign#hasHyponym>
+
+    
+ObjectProperty: <http://grapson.com/sign#hasMeaning>
+
+    
+ObjectProperty: <http://grapson.com/sign#hasMeronym>
+
+    
+ObjectProperty: <http://grapson.com/sign#hyponymOf>
+
+    
+ObjectProperty: <http://grapson.com/sign#meronymOf>
+
+    
+ObjectProperty: <http://grapson.com/term#contextOf>
+
+    
+ObjectProperty: <http://grapson.com/term#definitionOf>
+
+    
+ObjectProperty: <http://grapson.com/term#descriptionOf>
+
+    
+ObjectProperty: <http://grapson.com/term#designationOf>
+
+    
+ObjectProperty: <http://grapson.com/term#exampleOf>
+
+    
+ObjectProperty: <http://grapson.com/term#explanationOf>
+
+    
+ObjectProperty: <http://grapson.com/term#hasContent>
+
+    
+ObjectProperty: <http://grapson.com/term#hasContext>
+
+    
+ObjectProperty: <http://grapson.com/term#hasDescription>
+
+    
+ObjectProperty: <http://grapson.com/term#hasDesignation>
+
+    
+ObjectProperty: <http://grapson.com/term#hasReferent>
+
+    
+ObjectProperty: <http://grapson.com/term#hasText>
+
+    
+ObjectProperty: <http://grapson.com/term#referentOf>
+
+    
+ObjectProperty: <http://grapson.com/term#seeFalseFriend>
+
+    
+ObjectProperty: <http://grapson.com/term#textOf>
+
+    
+Class: <http://grapson.com/concept#Chemistry>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Domain>
+    
+    
+Class: <http://grapson.com/concept#Concept>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/meta#hasDomain> some <http://grapson.com/meta#Domain>
+    
+    
+Class: <http://grapson.com/concept#Construction_industry>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Domain>
+    
+    
+Class: <http://grapson.com/concept#Content>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Meaning>
+    
+    
+Class: <http://grapson.com/concept#Country>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Place>,
+        <http://grapson.com/concept#ctryCode> some <http://www.absoluteiri.edu/RELAPPROXC380>
+    
+    
+Class: <http://grapson.com/concept#Data>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Object>,
+        <http://grapson.com/sign#Information>
+    
+    
+Class: <http://grapson.com/concept#Geography>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Domain>
+    
+    
+Class: <http://grapson.com/concept#Information_and_communication_technology>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Domain>
+    
+    
+Class: <http://grapson.com/concept#Input>
+
+    SubClassOf: 
+        <http://grapson.com/concept#Data>
+    
+    
+Class: <http://grapson.com/concept#Language>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Count>,
+        <http://grapson.com/semantics#Singular>
+    
+    
+Class: <http://grapson.com/concept#Language_industry>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Domain>
+    
+    
+Class: <http://grapson.com/concept#Language_technology>
+
+    SubClassOf: 
+        <http://grapson.com/concept#Information_and_communication_technology>,
+        <http://grapson.com/concept#Language_industry>
+    
+    
+Class: <http://grapson.com/concept#Linguistics>
+
+    SubClassOf: 
+        <http://grapson.com/concept#Language_industry>
+    
+    
+Class: <http://grapson.com/concept#Multilingual_language_technology>
+
+    SubClassOf: 
+        <http://grapson.com/concept#Language_technology>
+    
+    
+Class: <http://grapson.com/concept#Parse>
+
+    
+Class: <http://grapson.com/concept#Parser>
+
+    SubClassOf: 
+        <http://grapson.com/concept#Program>
+    
+    
+Class: <http://grapson.com/concept#Program>
+
+    SubClassOf: 
+        <http://grapson.com/concept#Software>
+    
+    
+Class: <http://grapson.com/concept#Software>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Instrument>,
+        <http://grapson.com/semantics#Object>,
+        <http://grapson.com/sign#Information>
+    
+    
+Class: <http://grapson.com/concept#Terminology>
+
+    SubClassOf: 
+        <http://grapson.com/concept#Language_industry>
+    
+    
+Class: <http://grapson.com/expression#Adjective>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Adjective_phrase>
+    
+    
+Class: <http://grapson.com/expression#Adjective_phrase>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Phrase>
+    
+    
+Class: <http://grapson.com/expression#Adposition>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Adverb>
+    
+    
+Class: <http://grapson.com/expression#Adposition_phrase>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Phrase>
+    
+    
+Class: <http://grapson.com/expression#Adverb>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Adverb_phrase>
+    
+    
+Class: <http://grapson.com/expression#Adverb_phrase>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Phrase>
+    
+    
+Class: <http://grapson.com/expression#American_English>
+
+    SubClassOf: 
+        <http://grapson.com/expression#English>
+    
+    
+Class: <http://grapson.com/expression#Appellation>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Designation>
+    
+    
+Class: <http://grapson.com/expression#Chinese>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Language>
+    
+    
+Class: <http://grapson.com/expression#Designation>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Expression>,
+        <http://grapson.com/expression#baseForm> some <http://www.absoluteiri.edu/RELAPPROXC380>
+    
+    
+Class: <http://grapson.com/expression#English>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Language>
+    
+    
+Class: <http://grapson.com/expression#Etymology>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Description>
+    
+    
+Class: <http://grapson.com/expression#Expression>
+
+    SubClassOf: 
+        <http://grapson.com/syntax#Form>,
+        <http://www.absoluteiri.edu/RELAPPROXC384>,
+        <http://grapson.com/expression#langCode> some <http://www.absoluteiri.edu/RELAPPROXC380>
+    
+    
+Class: <http://grapson.com/expression#Finnish>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Language>
+    
+    
+Class: <http://grapson.com/expression#Language>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Meta>,
+        <http://grapson.com/syntax#Form>,
+        <http://grapson.com/expression#langCode> some <http://www.absoluteiri.edu/RELAPPROXC380>
+    
+    
+Class: <http://grapson.com/expression#Morpheme>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Designation>
+    
+    
+Class: <http://grapson.com/expression#Noun>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Noun_phrase>
+    
+    
+Class: <http://grapson.com/expression#Noun_phrase>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Phrase>
+    
+    
+Class: <http://grapson.com/expression#Phrase>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Designation>
+    
+    
+Class: <http://grapson.com/expression#Preposition>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Adposition>
+    
+    
+Class: <http://grapson.com/expression#Russian>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Language>
+    
+    
+Class: <http://grapson.com/expression#Text>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Expression>
+    
+    
+Class: <http://grapson.com/expression#Verb>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Verb_phrase>
+    
+    
+Class: <http://grapson.com/expression#Verb_phrase>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Phrase>
+    
+    
+Class: <http://grapson.com/expression#Word>
+
+    SubClassOf: 
+        <http://grapson.com/expression#Designation>
+    
+    
+Class: <http://grapson.com/expression1#Noncount>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Pun>
+    
+    
+Class: <http://grapson.com/meta#ConceptDataProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#ConceptProperty>,
+        <http://grapson.com/meta#OwlDataProperty>
+    
+    
+Class: <http://grapson.com/meta#ConceptObjectProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#ConceptProperty>,
+        <http://grapson.com/meta#MeaningObjectProperty>
+    
+    
+Class: <http://grapson.com/meta#ConceptProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#MeaningProperty>
+    
+    
+Class: <http://grapson.com/meta#Description>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Object>
+    
+    
+Class: <http://grapson.com/meta#Domain>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Meta>,
+        <http://grapson.com/semantics#Place>
+    
+    
+Class: <http://grapson.com/meta#ExpressionDataProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#ExpressionProperty>,
+        <http://grapson.com/meta#FormDataProperty>
+    
+    
+Class: <http://grapson.com/meta#ExpressionObjectProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#ExpressionProperty>,
+        <http://grapson.com/meta#FormObjectProperty>
+    
+    
+Class: <http://grapson.com/meta#ExpressionProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#FormProperty>
+    
+    
+Class: <http://grapson.com/meta#FormDataProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#FormProperty>,
+        <http://grapson.com/meta#OwlDataProperty>
+    
+    
+Class: <http://grapson.com/meta#FormObjectProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#FormProperty>,
+        <http://grapson.com/meta#OwlObjectProperty>
+    
+    
+Class: <http://grapson.com/meta#FormProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#ObjectProperty>
+    
+    
+Class: <http://grapson.com/meta#MeaningObjectProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#MeaningProperty>,
+        <http://grapson.com/meta#OwlObjectProperty>
+    
+    
+Class: <http://grapson.com/meta#MeaningProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#ObjectProperty>
+    
+    
+Class: <http://grapson.com/meta#Meta>
+
+    
+Class: <http://grapson.com/meta#MetaDataProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#MetaProperty>,
+        <http://grapson.com/meta#OwlDataProperty>
+    
+    
+Class: <http://grapson.com/meta#MetaObjectProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#MetaProperty>,
+        <http://grapson.com/meta#OwlObjectProperty>
+    
+    
+Class: <http://grapson.com/meta#MetaProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Property>
+    
+    
+Class: <http://grapson.com/meta#Object>
+
+    
+Class: <http://grapson.com/meta#ObjectDataProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#ObjectProperty>,
+        <http://grapson.com/meta#OwlDataProperty>
+    
+    
+Class: <http://grapson.com/meta#ObjectProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Property>
+    
+    
+Class: <http://grapson.com/meta#OwlDataProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Property>
+    
+    
+Class: <http://grapson.com/meta#OwlObjectProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Property>
+    
+    
+Class: <http://grapson.com/meta#Property>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Meta>
+    
+    
+Class: <http://grapson.com/meta#Pun>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Meta>
+    
+    
+Class: <http://grapson.com/meta#SignProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#ObjectProperty>
+    
+    
+Class: <http://grapson.com/meta#Source>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Meta>
+    
+    
+Class: <http://grapson.com/meta#TermDataProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#TermProperty>
+    
+    
+Class: <http://grapson.com/meta#TermObjectdProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#OwlObjectProperty>,
+        <http://grapson.com/meta#TermProperty>
+    
+    
+Class: <http://grapson.com/meta#TermProperty>
+
+    SubClassOf: 
+        <http://grapson.com/meta#SignProperty>
+    
+    
+Class: <http://grapson.com/semantics#Be>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#State>
+    
+    
+Class: <http://grapson.com/semantics#BecomeEvent>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Change>
+    
+    
+Class: <http://grapson.com/semantics#CauseEvent>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Event>
+    
+    
+Class: <http://grapson.com/semantics#Change>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#ClosedEvent>
+    
+    
+Class: <http://grapson.com/semantics#ClosedEvent>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Event>
+    
+    
+Class: <http://grapson.com/semantics#Count>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Pun>
+    
+    
+Class: <http://grapson.com/semantics#Cycle>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#ClosedEvent>
+    
+    
+Class: <http://grapson.com/semantics#DoEvent>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#CauseEvent>
+    
+    
+Class: <http://grapson.com/semantics#Event>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Meaning>
+    
+    
+Class: <http://grapson.com/semantics#Goal>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Role>
+    
+    
+Class: <http://grapson.com/semantics#Instrument>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Means>
+    
+    
+Class: <http://grapson.com/semantics#MakeEvent>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#CauseEvent>
+    
+    
+Class: <http://grapson.com/semantics#Meaning>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Object>
+    
+    
+Class: <http://grapson.com/semantics#Means>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Role>
+    
+    
+Class: <http://grapson.com/semantics#Object>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Meaning>
+    
+    
+Class: <http://grapson.com/semantics#OpenEvent>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Event>
+    
+    
+Class: <http://grapson.com/semantics#Part>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Role>
+    
+    
+Class: <http://grapson.com/semantics#Place>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Role>
+    
+    
+Class: <http://grapson.com/semantics#Plural>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Pun>
+    
+    
+Class: <http://grapson.com/semantics#Process>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#OpenEvent>
+    
+    
+Class: <http://grapson.com/semantics#Ranking>
+
+    SubClassOf: 
+        <http://grapson.com/sign#Information>
+    
+    
+Class: <http://grapson.com/semantics#Role>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Meaning>
+    
+    
+Class: <http://grapson.com/semantics#Singular>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Pun>
+    
+    
+Class: <http://grapson.com/semantics#State>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#OpenEvent>
+    
+    
+Class: <http://grapson.com/semantics#Time>
+
+    SubClassOf: 
+        <http://grapson.com/semantics#Role>
+    
+    
+Class: <http://grapson.com/sign#Description>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Description>
+    
+    
+Class: <http://grapson.com/sign#Information>
+
+    SubClassOf: 
+        <http://grapson.com/sign#Sign>
+    
+    
+Class: <http://grapson.com/sign#Sense>
+
+    SubClassOf: 
+        <http://grapson.com/sign#Sign>
+    
+    
+Class: <http://grapson.com/sign#Sign>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Object>
+    
+    
+Class: <http://grapson.com/syntax#Form>
+
+    SubClassOf: 
+        <http://grapson.com/meta#Object>
+    
+    
+Class: <http://grapson.com/term#Abbreviation>
+
+    SubClassOf: 
+        <http://grapson.com/term#Term>
+    
+    
+Class: <http://grapson.com/term#Acronym>
+
+    SubClassOf: 
+        <http://grapson.com/term#Term>
+    
+    
+Class: <http://grapson.com/term#Context>
+
+    SubClassOf: 
+        <http://grapson.com/term#Description>
+    
+    
+Class: <http://grapson.com/term#Definition>
+
+    SubClassOf: 
+        <http://grapson.com/term#Description>
+    
+    
+Class: <http://grapson.com/term#Description>
+
+    SubClassOf: 
+        <http://grapson.com/sign#Description>,
+        <http://grapson.com/meta#hasSource> some <http://grapson.com/meta#Source>
+    
+    
+Class: <http://grapson.com/term#Example>
+
+    SubClassOf: 
+        <http://grapson.com/term#Description>
+    
+    
+Class: <http://grapson.com/term#Explanation>
+
+    SubClassOf: 
+        <http://grapson.com/term#Description>
+    
+    
+Class: <http://grapson.com/term#LongForm>
+
+    SubClassOf: 
+        <http://grapson.com/term#Term>
+    
+    
+Class: <http://grapson.com/term#Message>
+
+    SubClassOf: 
+        <http://grapson.com/sign#Sign>
+    
+    
+Class: <http://grapson.com/term#ScientificTerm>
+
+    SubClassOf: 
+        <http://grapson.com/term#Term>
+    
+    
+Class: <http://grapson.com/term#ShortForm>
+
+    SubClassOf: 
+        <http://grapson.com/term#Term>
+    
+    
+Class: <http://grapson.com/term#Term>
+
+    SubClassOf: 
+        <http://grapson.com/sign#Sign>,
+        <http://grapson.com/meta#hasDomain> some <http://grapson.com/meta#Source>
+    
+    
+Class: <http://grapson.com/term#Variant>
+
+    SubClassOf: 
+        <http://grapson.com/term#Term>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC353>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC471>,
+        <http://www.absoluteiri.edu/RELAPPROXC473>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC354>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC358>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC371>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC373>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC378>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC380>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC380RELAPPROXQ2>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC380>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC384>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC385>
+
+    SubClassOf: 
+        <http://grapson.com/expression#langCode> some <http://www.absoluteiri.edu/RELAPPROXC380RELAPPROXQ2>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC387>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC389>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC394>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC395>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasDesignation> some <http://www.absoluteiri.edu/RELAPPROXC397>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC396>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC397>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC397>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC396>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC398>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC399>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasDesignation> some <http://www.absoluteiri.edu/RELAPPROXC401>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC400>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC401>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC401>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC400>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC402>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC403>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasDesignation> some <http://www.absoluteiri.edu/RELAPPROXC405>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC404>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC405>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC405>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC404>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC406>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC407>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasDesignation> some <http://www.absoluteiri.edu/RELAPPROXC409>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC408>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC409>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC409>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC408>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC410>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC411>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasDesignation> some <http://www.absoluteiri.edu/RELAPPROXC413>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC412>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC413>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC413>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC412>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC414>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC415>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasDesignation> some <http://www.absoluteiri.edu/RELAPPROXC417>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC416>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC417>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC417>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC416>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC418>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC419>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasDesignation> some <http://www.absoluteiri.edu/RELAPPROXC421>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC420>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC421>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC421>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC420>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC422>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC423>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasDesignation> some <http://www.absoluteiri.edu/RELAPPROXC425>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC424>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC425>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC425>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC424>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC426>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC427>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasDesignation> some <http://www.absoluteiri.edu/RELAPPROXC429>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC428>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC429>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC429>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC428>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC430>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC431>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasDesignation> some <http://www.absoluteiri.edu/RELAPPROXC433>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC432>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC433>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC433>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC432>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC434>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC435>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasDesignation> some <http://www.absoluteiri.edu/RELAPPROXC437>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC436>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC437>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC437>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC436>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC438>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC439>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasReferent> some <http://www.absoluteiri.edu/RELAPPROXC441>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC440>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC441>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC441>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC440>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC442>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC443>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasReferent> some <http://www.absoluteiri.edu/RELAPPROXC445>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC444>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC445>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC445>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC444>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC446>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC447>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasReferent> some <http://www.absoluteiri.edu/RELAPPROXC449>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC448>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC449>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC449>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC448>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC450>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC451>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasReferent> some <http://www.absoluteiri.edu/RELAPPROXC453>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC452>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC453>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC453>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC452>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC454>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC455>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasReferent> some <http://www.absoluteiri.edu/RELAPPROXC457>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC456>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC457>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC457>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC456>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC458>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC459>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasReferent> some <http://www.absoluteiri.edu/RELAPPROXC461>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC460>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC461>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC461>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC460>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC462>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC463>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasReferent> some <http://www.absoluteiri.edu/RELAPPROXC465>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC464>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC465>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC465>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC464>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC466>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC467>
+
+    SubClassOf: 
+        <http://grapson.com/term#hasReferent> some <http://www.absoluteiri.edu/RELAPPROXC469>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC468>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC469>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC469>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC468>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC470>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC354>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC471>
+
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC472>
+
+    SubClassOf: 
+        <http://www.absoluteiri.edu/RELAPPROXC354>
+    
+    
+Class: <http://www.absoluteiri.edu/RELAPPROXC473>
+
+    
+Class: owl:Thing
+
+    SubClassOf: 
+        <http://grapson.com/sign#Sign>,
+        <http://www.absoluteiri.edu/RELAPPROXC358>,
+        <http://www.absoluteiri.edu/RELAPPROXC371>,
+        <http://www.absoluteiri.edu/RELAPPROXC373>,
+        <http://www.absoluteiri.edu/RELAPPROXC378>,
+        <http://www.absoluteiri.edu/RELAPPROXC387>,
+        <http://www.absoluteiri.edu/RELAPPROXC389>
+    
+    
+Individual: <http://grapson.com/concept0#Chemistry>
+
+    Types: 
+        <http://grapson.com/concept#Chemistry>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Concept>
+
+    Types: 
+        <http://grapson.com/concept#Concept>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Construction_industry>
+
+    Types: 
+        <http://grapson.com/concept#Construction_industry>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Content>
+
+    Types: 
+        <http://grapson.com/concept#Content>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Country>
+
+    Types: 
+        <http://grapson.com/concept#Country>,
+        <http://grapson.com/meta#Pun>
+    
+    Facts:  
+     <http://grapson.com/meta#hasDomain>  <http://grapson.com/concept0#Geography>
+    
+    
+Individual: <http://grapson.com/concept0#Data>
+
+    Types: 
+        <http://grapson.com/concept#Data>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Geography>
+
+    Types: 
+        <http://grapson.com/concept#Geography>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Information_and_communication_technology>
+
+    Types: 
+        <http://grapson.com/concept#Information_and_communication_technology>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Input>
+
+    Types: 
+        <http://grapson.com/concept#Input>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Language_industry>
+
+    Types: 
+        <http://grapson.com/concept#Language_industry>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Language_technology>
+
+    Types: 
+        <http://grapson.com/concept#Language_technology>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Linguistics>
+
+    Types: 
+        <http://grapson.com/concept#Linguistics>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Multilingual_language_technology>
+
+    Types: 
+        <http://grapson.com/concept#Multilingual_language_technology>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Parse>
+
+    Types: 
+        <http://grapson.com/concept#Parse>,
+        <http://grapson.com/meta#Pun>
+    
+    Facts:  
+     <http://grapson.com/term#referentOf>  <http://grapson.com/term1#en-parse-NV_-_ont-Parse>
+    
+    
+Individual: <http://grapson.com/concept0#Parser>
+
+    Types: 
+        <http://grapson.com/concept#Parser>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Program>
+
+    Types: 
+        <http://grapson.com/concept#Program>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Software>
+
+    Types: 
+        <http://grapson.com/concept#Software>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#Terminology>
+
+    Types: 
+        <http://grapson.com/concept#Terminology>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept0#ctryCode>
+
+    Types: 
+        <http://grapson.com/meta#ObjectDataProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/concept1#China>
+
+    Types: 
+        <http://grapson.com/concept#Country>
+    
+    Facts:  
+     <http://grapson.com/concept#ctryCode>  <http://www.absoluteiri.edu/RELAPPROXI-84>
+    
+    
+Individual: <http://grapson.com/concept1#Finland>
+
+    Types: 
+        <http://grapson.com/concept#Country>
+    
+    Facts:  
+     <http://grapson.com/concept#ctryCode>  <http://www.absoluteiri.edu/RELAPPROXI-151>
+    
+    
+Individual: <http://grapson.com/concept1#UK>
+
+    Types: 
+        <http://grapson.com/concept#Country>
+    
+    
+Individual: <http://grapson.com/concept1#USA>
+
+    Types: 
+        <http://grapson.com/concept#Country>
+    
+    
+Individual: <http://grapson.com/expression0#Adjective>
+
+    Types: 
+        <http://grapson.com/expression#Adjective>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Adjective_phrase>
+
+    Types: 
+        <http://grapson.com/expression#Adjective_phrase>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Adposition>
+
+    Types: 
+        <http://grapson.com/expression#Adposition>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Adposition_phrase>
+
+    Types: 
+        <http://grapson.com/expression#Adposition_phrase>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Adverb>
+
+    Types: 
+        <http://grapson.com/expression#Adverb>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Adverb_phrase>
+
+    Types: 
+        <http://grapson.com/expression#Adverb_phrase>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#American_English>
+
+    Types: 
+        <http://grapson.com/expression#American_English>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Appellation>
+
+    Types: 
+        <http://grapson.com/expression#Appellation>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Chinese>
+
+    Types: 
+        <http://grapson.com/concept#Language>,
+        <http://grapson.com/expression#Chinese>,
+        <http://grapson.com/expression#Language>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Designation>
+
+    Types: 
+        <http://grapson.com/expression#Designation>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#English>
+
+    Types: 
+        <http://grapson.com/concept#Language>,
+        <http://grapson.com/expression#English>,
+        <http://grapson.com/expression#Language>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Finnish>
+
+    Types: 
+        <http://grapson.com/concept#Language>,
+        <http://grapson.com/expression#Finnish>,
+        <http://grapson.com/expression#Language>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Language>
+
+    Types: 
+        <http://grapson.com/expression#Language>,
+        <http://grapson.com/meta#Pun>
+    
+    Facts:  
+     <http://grapson.com/meta#hasDomain>  <http://grapson.com/concept0#Linguistics>
+    
+    
+Individual: <http://grapson.com/expression0#Noun>
+
+    Types: 
+        <http://grapson.com/expression#Noun>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Noun_phrase>
+
+    Types: 
+        <http://grapson.com/expression#Noun_phrase>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Phrase>
+
+    Types: 
+        <http://grapson.com/expression#Phrase>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Preposition>
+
+    Types: 
+        <http://grapson.com/expression#Preposition>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Russian>
+
+    Types: 
+        <http://grapson.com/concept#Language>,
+        <http://grapson.com/expression#Language>,
+        <http://grapson.com/expression#Russian>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Verb>
+
+    Types: 
+        <http://grapson.com/expression#Verb>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Verb_phrase>
+
+    Types: 
+        <http://grapson.com/expression#Verb_phrase>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#Word>
+
+    Types: 
+        <http://grapson.com/expression#Word>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#baseForm>
+
+    Types: 
+        <http://grapson.com/meta#ExpressionDataProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#catCode>
+
+    Types: 
+        <http://grapson.com/meta#ExpressionDataProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#gender>
+
+    Types: 
+        <http://grapson.com/meta#ExpressionDataProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#hasHead>
+
+    Types: 
+        <http://grapson.com/meta#ExpressionObjectProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#headPosition>
+
+    Types: 
+        <http://grapson.com/meta#ExpressionDataProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#langCode>
+
+    Types: 
+        <http://grapson.com/meta#ExpressionDataProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#number>
+
+    Types: 
+        <http://grapson.com/meta#ExpressionDataProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#romanisation>
+
+    Types: 
+        <http://grapson.com/meta#ExpressionDataProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression0#text>
+
+    Types: 
+        <http://grapson.com/meta#ExpressionDataProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/expression1#en-be-V>
+
+    Types: 
+        <http://grapson.com/expression#English>,
+        <http://grapson.com/expression#Verb>
+    
+    Facts:  
+     <http://grapson.com/expression#baseForm>  <http://www.absoluteiri.edu/RELAPPROXI-121>
+    
+    
+Individual: <http://grapson.com/expression1#en-for-P>
+
+    Types: 
+        <http://grapson.com/expression#English>,
+        <http://grapson.com/expression#Preposition>
+    
+    Facts:  
+     <http://grapson.com/expression#baseForm>  <http://www.absoluteiri.edu/RELAPPROXI-80>
+    
+    
+Individual: <http://grapson.com/expression1#en-in-P>
+
+    Types: 
+        <http://grapson.com/expression#English>,
+        <http://grapson.com/expression#Preposition>
+    
+    Facts:  
+     <http://grapson.com/expression#baseForm>  <http://www.absoluteiri.edu/RELAPPROXI-42>
+    
+    
+Individual: <http://grapson.com/expression1#en-parse-NV>
+
+    Types: 
+        <http://grapson.com/expression#English>,
+        <http://grapson.com/expression#Verb>
+    
+    Facts:  
+     <http://grapson.com/expression#baseForm>  <http://www.absoluteiri.edu/RELAPPROXI-96>
+    
+    
+Individual: <http://grapson.com/expression1#en-program-N>
+
+    
+Individual: <http://grapson.com/expression1#en-with-P>
+
+    Types: 
+        <http://grapson.com/expression#English>,
+        <http://grapson.com/expression#Preposition>
+    
+    Facts:  
+     <http://grapson.com/expression#baseForm>  <http://www.absoluteiri.edu/RELAPPROXI-82>
+    
+    
+Individual: <http://grapson.com/expression1#fi-jäsennin-N>
+
+    Types: 
+        <http://grapson.com/expression#Expression>,
+        <http://grapson.com/expression#Finnish>,
+        <http://grapson.com/expression#Noun>
+    
+    Facts:  
+     <http://grapson.com/expression#baseForm>  <http://www.absoluteiri.edu/RELAPPROXI-137>
+    
+    
+Individual: <http://grapson.com/expression1#zh-为了-P>
+
+    Types: 
+        <http://grapson.com/expression#Chinese>,
+        <http://grapson.com/expression#Preposition>
+    
+    Facts:  
+     <http://grapson.com/expression#baseForm>  <http://www.absoluteiri.edu/RELAPPROXI-156>,
+     <http://grapson.com/expression#romanisation>  <http://www.absoluteiri.edu/RELAPPROXI-129>
+    
+    
+Individual: <http://grapson.com/expression1#zh-介词-N>
+
+    Types: 
+        <http://grapson.com/expression#Chinese>,
+        <http://grapson.com/expression#Noun>
+    
+    Facts:  
+     <http://grapson.com/expression#baseForm>  <http://www.absoluteiri.edu/RELAPPROXI-154>,
+     <http://grapson.com/expression#romanisation>  <http://www.absoluteiri.edu/RELAPPROXI-103>
+    
+    
+Individual: <http://grapson.com/expression1#zh-剖析-V>
+
+    Types: 
+        <http://grapson.com/expression#Chinese>,
+        <http://grapson.com/expression#Verb>
+    
+    Facts:  
+     <http://grapson.com/expression#baseForm>  <http://www.absoluteiri.edu/RELAPPROXI-135>,
+     <http://grapson.com/expression#romanisation>  <http://www.absoluteiri.edu/RELAPPROXI-37>
+    
+    
+Individual: <http://grapson.com/expression1#zh-在___里-P>
+
+    Types: 
+        <http://grapson.com/expression#Adposition>,
+        <http://grapson.com/expression#Chinese>
+    
+    Facts:  
+     <http://grapson.com/expression#baseForm>  <http://www.absoluteiri.edu/RELAPPROXI-94>,
+     <http://grapson.com/expression#romanisation>  <http://www.absoluteiri.edu/RELAPPROXI-87>
+    
+    
+Individual: <http://grapson.com/expression1#zh-是-V>
+
+    Types: 
+        <http://grapson.com/expression#Chinese>,
+        <http://grapson.com/expression#Verb>
+    
+    Facts:  
+     <http://grapson.com/expression#baseForm>  <http://www.absoluteiri.edu/RELAPPROXI-50>,
+     <http://grapson.com/expression#romanisation>  <http://www.absoluteiri.edu/RELAPPROXI-32>
+    
+    
+Individual: <http://grapson.com/expression1#zh-程序-N>
+
+    Types: 
+        <http://grapson.com/expression#Chinese>,
+        <http://grapson.com/expression#Noun>
+    
+    Facts:  
+     <http://grapson.com/expression#baseForm>  <http://www.absoluteiri.edu/RELAPPROXI-60>,
+     <http://grapson.com/expression#romanisation>  <http://www.absoluteiri.edu/RELAPPROXI-34>
+    
+    
+Individual: <http://grapson.com/meta0#Description>
+
+    Types: 
+        <http://grapson.com/meta#Description>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/meta0#frequency>
+
+    Types: 
+        <http://grapson.com/meta#MetaDataProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/meta0#hidden>
+
+    Types: 
+        <http://grapson.com/meta#MetaDataProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/meta0#see>
+
+    Types: 
+        <http://grapson.com/meta#MetaObjectProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/meta0#status>
+
+    Types: 
+        <http://grapson.com/meta#MetaDataProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/meta1#Ji>
+
+    Types: 
+        <http://grapson.com/meta#Source>
+    
+    
+Individual: <http://grapson.com/meta1#Lcarlson>
+
+    
+Individual: <http://grapson.com/meta1#TFS>
+
+    Types: 
+        <http://grapson.com/meta#Source>
+    
+    Facts:  
+     <http://grapson.com/expression#URI>  <http://www.absoluteiri.edu/RELAPPROXI-12>
+    
+    
+Individual: <http://grapson.com/meta1#Wang>
+
+    Types: 
+        <http://grapson.com/meta#Source>
+    
+    
+Individual: <http://grapson.com/semantics0#Be>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/semantics#Be>
+    
+    
+Individual: <http://grapson.com/semantics0#Event>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/semantics#Event>
+    
+    
+Individual: <http://grapson.com/semantics0#Meaning>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/semantics#Meaning>
+    
+    
+Individual: <http://grapson.com/semantics0#hasFunction>
+
+    Types: 
+        <http://grapson.com/meta#MeaningObjectProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/semantics0#hasGoal>
+
+    Types: 
+        <http://grapson.com/meta#MeaningObjectProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/semantics0#hasInstrument>
+
+    Types: 
+        <http://grapson.com/meta#MeaningObjectProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/semantics0#hasMeans>
+
+    Types: 
+        <http://grapson.com/meta#MeaningObjectProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/semantics0#hasPart>
+
+    Types: 
+        <http://grapson.com/meta#MeaningObjectProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/semantics0#hasPlace>
+
+    Types: 
+        <http://grapson.com/meta#MeaningObjectProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/semantics0#hasTime>
+
+    Types: 
+        <http://grapson.com/meta#MeaningObjectProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/sign0#Information>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/sign#Information>
+    
+    
+Individual: <http://grapson.com/sign0#Sign>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/sign#Sign>
+    
+    
+Individual: <http://grapson.com/term0#Abbreviation>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/term#Abbreviation>
+    
+    
+Individual: <http://grapson.com/term0#Acronym>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/term#Acronym>
+    
+    
+Individual: <http://grapson.com/term0#Context>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/term#Context>
+    
+    
+Individual: <http://grapson.com/term0#Definition>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/term#Definition>
+    
+    
+Individual: <http://grapson.com/term0#Description>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/term#Description>
+    
+    
+Individual: <http://grapson.com/term0#Example>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/term#Example>
+    
+    
+Individual: <http://grapson.com/term0#Explanation>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/term#Explanation>
+    
+    
+Individual: <http://grapson.com/term0#LongForm>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/term#LongForm>
+    
+    
+Individual: <http://grapson.com/term0#ScientificTerm>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/term#ScientificTerm>
+    
+    
+Individual: <http://grapson.com/term0#ShortForm>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/term#ShortForm>
+    
+    
+Individual: <http://grapson.com/term0#Term>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/term#Term>
+    
+    
+Individual: <http://grapson.com/term0#Variant>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/term#Variant>
+    
+    
+Individual: <http://grapson.com/term0#affect>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/meta#TermDataProperty>
+    
+    
+Individual: <http://grapson.com/term0#hasReferent>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/meta#TermObjectdProperty>
+    
+    
+Individual: <http://grapson.com/term0#referentOf>
+
+    Types: 
+        <http://grapson.com/meta#ConceptObjectProperty>,
+        <http://grapson.com/meta#Pun>
+    
+    
+Individual: <http://grapson.com/term0#register>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/meta#TermDataProperty>
+    
+    
+Individual: <http://grapson.com/term0#seeFalseFriend>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/meta#TermObjectdProperty>
+    
+    
+Individual: <http://grapson.com/term0#status>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/meta#TermDataProperty>
+    
+    
+Individual: <http://grapson.com/term0#usage>
+
+    Types: 
+        <http://grapson.com/meta#Pun>,
+        <http://grapson.com/meta#TermDataProperty>
+    
+    
+Individual: <http://grapson.com/term1#en-for-P_-_sem-hasPurpose>
+
+    Types: 
+        <http://grapson.com/term#Term>,
+        <http://www.absoluteiri.edu/RELAPPROXC402>,
+        <http://www.absoluteiri.edu/RELAPPROXC446>
+    
+    Facts:  
+     <http://grapson.com/term#hasDesignation>  <http://grapson.com/expression1#en-for-P>,
+     <http://grapson.com/term#hasReferent>  <http://grapson.com/semantics0#hasFunction>
+    
+    
+Individual: <http://grapson.com/term1#en-in-P_-_sem-hasPlace>
+
+    Types: 
+        <http://grapson.com/term#Term>,
+        <http://www.absoluteiri.edu/RELAPPROXC394>,
+        <http://www.absoluteiri.edu/RELAPPROXC438>
+    
+    Facts:  
+     <http://grapson.com/meta#hasSource>  <http://grapson.com/meta1#Lcarlson>,
+     <http://grapson.com/term#hasDesignation>  <http://grapson.com/expression1#en-in-P>,
+     <http://grapson.com/term#hasReferent>  <http://grapson.com/semantics0#hasPlace>
+    
+    
+Individual: <http://grapson.com/term1#en-parse-NV_-_ont-Parse>
+
+    Types: 
+        <http://grapson.com/term#Term>,
+        <http://www.absoluteiri.edu/RELAPPROXC422>
+    
+    Facts:  
+     <http://grapson.com/meta#hasSource>  <http://grapson.com/meta1#Lcarlson>,
+     <http://grapson.com/term#hasDesignation>  <http://grapson.com/expression1#en-parse-NV>
+    
+    
+Individual: <http://grapson.com/term1#en-program-N_-_ont-Program>
+
+    Types: 
+        <http://grapson.com/term#Term>,
+        <http://www.absoluteiri.edu/RELAPPROXC414>,
+        <http://www.absoluteiri.edu/RELAPPROXC458>
+    
+    Facts:  
+     <http://grapson.com/meta#hasSource>  <http://grapson.com/meta1#Lcarlson>,
+     <http://grapson.com/term#hasDesignation>  <http://grapson.com/expression1#en-program-N>,
+     <http://grapson.com/term#hasReferent>  <http://grapson.com/concept0#Software>
+    
+    
+Individual: <http://grapson.com/term1#en-with-P_-_sem-hasInstrument>
+
+    Types: 
+        <http://grapson.com/term#Term>,
+        <http://www.absoluteiri.edu/RELAPPROXC418>,
+        <http://www.absoluteiri.edu/RELAPPROXC462>
+    
+    Facts:  
+     <http://grapson.com/meta#hasSource>  <http://grapson.com/meta1#Lcarlson>,
+     <http://grapson.com/term#hasDesignation>  <http://grapson.com/expression1#en-with-P>,
+     <http://grapson.com/term#hasReferent>  <http://grapson.com/semantics0#hasInstrument>
+    
+    
+Individual: <http://grapson.com/term1#fi-jäsennin-N_-_ont-Parser>
+
+    Types: 
+        <http://grapson.com/term#Term>,
+        <http://www.absoluteiri.edu/RELAPPROXC410>,
+        <http://www.absoluteiri.edu/RELAPPROXC454>
+    
+    Facts:  
+     <http://grapson.com/meta#hasSource>  <http://grapson.com/meta1#Lcarlson>,
+     <http://grapson.com/term#hasDesignation>  <http://grapson.com/expression1#fi-jäsennin-N>,
+     <http://grapson.com/term#hasReferent>  <http://grapson.com/concept0#Parser>
+    
+    
+Individual: <http://grapson.com/term1#zh-为了-P_-_sem-hasGoal>
+
+    Types: 
+        <http://grapson.com/term#Term>,
+        <http://www.absoluteiri.edu/RELAPPROXC406>,
+        <http://www.absoluteiri.edu/RELAPPROXC450>
+    
+    Facts:  
+     <http://grapson.com/meta#hasSource>  <http://grapson.com/meta1#Ji>,
+     <http://grapson.com/term#hasDesignation>  <http://grapson.com/expression1#zh-为了-P>,
+     <http://grapson.com/term#hasReferent>  <http://grapson.com/semantics0#hasGoal>
+    
+    
+Individual: <http://grapson.com/term1#zh-剖析-V_-_ont-Parse>
+
+    Types: 
+        <http://grapson.com/term#Term>,
+        <http://www.absoluteiri.edu/RELAPPROXC398>,
+        <http://www.absoluteiri.edu/RELAPPROXC442>
+    
+    Facts:  
+     <http://grapson.com/meta#hasSource>  <http://grapson.com/meta1#Ji>,
+     <http://grapson.com/term#hasDesignation>  <http://grapson.com/expression1#zh-剖析-V>,
+     <http://grapson.com/term#hasReferent>  <http://grapson.com/concept0#Parse>
+    
+    
+Individual: <http://grapson.com/term1#zh-在___里-P_-_sem-hasPlace>
+
+    Types: 
+        <http://grapson.com/term#Term>,
+        <http://www.absoluteiri.edu/RELAPPROXC426>,
+        <http://www.absoluteiri.edu/RELAPPROXC438>
+    
+    Facts:  
+     <http://grapson.com/meta#hasSource>  <http://grapson.com/meta1#Ji>,
+     <http://grapson.com/term#hasDesignation>  <http://grapson.com/expression1#zh-在___里-P>,
+     <http://grapson.com/term#hasReferent>  <http://grapson.com/semantics0#hasPlace>
+    
+    
+Individual: <http://grapson.com/term1#zh-是-V_-_sem-Be>
+
+    Types: 
+        <http://grapson.com/term#Term>,
+        <http://www.absoluteiri.edu/RELAPPROXC434>,
+        <http://www.absoluteiri.edu/RELAPPROXC466>
+    
+    Facts:  
+     <http://grapson.com/meta#hasSource>  <http://grapson.com/meta1#Ji>,
+     <http://grapson.com/term#hasDesignation>  <http://grapson.com/expression1#zh-是-V>,
+     <http://grapson.com/term#hasReferent>  <http://grapson.com/semantics0#Be>
+    
+    
+Individual: <http://grapson.com/term1#zh-程序-N_-_ont-Parser>
+
+    Types: 
+        <http://grapson.com/term#Term>,
+        <http://www.absoluteiri.edu/RELAPPROXC430>,
+        <http://www.absoluteiri.edu/RELAPPROXC454>
+    
+    Facts:  
+     <http://grapson.com/meta#hasSource>  <http://grapson.com/meta1#Ji>,
+     <http://grapson.com/term#hasDesignation>  <http://grapson.com/expression1#zh-程序-N>,
+     <http://grapson.com/term#hasReferent>  <http://grapson.com/concept0#Parser>
+    
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-103>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-121>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-129>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-12>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-135>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-137>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-151>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-154>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-156>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-32>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-34>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-37>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-42>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-50>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-60>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-80>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-82>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-84>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-87>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-94>
+
+    
+Individual: <http://www.absoluteiri.edu/RELAPPROXI-96>
+
+    

@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TestIQParser {
     @Test
-    public void testCorpusFile() throws OWLOntologyCreationException, IOException {
+    public void testCorpusFile1() throws OWLOntologyCreationException, IOException {
         OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
         OWLOntology ontology = manager.loadOntologyFromOntologyDocument(getClass().getResourceAsStream("ore_ont_8723.owl.norm"));
 
@@ -27,7 +27,32 @@ public class TestIQParser {
                 ), factory, ontology
         );
     }
+    @Test
+    public void testCorpusFile2() throws OWLOntologyCreationException, IOException {
+        OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+        OWLOntology ontology = manager.loadOntologyFromOntologyDocument(getClass().getResourceAsStream("ore_ont_13035.owl.norm"));
 
+        OWLDataFactory factory = manager.getOWLDataFactory();
+
+        List<OWLClassExpression> iqs = IQGenerator.parseIQs(new BufferedReader(
+                        new InputStreamReader(
+                                getClass().getResourceAsStream("ore_ont_13035.owl.norm.iqs"))
+                ), factory, ontology
+        );
+    }
+    @Test
+    public void testCorpusFile3() throws OWLOntologyCreationException, IOException {
+        OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+        OWLOntology ontology = manager.loadOntologyFromOntologyDocument(getClass().getResourceAsStream("ore_ont_13078.owl.norm"));
+
+        OWLDataFactory factory = manager.getOWLDataFactory();
+
+        List<OWLClassExpression> iqs = IQGenerator.parseIQs(new BufferedReader(
+                        new InputStreamReader(
+                                getClass().getResourceAsStream("ore_ont_13078.owl.norm.iqs"))
+                ), factory, ontology
+        );
+    }
     @Test
     public void testBracketCleaning1() throws ParseException {
         String string =
@@ -75,5 +100,36 @@ public class TestIQParser {
         cleaned = ManchesterSyntaxCleaner.cleanOneStep(string);
         assert(cleaned.isPresent());
         assertEquals(cleaned.get(), "r some (B and C and D)");
+    }
+
+    @Test
+    public void testBracketCleaning5() throws ParseException {
+        String string =
+                "<http://xmlns.com/foaf/0.1/depicts> some (<http://purl.obolibrary.org/obo/BFO_0000050> some ((<http://purl.obolibrary.org/obo/HAO_0000003> and <http://purl.obolibrary.org/obo/HAO_0000041>) and (<http://purl.obolibrary.org/obo/BFO_0000050> some (((<http://purl.obolibrary.org/obo/BFO_0000050> some <http://purl.obolibrary.org/obo/HAO_0000006>) and (<http://purl.obolibrary.org/obo/BFO_0000050> some (<http://purl.obolibrary.org/obo/HAO_0000003> and (<http://purl.obolibrary.org/obo/HAO_0000000> and <http://purl.obolibrary.org/obo/HAO_0000006>)))) and (<http://purl.obolibrary.org/obo/BFO_0000050> some (<http://purl.obolibrary.org/obo/HAO_0000000> and <http://purl.obolibrary.org/obo/HAO_0000006>))))))";
+
+        String cleaned = ManchesterSyntaxCleaner.clean(string);
+
+        System.out.println(cleaned);
+
+        assertEquals(
+                "<http://xmlns.com/foaf/0.1/depicts> some (<http://purl.obolibrary.org/obo/BFO_0000050> some (<http://purl.obolibrary.org/obo/HAO_0000003> and <http://purl.obolibrary.org/obo/HAO_0000041> and <http://purl.obolibrary.org/obo/BFO_0000050> some (<http://purl.obolibrary.org/obo/BFO_0000050> some <http://purl.obolibrary.org/obo/HAO_0000006> and <http://purl.obolibrary.org/obo/BFO_0000050> some (<http://purl.obolibrary.org/obo/HAO_0000003> and <http://purl.obolibrary.org/obo/HAO_0000000> and <http://purl.obolibrary.org/obo/HAO_0000006>) and <http://purl.obolibrary.org/obo/BFO_0000050> some (<http://purl.obolibrary.org/obo/HAO_0000000> and <http://purl.obolibrary.org/obo/HAO_0000006>))))",
+                cleaned);
+
+    }
+
+
+    @Test
+    public void testBracketCleaning5partial() throws ParseException {
+        String string =
+                "r some (((<http://purl.obolibrary.org/obo/BFO_0000050> some <http://purl.obolibrary.org/obo/HAO_0000006>) and <http://purl.obolibrary.org/obo/BFO_0000050> some (<http://purl.obolibrary.org/obo/HAO_0000003> and <http://purl.obolibrary.org/obo/HAO_0000000> and <http://purl.obolibrary.org/obo/HAO_0000006>)) and <http://purl.obolibrary.org/obo/BFO_0000050> some (<http://purl.obolibrary.org/obo/HAO_0000000> and <http://purl.obolibrary.org/obo/HAO_0000006>))";
+
+        String cleaned = ManchesterSyntaxCleaner.clean(string);
+
+        System.out.println(cleaned);
+
+        assertEquals(
+            "r some (<http://purl.obolibrary.org/obo/BFO_0000050> some <http://purl.obolibrary.org/obo/HAO_0000006> and <http://purl.obolibrary.org/obo/BFO_0000050> some (<http://purl.obolibrary.org/obo/HAO_0000003> and <http://purl.obolibrary.org/obo/HAO_0000000> and <http://purl.obolibrary.org/obo/HAO_0000006>) and <http://purl.obolibrary.org/obo/BFO_0000050> some (<http://purl.obolibrary.org/obo/HAO_0000000> and <http://purl.obolibrary.org/obo/HAO_0000006>))",
+                 cleaned);
+
     }
 }

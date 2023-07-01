@@ -22,7 +22,7 @@ public class ManchesterSyntaxCleaner {
     private static Pattern andAnd = Pattern.compile("and\\s+(\\()[^\\s+]+\\s+and\\s");
     private static Pattern andSome = Pattern.compile("and\\s+(\\()[^\\s+]+\\s+some\\s");
 
-    private static Pattern some = Pattern.compile("(\\()[^\\s]+\\s+some");
+    private static Pattern some = Pattern.compile("(\\()[^\\s\\(]+\\s+some");
     private static Pattern and = Pattern.compile("(\\()[^\\s\\(]+\\s+and");
 
     private static Pattern singletonBracket = Pattern.compile("(\\()[^\\s\\)]+\\)");
@@ -77,9 +77,18 @@ public class ManchesterSyntaxCleaner {
 
         // (r some A) and B --> r some A and B
         Matcher someMatcher = some.matcher(string);
-        if(someMatcher.find()){
+        while(someMatcher.find()){
             int start = someMatcher.start(1);
             int end = findClosingBracket(string,start);
+
+           /* String subString = string.substring(start,end);
+
+            System.out.println("Suspicous find: "+subString);
+
+            String before = string.substring(0, start-1);
+
+            System.out.println("Before: "+before);
+*/
 
             if(start==0 || !string.substring(0,start-1).endsWith("some")){
                 string = string.substring(0,start)+string.substring(start+1,end)+string.substring(end+1);
