@@ -15,10 +15,10 @@ public class OntologySize {
 
         new ELRestrictor(ontology.getOWLOntologyManager().getOWLDataFactory()).restrict(ontology);
 
-        //System.out.println(ontology.getAxiomCount());
-        System.out.println(args[0]+" "+ontology.getLogicalAxiomCount()+" "
-                + ontology.getABoxAxioms(Imports.INCLUDED).size() + " "
-                + ontology.getTBoxAxioms(Imports.INCLUDED).size()  );
+        System.out.println(ontology.getAxiomCount());
+        //System.out.println(args[0]+" "+ontology.getLogicalAxiomCount()+" "
+        //        + ontology.getABoxAxioms(Imports.INCLUDED).size() + " "
+        //        + ontology.getTBoxAxioms(Imports.INCLUDED).size()  );
     }
 
 }
