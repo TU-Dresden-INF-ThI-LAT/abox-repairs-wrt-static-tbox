@@ -64,11 +64,12 @@ public class ParseTimes {
                 double relRepairSize = -1;
                 double diffRepairSize = -1;
 
+                String ontFile = seedFilename.substring(0, seedFilename.lastIndexOf(".owl"))+".owl";
+                int ontSize = getNumberInFile(new File(path,ontFile+".size"));
+
                 if(repairSizeFile.exists()) {
                     repairSize2TimeList.add(new Triple<Double, Double, Double>(
                             (double)repairSize, ((SUCCESS) resultPrecomputed).time, ((SUCCESS) resultVirtual).time));
-                    String ontFile = seedFilename.substring(0, seedFilename.lastIndexOf(".owl"))+".owl";
-                    int ontSize = getNumberInFile(new File(path,ontFile+".size"));
                     relativeRepairSize2TimeList.add(new Triple<>(
                             ((double)repairSize)/ontSize,
                             ((SUCCESS) resultPrecomputed).time, ((SUCCESS) resultVirtual).time));
@@ -81,7 +82,7 @@ public class ParseTimes {
                     diffRepairSize = repairSize-ontSize;
                 }
 
-                writer.println(resultPrecomputed + " " + resultVirtual+ " "+seedFilename+" "+repairSize
+                writer.println(resultPrecomputed + " " + resultVirtual+ " "+seedFilename+" "+ontSize+" "+repairSize
                 +" "+diffRepairSize+" "+resultPrecomputed.minus(resultVirtual)
                 +" "+relRepairSize+" "+resultPrecomputed.divideBy(resultVirtual));
                // if(((SUCCESS)resultPrecomputed).time > 30) {
@@ -94,7 +95,7 @@ public class ParseTimes {
                 Optional<Double> repairTime = getRepairTime(repairOutput);
                 if(repairTime.isPresent()) {
                     double completeTime = repairTime.get() + ((SUCCESS) resultPrecomputed).time;
-                    writer2.println(completeTime + " " + resultVirtual + " " + seedFilename+ " "+repairSize);
+                    writer2.println(completeTime + " " + resultVirtual + " " + seedFilename+ " "+ontSize+" "+repairSize);
                     virtualFasterInclRepairComputation.add(
                             completeTime > ((SUCCESS)resultVirtual).time
                     );
