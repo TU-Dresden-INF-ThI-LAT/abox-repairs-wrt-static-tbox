@@ -34,7 +34,8 @@ public class ParseTimes {
         for(String seedFilename: new File(path).list(ParseTimes::seedFunctionFile)){
             total++;
             System.out.println(seedFilename);
-//            File repair = new File(path, seedFilename+".repair");
+
+            //File repair = new File(path, seedFilename+".repair");
             File outputPrecomputed = new File(path,seedFilename+".output-precomputed");
             File outputVirtual = new File(path,seedFilename+".output-virtual");
 
@@ -69,11 +70,12 @@ public class ParseTimes {
                 double relRepairSize = -1;
                 double diffRepairSize = -1;
 
+                String ontFile = seedFilename.substring(0, seedFilename.lastIndexOf(".owl"))+".owl";
+                int ontSize = getNumberInFile(new File(path,ontFile+".size"));
+
                 if(repairSizeFile.exists()) {
                     repairSize2TimeList.add(new Triple<Double, Double, Double>(
                             (double)repairSize, ((SUCCESS) resultPrecomputed).time, ((SUCCESS) resultVirtual).time));
-                    String ontFile = seedFilename.substring(0, seedFilename.lastIndexOf(".owl"))+".owl";
-                    int ontSize = getNumberInFile(new File(path,ontFile+".size"));
                     relativeRepairSize2TimeList.add(new Triple<>(
                             ((double)repairSize)/ontSize,
                             ((SUCCESS) resultPrecomputed).time, ((SUCCESS) resultVirtual).time));
@@ -86,12 +88,12 @@ public class ParseTimes {
                     diffRepairSize = repairSize-ontSize;
                 }
 
-                writer.println(resultPrecomputed + " " + resultVirtual+ " "+seedFilename+" "+repairSize
+                writer.println(resultPrecomputed + " " + resultVirtual+ " "+seedFilename+" "+ontSize+" "+repairSize
                 +" "+diffRepairSize+" "+resultPrecomputed.minus(resultVirtual)
                 +" "+relRepairSize+" "+resultPrecomputed.divideBy(resultVirtual));
                // if(((SUCCESS)resultPrecomputed).time > 30) {
                     virtualFasterWithoutRepairComputation.add(
-                            ((SUCCESS) resultPrecomputed).time > ((SUCCESS) resultVirtual).time
+                            ((SUCCESS) resultPrecomputed).time >= ((SUCCESS) resultVirtual).time
                     );
                 //}
                 //if(repair.exists()){
@@ -99,7 +101,7 @@ public class ParseTimes {
                 Optional<Double> repairTime = getRepairTime(repairOutput);
                 if(repairTime.isPresent()) {
                     double completeTime = repairTime.get() + ((SUCCESS) resultPrecomputed).time;
-                    writer2.println(completeTime + " " + resultVirtual + " " + seedFilename+ " "+repairSize);
+                    writer2.println(completeTime + " " + resultVirtual + " " + seedFilename+ " "+ontSize+" "+repairSize);
                     virtualFasterInclRepairComputation.add(
                             completeTime > ((SUCCESS)resultVirtual).time
                     );
@@ -121,13 +123,13 @@ public class ParseTimes {
         System.out.println(virtualFasterInclRepairComputation+" times the virtual repair was faster if we include repair computation.");
 
         System.out.println("Buckets by size:");
-        evaluateBuckets(6, repairSize2TimeList);
+        evaluateBuckets(5, repairSize2TimeList);
         System.out.println();
         System.out.println("Buckets by relative size:");
-        evaluateBuckets(6, relativeRepairSize2TimeList);
+        evaluateBuckets(5, relativeRepairSize2TimeList);
         System.out.println();
         System.out.println("Buckets by size difference:");
-        evaluateBuckets(6, diffRepairSize2TimeList);
+        evaluateBuckets(5, diffRepairSize2TimeList);
         System.out.println();
 
         System.out.println("Buckets by repair_size:");

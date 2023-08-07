@@ -1,0 +1,100 @@
+<http://grapson.com/meta#TermObjectdProperty> and <http://www.absoluteiri.edu/RELAPPROXC358>
+<http://www.absoluteiri.edu/RELAPPROXC358>
+<http://www.absoluteiri.edu/RELAPPROXC378> and (<http://www.absoluteiri.edu/RELAPPROXC387> and (<http://grapson.com/meta#ObjectProperty> and <http://www.absoluteiri.edu/RELAPPROXC373>))
+<http://grapson.com/concept#ctryCode> some <http://www.absoluteiri.edu/RELAPPROXC389>
+<http://www.absoluteiri.edu/RELAPPROXC373> and (<http://grapson.com/sign#Sign> and (<http://grapson.com/meta#Pun> and <http://www.absoluteiri.edu/RELAPPROXC389>))
+<http://grapson.com/expression#URI> some <http://www.absoluteiri.edu/RELAPPROXC358>
+<http://www.absoluteiri.edu/RELAPPROXC358> and (((<http://grapson.com/meta#hasSource> some <http://www.absoluteiri.edu/RELAPPROXC371>) and (<http://grapson.com/meta#hasSource> some (<http://grapson.com/meta#Meta> and <http://www.absoluteiri.edu/RELAPPROXC371>))) and (<http://grapson.com/meta#hasSource> some (<http://www.absoluteiri.edu/RELAPPROXC358> and (<http://grapson.com/meta#Object> and <http://www.absoluteiri.edu/RELAPPROXC389>))))
+<http://grapson.com/meta#Property> and (<http://www.absoluteiri.edu/RELAPPROXC373> and <http://www.absoluteiri.edu/RELAPPROXC389>)
+<http://www.absoluteiri.edu/RELAPPROXC389> and (<http://grapson.com/meta#Object> and <http://www.absoluteiri.edu/RELAPPROXC389>)
+<http://www.absoluteiri.edu/RELAPPROXC373> and (<http://www.absoluteiri.edu/RELAPPROXC373> and (<http://www.absoluteiri.edu/RELAPPROXC371> and (<http://www.absoluteiri.edu/RELAPPROXC389> and (<http://grapson.com/sign#Sign> and <http://www.absoluteiri.edu/RELAPPROXC378>))))
+<http://grapson.com/meta#Object>
+(<http://grapson.com/expression#baseForm> some <http://www.absoluteiri.edu/RELAPPROXC358>) and (<http://grapson.com/expression#langCode> some <http://grapson.com/sign#Sign>)
+(<http://grapson.com/sign#Sign> and (<http://www.absoluteiri.edu/RELAPPROXC378> and ((<http://grapson.com/term#Term> and (<http://www.absoluteiri.edu/RELAPPROXC373> and <http://www.absoluteiri.edu/RELAPPROXC454>)) and (<http://grapson.com/meta#hasDomain> some <http://www.absoluteiri.edu/RELAPPROXC371>)))) and (<http://grapson.com/term#hasReferent> some (<http://grapson.com/semantics#Instrument> and (<http://grapson.com/sign#Sign> and (<http://grapson.com/concept#Software> and <http://grapson.com/meta#Object>))))
+<http://grapson.com/meta#Pun> and <http://www.absoluteiri.edu/RELAPPROXC378>
+<http://grapson.com/meta#SignProperty> and <http://grapson.com/meta#TermDataProperty>
+<http://grapson.com/meta#Object>
+<http://www.absoluteiri.edu/RELAPPROXC378>
+<http://grapson.com/meta#Object>
+<http://www.absoluteiri.edu/RELAPPROXC358> and (<http://grapson.com/expression#baseForm> some <http://www.absoluteiri.edu/RELAPPROXC380>)
+<http://grapson.com/expression#Designation>
+<http://www.absoluteiri.edu/RELAPPROXC446>
+<http://grapson.com/meta#hasDomain> some <http://grapson.com/meta#Object>
+<http://www.absoluteiri.edu/RELAPPROXC371>
+<http://www.absoluteiri.edu/RELAPPROXC458>
+<http://www.absoluteiri.edu/RELAPPROXC371> and <http://www.absoluteiri.edu/RELAPPROXC389>
+<http://grapson.com/concept#Geography> and <http://www.absoluteiri.edu/RELAPPROXC389>
+<http://grapson.com/meta#hasSource> some (<http://grapson.com/meta#Object> and <http://www.absoluteiri.edu/RELAPPROXC358>)
+<http://grapson.com/sign#Sign> and (<http://www.absoluteiri.edu/RELAPPROXC466> and (<http://grapson.com/meta#hasDomain> some <http://grapson.com/sign#Sign>))
+<http://grapson.com/expression#Verb_phrase> and <http://grapson.com/meta#Meta>
+<http://www.absoluteiri.edu/RELAPPROXC387> and (<http://grapson.com/meta#MeaningObjectProperty> and <http://grapson.com/meta#Property>)
+<http://www.absoluteiri.edu/RELAPPROXC387> and (<http://grapson.com/sign#Sign> and <http://www.absoluteiri.edu/RELAPPROXC387>)
+<http://www.absoluteiri.edu/RELAPPROXC373> and (<http://grapson.com/meta#hasSource> some <http://www.absoluteiri.edu/RELAPPROXC387>)
+<http://www.absoluteiri.edu/RELAPPROXC371> and <http://www.absoluteiri.edu/RELAPPROXC389>
+<http://grapson.com/meta#hasDomain> some (<http://grapson.com/sign#Sign> and (<http://grapson.com/meta#Source> and <http://www.absoluteiri.edu/RELAPPROXC371>))
+<http://grapson.com/expression#langCode> some <http://www.absoluteiri.edu/RELAPPROXC389>
+<http://grapson.com/expression#baseForm> some <http://www.absoluteiri.edu/RELAPPROXC378>
+<http://www.absoluteiri.edu/RELAPPROXC371>
+<http://grapson.com/meta#FormDataProperty> and (<http://grapson.com/meta#ObjectProperty> and (<http://www.absoluteiri.edu/RELAPPROXC371> and (<http://grapson.com/meta#FormDataProperty> and <http://www.absoluteiri.edu/RELAPPROXC358>)))
+<http://www.absoluteiri.edu/RELAPPROXC373>
+<http://grapson.com/meta#Object> and (<http://grapson.com/concept#ctryCode> some <http://www.absoluteiri.edu/RELAPPROXC378>)
+<http://grapson.com/sign#Sign> and <http://www.absoluteiri.edu/RELAPPROXC389>
+<http://www.absoluteiri.edu/RELAPPROXC371>
+<http://grapson.com/expression#romanisation> some (<http://www.absoluteiri.edu/RELAPPROXC378>)
+<http://www.absoluteiri.edu/RELAPPROXC358>
+(<http://grapson.com/meta#hasSource> some <http://www.absoluteiri.edu/RELAPPROXC389>) and (<http://grapson.com/meta#hasSource> some (<http://grapson.com/meta#Source> and <http://www.absoluteiri.edu/RELAPPROXC373>))
+(<http://grapson.com/term#LongForm> and (<http://grapson.com/sign#Sign>)) and (<http://grapson.com/meta#hasDomain> some (<http://grapson.com/meta#Object> and <http://www.absoluteiri.edu/RELAPPROXC378>))
+<http://www.absoluteiri.edu/RELAPPROXC387>
+<http://grapson.com/concept#ctryCode> some (<http://www.absoluteiri.edu/RELAPPROXC371> and (<http://www.absoluteiri.edu/RELAPPROXC387>))
+<http://www.absoluteiri.edu/RELAPPROXC389> and (<http://grapson.com/meta#Meta> and (<http://grapson.com/meta#Pun> and (<http://grapson.com/concept#Content> and <http://www.absoluteiri.edu/RELAPPROXC358>)))
+<http://grapson.com/expression#langCode> some (<http://www.absoluteiri.edu/RELAPPROXC358> and <http://www.absoluteiri.edu/RELAPPROXC373>)
+<http://www.absoluteiri.edu/RELAPPROXC371>
+<http://grapson.com/expression#Adverb> and <http://grapson.com/syntax#Form>
+<http://grapson.com/expression#langCode> some (<http://grapson.com/sign#Sign> and <http://www.absoluteiri.edu/RELAPPROXC389>)
+<http://grapson.com/expression#baseForm> some (<http://www.absoluteiri.edu/RELAPPROXC378> and (<http://www.absoluteiri.edu/RELAPPROXC358> and (<http://www.absoluteiri.edu/RELAPPROXC387> and (<http://www.absoluteiri.edu/RELAPPROXC387> and (<http://www.absoluteiri.edu/RELAPPROXC371> and <http://www.absoluteiri.edu/RELAPPROXC387>)))))
+<http://www.absoluteiri.edu/RELAPPROXC358> and (<http://grapson.com/sign#Sign> and <http://www.absoluteiri.edu/RELAPPROXC373>)
+<http://grapson.com/term#Term>
+<http://grapson.com/meta#Pun>
+<http://grapson.com/meta#TermProperty> and <http://www.absoluteiri.edu/RELAPPROXC389>
+<http://www.absoluteiri.edu/RELAPPROXC378>
+<http://www.absoluteiri.edu/RELAPPROXC389>
+<http://www.absoluteiri.edu/RELAPPROXC358> and <http://www.absoluteiri.edu/RELAPPROXC378>
+<http://grapson.com/meta#Object>
+<http://grapson.com/expression#English>
+<http://grapson.com/meta#ObjectProperty> and <http://www.absoluteiri.edu/RELAPPROXC373>
+<http://www.absoluteiri.edu/RELAPPROXC358> and (<http://grapson.com/concept#ctryCode> some <http://www.absoluteiri.edu/RELAPPROXC358>)
+<http://grapson.com/meta#Meta>
+<http://grapson.com/expression#romanisation> some (<http://grapson.com/sign#Sign> and <http://www.absoluteiri.edu/RELAPPROXC378>)
+<http://www.absoluteiri.edu/RELAPPROXC371> and (<http://grapson.com/expression#Designation> and (<http://grapson.com/expression#Designation> and <http://grapson.com/sign#Sign>))
+<http://grapson.com/expression#Phrase> and (<http://www.absoluteiri.edu/RELAPPROXC384> and (<http://grapson.com/expression#Expression> and (<http://www.absoluteiri.edu/RELAPPROXC387> and (<http://grapson.com/expression#romanisation> some <http://grapson.com/sign#Sign>))))
+<http://grapson.com/expression#baseForm> some <http://www.absoluteiri.edu/RELAPPROXC387>
+<http://www.absoluteiri.edu/RELAPPROXC373> and (<http://www.absoluteiri.edu/RELAPPROXC373> and (<http://grapson.com/meta#Object> and <http://grapson.com/sign#Sign>))
+<http://www.absoluteiri.edu/RELAPPROXC389>
+<http://grapson.com/meta#hasDomain> some <http://www.absoluteiri.edu/RELAPPROXC371>
+<http://grapson.com/syntax#Form> and (<http://www.absoluteiri.edu/RELAPPROXC373> and (<http://grapson.com/meta#Meta> and (<http://grapson.com/expression#langCode> some <http://grapson.com/sign#Sign>)))
+<http://www.absoluteiri.edu/RELAPPROXC358> and <http://www.absoluteiri.edu/RELAPPROXC389>
+<http://grapson.com/meta#ExpressionProperty>
+((<http://grapson.com/expression#Designation> and <http://grapson.com/meta#Object>) and (<http://grapson.com/expression#langCode> some <http://www.absoluteiri.edu/RELAPPROXC389>)) and (<http://grapson.com/expression#langCode> some <http://www.absoluteiri.edu/RELAPPROXC387>)
+((((<http://www.absoluteiri.edu/RELAPPROXC378> and (<http://grapson.com/concept#ctryCode> some (<http://www.absoluteiri.edu/RELAPPROXC380> and <http://www.absoluteiri.edu/RELAPPROXC389>))) and (<http://grapson.com/concept#ctryCode> some (<http://www.absoluteiri.edu/RELAPPROXC371> and (<http://www.absoluteiri.edu/RELAPPROXC373> and <http://www.absoluteiri.edu/RELAPPROXC378>)))) and (<http://grapson.com/concept#ctryCode> some <http://www.absoluteiri.edu/RELAPPROXC380>)) and (<http://grapson.com/concept#ctryCode> some (<http://grapson.com/sign#Sign> and <http://www.absoluteiri.edu/RELAPPROXC358>))) and (<http://grapson.com/concept#ctryCode> some (<http://www.absoluteiri.edu/RELAPPROXC380> and <http://www.absoluteiri.edu/RELAPPROXC387>))
+(<http://grapson.com/expression#baseForm> some (<http://www.absoluteiri.edu/RELAPPROXC387> and (<http://grapson.com/sign#Sign> and <http://www.absoluteiri.edu/RELAPPROXC358>))) and (<http://grapson.com/expression#langCode> some (<http://grapson.com/meta#Object> and (<http://grapson.com/meta#Object> and (<http://www.absoluteiri.edu/RELAPPROXC373> and <http://www.absoluteiri.edu/RELAPPROXC380>))))
+(<http://grapson.com/term#hasDesignation> some ((<http://grapson.com/expression#Expression> and <http://www.absoluteiri.edu/RELAPPROXC387>) and (<http://grapson.com/expression#baseForm> some <http://www.absoluteiri.edu/RELAPPROXC389>))) and (<http://grapson.com/term#hasReferent> some <http://www.absoluteiri.edu/RELAPPROXC389>)
+<http://grapson.com/expression#langCode> some (<http://grapson.com/sign#Sign> and <http://www.absoluteiri.edu/RELAPPROXC380>)
+<http://www.absoluteiri.edu/RELAPPROXC418>
+<http://grapson.com/semantics#Object>
+<http://grapson.com/expression#Expression>
+(<http://www.absoluteiri.edu/RELAPPROXC358> and (<http://www.absoluteiri.edu/RELAPPROXC378> and (<http://grapson.com/expression#baseForm> some <http://www.absoluteiri.edu/RELAPPROXC378>))) and (<http://grapson.com/expression#romanisation> some <http://www.absoluteiri.edu/RELAPPROXC371>)
+<http://www.absoluteiri.edu/RELAPPROXC373> and (<http://grapson.com/semantics#Meaning> and (<http://grapson.com/concept#Software> and <http://www.absoluteiri.edu/RELAPPROXC387>))
+<http://www.absoluteiri.edu/RELAPPROXC387> and (<http://grapson.com/meta#Object> and (<http://grapson.com/expression#baseForm> some <http://www.absoluteiri.edu/RELAPPROXC371>))
+<http://grapson.com/meta#FormObjectProperty>
+<http://www.absoluteiri.edu/RELAPPROXC378>
+<http://www.absoluteiri.edu/RELAPPROXC389> and (<http://grapson.com/concept#ctryCode> some <http://www.absoluteiri.edu/RELAPPROXC371>)
+(<http://grapson.com/expression#langCode> some <http://www.absoluteiri.edu/RELAPPROXC378>) and (<http://grapson.com/expression#langCode> some (<http://www.absoluteiri.edu/RELAPPROXC373> and <http://www.absoluteiri.edu/RELAPPROXC389>))
+(<http://www.absoluteiri.edu/RELAPPROXC387> and (<http://grapson.com/sign#Sign> and (<http://grapson.com/meta#hasDomain> some <http://grapson.com/meta#Meta>))) and (<http://grapson.com/meta#hasDomain> some (<http://grapson.com/meta#Domain> and <http://www.absoluteiri.edu/RELAPPROXC378>))
+<http://grapson.com/meta#Object> and <http://grapson.com/sign#Sign>
+<http://www.absoluteiri.edu/RELAPPROXC389> and (<http://www.absoluteiri.edu/RELAPPROXC387> and (<http://grapson.com/meta#Meta> and <http://www.absoluteiri.edu/RELAPPROXC378>))
+<http://grapson.com/meta#Meta> and (<http://grapson.com/meta#MeaningProperty> and (<http://grapson.com/meta#OwlObjectProperty> and (<http://grapson.com/meta#MeaningProperty> and (<http://grapson.com/meta#Meta> and (<http://www.absoluteiri.edu/RELAPPROXC387> and <http://www.absoluteiri.edu/RELAPPROXC389>)))))
+<http://www.absoluteiri.edu/RELAPPROXC358>
+<http://grapson.com/meta#hasDomain> some <http://www.absoluteiri.edu/RELAPPROXC371>
+<http://grapson.com/meta#Property>
+<http://grapson.com/sign#Sign> and <http://www.absoluteiri.edu/RELAPPROXC389>
+<http://www.absoluteiri.edu/RELAPPROXC373> and (<http://grapson.com/meta#hasSource> some <http://www.absoluteiri.edu/RELAPPROXC371>)

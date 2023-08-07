@@ -1,0 +1,100 @@
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://purl.obolibrary.org/obo/so#derives_from> some (<http://purl.obolibrary.org/obo/SO_0000831> and (<http://purl.obolibrary.org/obo/so#member_of> some <http://purl.obolibrary.org/obo/SO_0001411>))
+<http://purl.obolibrary.org/obo/BFO_0000050> some <http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>)
+<http://purl.obolibrary.org/obo/SO_0001411> and (<http://purl.obolibrary.org/obo/SO_0001411> and <http://www.absoluteiri.edu/RELAPPROXC63185>)
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+(<http://purl.obolibrary.org/obo/BFO_0000050> some <http://www.absoluteiri.edu/RELAPPROXC63185>) and (<http://purl.obolibrary.org/obo/so#has_quality> some (<http://purl.obolibrary.org/obo/SO_0000010> and <http://www.absoluteiri.edu/RELAPPROXC63300>))
+(<http://www.absoluteiri.edu/RELAPPROXC63300>) and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63300>))
+<http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://purl.obolibrary.org/obo/SO_0001217>
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://purl.obolibrary.org/obo/BFO_0000050> some <http://www.absoluteiri.edu/RELAPPROXC63300>)
+<http://purl.obolibrary.org/obo/RO_0002162> some (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>)
+<http://owl.cs.man.ac.uk/elapproximated/904615b5-96da-4a92-9a63-41b2f042c337_stermerged.owl.owl.xml<Fresh_Class_0>>
+<http://purl.obolibrary.org/obo/SO_0001411>
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>)
+<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63185>)
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://purl.obolibrary.org/obo/RO_0002162> some <http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://purl.obolibrary.org/obo/RO_0002162> some <http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://purl.obolibrary.org/obo/SO_0000704>
+<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>
+((((<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63300>)))))) and (<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63300>)) and (<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63185>)) and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>))))))) and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>)))
+(<http://purl.obolibrary.org/obo/SO_0001411> and (<http://purl.obolibrary.org/obo/so#has_quality> some (<http://purl.obolibrary.org/obo/SO_0000400> and <http://purl.obolibrary.org/obo/SO_0000401>))) and (<http://purl.obolibrary.org/obo/RO_0002162> some <http://purl.obolibrary.org/obo/NCBITaxon_7227>)
+<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>)
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://purl.obolibrary.org/obo/BFO_0000050> some <http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://owl.cs.man.ac.uk/elapproximated/904615b5-96da-4a92-9a63-41b2f042c337_stermerged.owl.owl.xml<Fresh_Class_0>>
+<http://purl.obolibrary.org/obo/RO_0002162> some (<http://purl.obolibrary.org/obo/NCBITaxon_7227>)
+(<http://purl.obolibrary.org/obo/RO_0002162> some <http://www.absoluteiri.edu/RELAPPROXC63300>) and (<http://purl.obolibrary.org/obo/so#member_of> some (<http://purl.obolibrary.org/obo/SO_0000001> and <http://www.absoluteiri.edu/RELAPPROXC63185>))
+<http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>)
+<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://purl.obolibrary.org/obo/RO_0002162> some <http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://purl.obolibrary.org/obo/BFO_0000050> some <http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>))
+<http://www.absoluteiri.edu/RELAPPROXC63185>
+(<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63300>)
+<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>)
+<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>))
+<http://purl.obolibrary.org/obo/SO_0000110> and <http://purl.obolibrary.org/obo/SO_0001411>
+(<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63300>) and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63185>))
+<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>))
+<http://purl.obolibrary.org/obo/RO_0002162> some <http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://purl.obolibrary.org/obo/so#has_quality> some <http://www.absoluteiri.edu/RELAPPROXC63185>
+(<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>)) and (<http://purl.obolibrary.org/obo/RO_0002162> some <http://www.absoluteiri.edu/RELAPPROXC63300>)
+((<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63300>) and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63300>)))) and (<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63185>)
+<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://purl.obolibrary.org/obo/so#has_quality> some (<http://purl.obolibrary.org/obo/SO_0000400> and <http://www.absoluteiri.edu/RELAPPROXC63300>)
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+(<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63185>)) and (<http://purl.obolibrary.org/obo/so#has_quality> some (<http://purl.obolibrary.org/obo/SO_0000401> and (<http://purl.obolibrary.org/obo/SO_0000733>)))
+<http://owl.cs.man.ac.uk/elapproximated/904615b5-96da-4a92-9a63-41b2f042c337_stermerged.owl.owl.xml<Fresh_Class_0>> and (<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63300>)
+<http://purl.obolibrary.org/obo/BFO_0000050> some (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63185>)))))))
+(<http://purl.obolibrary.org/obo/SO_0000673> and ((<http://purl.obolibrary.org/obo/BFO_0000050> some <http://www.absoluteiri.edu/RELAPPROXC63185>) and (<http://purl.obolibrary.org/obo/so#derives_from> some (((<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://purl.obolibrary.org/obo/SO_0000001> and <http://purl.obolibrary.org/obo/SO_0001411>)) and (<http://purl.obolibrary.org/obo/so#member_of> some (<http://www.absoluteiri.edu/RELAPPROXC63300>))) and (<http://purl.obolibrary.org/obo/so#member_of> some (<http://purl.obolibrary.org/obo/so#member_of> some (<http://purl.obolibrary.org/obo/SO_0000001> and <http://purl.obolibrary.org/obo/SO_0000110>))))))) and (<http://purl.obolibrary.org/obo/so#derives_from> some (<http://purl.obolibrary.org/obo/so#member_of> some (((<http://purl.obolibrary.org/obo/SO_0000110> and (<http://purl.obolibrary.org/obo/so#member_of> some (<http://purl.obolibrary.org/obo/SO_0000110> and (<http://purl.obolibrary.org/obo/SO_0000110> and <http://purl.obolibrary.org/obo/SO_0005855>)))) and (<http://purl.obolibrary.org/obo/so#member_of> some <http://purl.obolibrary.org/obo/SO_0000110>)) and (<http://purl.obolibrary.org/obo/so#member_of> some <http://purl.obolibrary.org/obo/SO_0005855>))))
+<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63185>)
+<http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://purl.obolibrary.org/obo/SO_0000001>
+<http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>
+(<http://purl.obolibrary.org/obo/SO_0000704> and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63300>))))) and (<http://purl.obolibrary.org/obo/BFO_0000050> some (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>))
+<http://purl.obolibrary.org/obo/RO_0002162> some <http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63300>))
+<http://purl.obolibrary.org/obo/SO_0000001>
+<http://purl.obolibrary.org/obo/SO_0001411>
+<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>))
+<http://purl.obolibrary.org/obo/SO_0001411>
+(<http://purl.obolibrary.org/obo/BFO_0000050> some <http://www.absoluteiri.edu/RELAPPROXC63185>) and (<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63185>)
+<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>))))
+<http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185>))
+<http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://owl.cs.man.ac.uk/elapproximated/904615b5-96da-4a92-9a63-41b2f042c337_stermerged.owl.owl.xml<Fresh_Class_0>> and (((<http://purl.obolibrary.org/obo/SO_0000704> and (<http://purl.obolibrary.org/obo/BFO_0000050> some <http://www.absoluteiri.edu/RELAPPROXC63300>)) and (<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63300>)) and (<http://purl.obolibrary.org/obo/so#has_quality> some <http://purl.obolibrary.org/obo/SO_0000401>))
+(((<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63300>))) and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>))))) and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63300>))) and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185>))))
+<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://purl.obolibrary.org/obo/SO_0000655> and (<http://purl.obolibrary.org/obo/so#member_of> some (<http://purl.obolibrary.org/obo/SO_0001411> and (<http://purl.obolibrary.org/obo/SO_0000110> and (<http://purl.obolibrary.org/obo/so#member_of> some <http://www.absoluteiri.edu/RELAPPROXC63185>))))
+(<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63300> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>)))))) and (<http://purl.obolibrary.org/obo/RO_0002156> some (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>))
+<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://purl.obolibrary.org/obo/SO_0001411> and (<http://purl.obolibrary.org/obo/RO_0002162> some <http://purl.obolibrary.org/obo/NCBITaxon_7227>)
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>)
+<http://purl.obolibrary.org/obo/RO_0002156> some <http://www.absoluteiri.edu/RELAPPROXC63185>
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://www.absoluteiri.edu/RELAPPROXC63185> and (<http://purl.obolibrary.org/obo/BFO_0000050> some (<http://www.absoluteiri.edu/RELAPPROXC63185> and <http://www.absoluteiri.edu/RELAPPROXC63300>))
+<http://www.absoluteiri.edu/RELAPPROXC63300>
+<http://purl.obolibrary.org/obo/SO_0001411>
