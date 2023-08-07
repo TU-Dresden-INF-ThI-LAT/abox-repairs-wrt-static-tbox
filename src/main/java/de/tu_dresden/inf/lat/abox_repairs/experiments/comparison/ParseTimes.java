@@ -34,7 +34,7 @@ public class ParseTimes {
         for(String seedFilename: new File(path).list(ParseTimes::seedFunctionFile)){
             total++;
             System.out.println(seedFilename);
-            File repair = new File(path, seedFilename+".repair");
+//            File repair = new File(path, seedFilename+".repair");
             File outputPrecomputed = new File(path,seedFilename+".output-precomputed");
             File outputVirtual = new File(path,seedFilename+".output-virtual");
 
@@ -44,6 +44,10 @@ public class ParseTimes {
             Result resultVirtual = getTime(outputVirtual);
 
             if(!resultPrecomputed.isSuccessful()) {
+                System.out.println("Unsuccessful with "+resultPrecomputed+" in "+outputPrecomputed);
+                if(resultPrecomputed==NO_REPAIR){
+                    System.out.println("No repair: "+seedFilename);
+                }
                 if(!(resultPrecomputed==NO_REPAIR)){
                     System.out.println("Repair: "+resultPrecomputed);
                 }
@@ -52,6 +56,7 @@ public class ParseTimes {
                 failuresPrecomputed.put(resultPrecomputed, failuresPrecomputed.get(resultPrecomputed)+1);
             }
             if(!resultVirtual.isSuccessful()) {
+                System.out.println("Unsuccessful with "+resultVirtual+" in "+outputVirtual);
                 virtualFailed++;
                 System.out.println("virtual failed!");
                 failuresVirtual.putIfAbsent(resultVirtual, 0);
@@ -124,7 +129,6 @@ public class ParseTimes {
         System.out.println("Buckets by size difference:");
         evaluateBuckets(6, diffRepairSize2TimeList);
         System.out.println();
-
 
         System.out.println("Buckets by repair_size:");
         evaluateAtPercentile(.85, repairSize2TimeList);
