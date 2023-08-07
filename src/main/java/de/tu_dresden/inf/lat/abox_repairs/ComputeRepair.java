@@ -34,6 +34,7 @@ public class ComputeRepair {
                 break;
             case "cq":
                 repairVariant= RepairManagerBuilder.RepairVariant.CQ;
+		break;
             default:
                 System.out.println("Unsupported repair variant: "+variant);
                 System.exit(1);
